@@ -1,0 +1,19 @@
+<% title "Event: #{@event.name}" %>
+<div class="entry">
+  <h3><%= yield(:title) %> (<%= @event.price_euros %>€)</h3>
+  <p>
+    <% if @event.out_of_capacity? %>
+      Sorry, this event is <span class="full">Complete</span>
+    <% else %>
+      Remaining capacity <strong><%= pluralize( @event.remaining_capacity, 'place' ) %></strong>
+    <% end %>
+  </p>
+  <p><%= simple_format(@event.description) %></p>
+
+  <% if admin? %>
+    <p>
+      <%= link_to "&laquo; Go back to events", events_path %>
+      | <%= link_to 'Edit', edit_event_path(@event) %>
+    </p>
+  <% end %>  
+</div>

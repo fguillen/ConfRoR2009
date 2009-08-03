@@ -1,0 +1,33 @@
+<div id="main-menu">
+  <ul>
+    <%= menu_to 'Home', root_path %>
+    <%= menu_to 'Calendar', calendar_path %>
+    <%= menu_to 'Talks', papers_path %>
+    <% if admin? %>
+      <%= menu_to 'Submit Talk', new_paper_path %>
+      <%= menu_to 'Events', events_path %>
+    <% end %>
+    <%= menu_to 'People', users_path(:page => 1) %>
+    <%= menu_to 'Blog', 'http://euruko2009.org' %>
+    <% StaticPage.all.each do |static_page| %>
+      <%= menu_to static_page.title, static_page_path( static_page ) %>
+    <% end %>
+  </ul>
+</div>
+
+<div id="user-menu">
+  <ul>
+  <% if logged_in? %>
+    <%= menu_to 'Profile', user_path(current_user) %>
+    <% if current_user.everything_paid? %>
+      <%= menu_to 'Pay!', new_cart_path %>
+    <% else %>
+      <%= menu_to 'Pay!', new_cart_path, :highlight => true %>
+    <% end %>
+    <%= menu_to 'Logout', logout_path %>
+  <% else %>
+    <%= menu_to 'Login', new_session_path %>
+    <%= menu_to 'Signup', new_user_path, :class => "highlight" %>
+  <% end %>
+  </ul>
+</div>

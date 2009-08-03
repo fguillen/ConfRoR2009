@@ -1,0 +1,9 @@
+comment1:
+  user: user1
+  paper: paper1
+  text: Just a comment
+
+comment2:
+  user: user2
+  paper: paper1
+  text: Just another comment

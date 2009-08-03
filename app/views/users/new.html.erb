@@ -1,0 +1,29 @@
+<% title "Sign up as a new user" %>
+
+<h3><%= yield(:title) %></h3>
+
+<% @user.password = @user.password_confirmation = nil %>
+<%= error_messages_for :user %>
+
+<% form_for @user, :url => users_path do |f| -%>
+  <p><%= f.label :label, 'Login', :required => true %><br/>
+  <%= f.text_field :login %></p>
+
+  <p><%= f.label :name, 'Name', :required => true %><br/>
+  <%= f.text_field :name %></p>
+
+  <p><%= f.label :email, 'Email', :required => true %><br/>
+  <%= f.text_field :email %></p>
+
+  <p><%= f.label :password, 'Password', :required => true %><br/>
+  <%= f.password_field :password %></p>
+
+  <p><%= f.label :password_confirmation, 'Confirm Password', :required => true %><br/>
+  <%= f.password_field :password_confirmation %></p>
+  
+  <p><%= f.check_box :public_profile %><%= label_tag 'public_profile', 'Public Profile' %> <span class="tip">(email will not be shown)</span></p>
+  
+  <p><%= submit_tag 'Sign up' %></p>
+<% end -%>
+
+<p class="notes">Fields marked with <span class="required">*</span> are required fields</p>

@@ -1,0 +1,40 @@
+<% if !paper.resources.empty? %>
+  <ul>
+    <% paper.resources.each do |resource| %>
+      <li>
+        <%= link_to resource.name_link, resource.url_link %>
+        <span class="actions">
+          <%= link_to image_tag('delete.png'), paper_resource_path( paper, resource ), :method => :delete, :confirm => 'Are you sure?' %>
+        </span>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<br/>
+
+<p>You can add a new resources from here:</p>
+
+<% form_for [paper, @resource], :html => { :multipart => :true } do |f| -%>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name, 'Name' %><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :url, 'From URL' %><br />
+    <%= f.text_field :url %>
+  </p>
+  
+  <p>
+    <%= f.label :file, 'From your computer' %><br />
+    <%= f.file_field :file %>
+  </p>
+  
+  <br/>
+  
+  <p>
+    <%= f.submit "Add resource" %>
+  </p>
+<% end -%>

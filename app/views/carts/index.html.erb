@@ -1,0 +1,81 @@
+<% title 'Payments' %>
+
+<div class="bar">
+  <%= link_to 'All', carts_path( :params => { :page => '1' } ) %>
+  <% Cart::STATUS.keys.each do |key| %>
+    | <%= link_to Cart::STATUS[key], carts_path( :params => { :status => Cart::STATUS[key], :page => '1' } ) %>
+    (<%= Cart.count(:conditions => {:status => Cart::STATUS[key]} ) %>)
+  <% end %>
+</div>
+
+<h3><%= yield(:title) %></h3>
+
+<div id="carts">
+  <% @carts.each do |cart| %>
+    <p>
+      (<%= cart.id %>)
+      <strong><%= cart.user.name %></strong>
+      at <%= cart.updated_at %>
+      (<%= cart.status %>)
+      <%= link_to 'toggle', '#', :onclick => "toggle_cart_div( 'cart_#{cart.id}'); return false;" %>
+    </p>
+
+    <div id="cart_<%= cart.id %>" class="box" style="display:none;">
+      <p><%= link_to 'Show', cart %></p>
+      <p><strong>id:</strong> <%= cart.id %></p>
+      <p><strong>date create:</strong> <%= cart.created_at.to_s(:cool) %></p>
+      <p><strong>date updated:</strong> <%= cart.updated_at.to_s(:cool) %></p>
+      <p><strong>user:</strong> <%= link_to cart.user.name, cart.user %></p>
+      <p><strong>status:</strong> <%= cart.status %></p>
+
+      <% if cart.paypal_notify_params %>
+        <p>
+          <strong>notify params:</strong>
+          <ul>
+           <% cart.paypal_notify_params.keys.each do |key| %>
+            <li><strong><%= key %>:</strong><%= cart.paypal_notify_params[key.to_sym] %></li>
+           <% end %>
+          </ul>
+        </p>
+      <% end %>
+    
+      <% if cart.paypal_complete_params %>
+        <p>
+          <strong>complete params:</strong>
+          <ul>
+           <% cart.paypal_complete_params.keys.each do |key| %>
+            <li><strong><%= key %>:</strong><%= cart.paypal_complete_params[key.to_sym] %></li>
+           <% end %>
+          </ul>
+        </p>
+      <% end %>
+    
+      <p><strong>invoice info:</strong> <%= simple_format(cart.invoice_info) %></p>
+      <p><strong>txn id:</strong> <%= cart.transaction_id %></p>
+      <p><strong>purchased_at:</strong> <%= cart.purchased_at %></p>
+      <p><strong>price:</strong> <%= cart.total_price_on_euros %></p>
+
+      <% if cart.paypal_errors %>
+        <p><strong>paypal_errors:</strong> <%= cart.paypal_errors.join(',') %></p>
+      <% end %>
+  
+      <p>
+        <strong>events:</strong>
+        <% cart.events.each do |event| %>
+          <%= link_to event.name, event %>,
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+</div>
+
+<div class="pagination">
+  <p><% if @carts.respond_to?( 'total_pages' ) %><%= will_paginate @carts %><% end %></p>
+</div>
+
+<script>
+  function toggle_cart_div( id ){
+    $( '#' + id ).slideToggle( 'fast' );
+    return false;
+  }
+</script>

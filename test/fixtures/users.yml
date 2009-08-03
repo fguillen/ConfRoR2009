@@ -1,0 +1,105 @@
+# t.string        :name,                  :null => false
+# t.string        :login,                 :null => false
+# t.string        :email,                 :null => false
+# t.string        :crypted_password,                        :limit => 40
+# t.string        :salt,                                    :limit => 40
+# t.string        :remember_token
+# t.datetime      :remember_token_expires_at
+# t.string        :activation_code,                         :limit => 40
+# t.datetime      :activated_at,
+
+user1:
+  name: User 1
+  permalink: user-1
+  login: user1
+  email: user1@email.com
+  crypted_password: aaa
+  role: <%= User::ROLE[:USER] %>
+  public_profile: true
+  activated_at: <%= '2008-01-01 01:01' %>
+  invoice_info: Invoice Info
+  
+# hi has a proposed paper
+user2:
+  name: User 2
+  permalink: user-2
+  login: user2
+  email: user2@email.com
+  crypted_password: aaa
+  role: <%= User::ROLE[:USER] %>
+  public_profile: true
+  
+user3:
+  name: User 3
+  permalink: user-3
+  login: user3
+  email: user3@email.com
+  crypted_password: aaa
+  role: <%= User::ROLE[:USER] %>
+  public_profile: true
+  
+user4:
+  name: User 4
+  permalink: user-4
+  login: user4
+  email: user4@email.com
+  crypted_password: aaa
+  role: <%= User::ROLE[:USER] %>
+  public_profile: true
+
+private:
+  name: User with private profile
+  permalink: user-private
+  login: privateUser
+  email: user-private@email.com
+  crypted_password: aaa
+  role: <%= User::ROLE[:USER] %>
+  public_profile: false
+
+paper_submitter:
+  name: User who submitted a paper
+  permalink: submitter
+  login: submitter
+  email: submitted@email.com
+  crypted_password: aaa
+  role: <%= User::ROLE[:USER] %>
+  public_profile: true
+
+user_admin:
+  name: User Admin
+  permalink: user-admin
+  login: user_admin
+  email: user_admin@email.com
+  crypted_password: aaa
+  role: <%= User::ROLE[:ADMIN] %>
+  public_profile: true
+  
+user_not_actived:
+  name: User Not Activated
+  permalink: user-not-activated
+  login: user_not_activated
+  email: user_not_activated@email.com
+  crypted_password: aaa
+  role: <%= User::ROLE[:ADMIN] %>
+  public_profile: true
+  activation_code: activation_code
+
+user_not_speaker:
+  name: User Not Speaker
+  permalink: user-not-spekaer
+  login: user_not_speaker
+  email: user_not_speaker@email.com
+  crypted_password: aaa
+  role: <%= User::ROLE[:USER] %>
+  public_profile: true
+  activation_code: activation_code
+  
+user_everything_paid:
+  name: User Everything Paid
+  permalink: user-everything-paid
+  login: user-everything-paid
+  email: user-everything-paid@email.com
+  crypted_password: aaa
+  role: <%= User::ROLE[:USER] %>
+  public_profile: true
+  activation_code: activation_code

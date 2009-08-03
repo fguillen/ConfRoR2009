@@ -1,0 +1,92 @@
+<% if admin? %>
+<div class="box">
+  <%= render :partial => 'layouts/admin_menu' %>
+</div>
+<% end %>
+
+<div class="spot">
+  <%= image_tag "europe.png" %>
+  <h3>What's EuRuKo?</h3>
+  <p>
+    EuRuKo is an annual conference about the Ruby programming
+    language with an informal atmosphere and lots of opportunities 
+    to listen, to talk, to hack and to have fun.
+    This year takes place on Barcelona, Spain, the days 9th and 10th
+    of May.
+  </p>
+</div>
+
+<div class="spot">
+  <h3>Sponsorship <%= link_to 'Get info', 'http://euruko2009.org/files/sponsorship_EuRuKo_2009.pdf' %></h3>
+  
+  
+  <div class="sponsor silver">
+    <a href="http://www.xing.com/?dpt=maes&ttp=spon&plf=euru&xtr=es0209" title="Xing"><%= image_tag 'sponsors/xing.png' %></a><br/>
+    <p><a href="http://www.xing.com" title="Xing">Silver Sponsor: Xing</a></p>
+  </div>
+  <div class="sponsor">
+    <a href="http://www.linkingpaths.com" title="Linking Paths"><%= image_tag 'sponsors/linking-paths.png' %></a><br/>
+    <p><a href="http://www.linkingpaths.com" title="Linking Paths">Linking Paths</a></p>
+  </div>
+  <div class="sponsor">
+    <a href="http://www.guebs.com" title="Guebs.com"><%= image_tag 'sponsors/guebs.png' %></a><br/>
+    <p><a href="http://www.guebs.com" title="Guebs.com">Güebs</a></p>
+  </div>
+  <div class="sponsor">
+    <a href="http://www.aspgems.com" title="ASPgems"><%= image_tag 'sponsors/aspgems.png' %></a><br/>
+    <p><a href="http://www.aspgems.com" title="ASPgems">ASPgems</a></p>
+  </div>
+  <div class="sponsor">
+    <a href="http://www.citilab.eu" title="Citilab"><%= image_tag 'sponsors/citilab.png' %></a><br/>
+    <p><a href="http://www.citilab.eu" title="Citilab">Citilab</a></p>
+  </div>
+  <div class="sponsor">
+    <a href="http://www.lunarlogicpolska.com" title="Lunar Logic Polska"><%= image_tag 'sponsors/lunar-logic-polska.png' %></a><br/>
+    <p><a href="http://www.lunarlogicpolska.com" title="Lunar Logic Polska">Lunar Logic Polska</a></p>
+  </div>
+  <div class="sponsor">
+    <a href="http://www.ameets.com" title="Ameets"><%= image_tag 'sponsors/ameets.png' %></a><br/>
+    <p><a href="http://www.ameets.com" title="Ameets">Ameets</a></p>
+  </div>
+  <div class="sponsor">
+    <a href="http://www.flowersinspace.com" title="Flowers in Space"><%= image_tag 'sponsors/flowers-in-the-space.png' %></a><br/>
+    <p><a href="http://www.flowersinspace.com" title="Flowers in Space">Flowers in Space</a></p>
+  </div>
+  
+  <div class="sponsor">
+    <a href="http://www.microsoft.com" title="Microsoft"><%= image_tag 'sponsors/microsoft.png' %></a><br/>
+    <p><a href="http://www.microsoft.com" title="Microsoft">Microsoft</a></p>
+  </div>  
+  <div class="clear"></div>
+</div>
+
+<div class="spot">
+  <%= image_tag "twitter.png" %>
+  <h3>Follow us on Twitter</h3>
+  <p>
+    We've got a Twitter account to keep you up to date on everything
+    related with the conference. If you follow us you'll be getting
+    the most updated information. The user is
+    <a href="http://twitter.com/euruko">@euruko</a>
+  </p>
+</div>
+
+<div class="spot">
+  <%= image_tag "ruby.png" %>
+  <h3>Got Ruby?</h3>
+  <p>
+    Ruby is a dynamic, open source programming language with a focus 
+    on simplicity and productivity. It has an elegant syntax that is 
+    natural to read and easy to write.
+    <a href="http://www.ruby-lang.org/en/about/">More...</a>
+  </p>
+</div>
+
+<div class="spot box">
+  <h3>Contact Us</h3>
+  <p>
+    The conference is organised this year by the Spanish Ruby Users Group
+    or as we like to call it <a href="http://www.srug.org">SRUG</a>.
+  </p>
+  <p>You can join the <a href="http://groups.google.es/group/euruko-spain-2009">mailing list</a>.</p>
+</div>

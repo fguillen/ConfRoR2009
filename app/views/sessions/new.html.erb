@@ -1,0 +1,20 @@
+<% title "Log In" %>
+
+<h3><%= yield(:title) %></h3>
+
+<% form_tag session_path do -%>
+<p><%= label_tag 'login' %><br />
+<%= text_field_tag 'login', @login %></p>
+
+<p><%= label_tag 'password' %><br/>
+<%= password_field_tag 'password', nil %></p>
+
+<p>
+<%= check_box_tag 'remember_me', '1', @remember_me %>
+<%= label_tag 'remember_me', 'Remember me' %>
+</p>
+
+<p><%= submit_tag 'Log in' %></p>
+<% end -%>
+
+<p class="notes"><%= link_to 'Forgot your password?', forgot_password_path %></p>

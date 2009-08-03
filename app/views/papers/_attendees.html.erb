@@ -1,0 +1,54 @@
+<div id="attendee">
+  <h6>Attendees (<%=h @paper.attendees.count %>)</h6>
+  <%= link_to 'toggle', '#', :onclick => "$( '#attendees_list' ).slideToggle( 'fast' ); return false;"%>
+  <div id="attendees_list" style="display:none">
+    <p>
+    <ul>
+      <% @paper.attendees.each do |attendee| %>
+        <li><%= attendee.user.name %></li>
+      <% end %>
+    </ul>
+    </p>
+  </div>
+
+  <span id='attendee_error'></span>
+
+  <span id='attendee_loading' style="display:none; clear:both">
+    <%= image_tag 'spinner.gif' %>
+  </span>
+
+  <% if !current_user.nil? %>
+  <p>
+    <br/>
+    <% @attendee = Attendee.find_by_paper_id_and_user_id( @paper.id, current_user.id ) %>
+
+    Will you attend?
+    
+    <% if !@attendee.nil? %>
+      <%= 
+        link_to_remote(
+          'No, I\'m not going',
+          :url => paper_attendee_path( @paper, @attendee ), 
+          :method => :delete,
+          :update => { :success => "attendee", :failure => "attendee_error" },
+          :loading => "$('#attendee_loading').show( 'fast' )",
+          :complete => "$('#attendee_loading').hide( 'fast' )"
+        ) 
+      %>
+    <% else %>
+      <%= 
+        link_to_remote(
+          'Yes, I\'m going',
+          :url => paper_attendees_path( @paper ), 
+          :method => :post,
+          :update => { :success => "attendee", :failure => "attendee_error" },
+          :loading => "$('#attendee_loading').show( 'fast' )",
+          :complete => "$('#attendee_loading').hide( 'fast' )"
+        ) 
+      %>
+    <% end %>
+  </p>
+  <% end %>
+  
+</div>
+

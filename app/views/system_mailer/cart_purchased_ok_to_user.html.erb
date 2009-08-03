@@ -1,0 +1,18 @@
+We have received your payment for the events:
+<% @cart.events.each do |event| -%>
+  * <%= event.name %>
+<% end -%>
+
+<% if !@cart.invoice_info.blank? -%>
+With this invoice info:
+
+<%= @cart.invoice_info %>
+<% end -%>
+
+Your purchase ID is: <%= @cart.id %>
+
+Keep it for possible issues.
+
+Regards
+
+EuRuKo 2009 staff

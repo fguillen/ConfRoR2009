@@ -1,0 +1,34 @@
+<% title 'List of Events' %>
+
+<h3><%= yield(:title) %></h3>
+
+<div class="entry">
+  <p>
+    From this page you can join the events happening at the conference. Check them out!
+  </p>
+
+  <br/>
+
+  <% for event in @events %>
+    <p>
+      <% if event.remaining_capacity == 0 %>
+        <strike><%= link_to event.name, event %></strike>
+        <span class="full">Complete</span>
+      <% else %>
+        <%= link_to event.name, event %>
+      <% end %>
+      
+      <% if admin? %>
+      <span class="actions">
+        <%= link_to image_tag('edit.png'), edit_event_path(event) %>
+        <%= link_to image_tag('delete.png'), event, :confirm => 'Are you sure?', :method => :delete %>
+      </span>  
+      <% end %>
+    </p>
+  <% end %>
+  
+  <% if admin? %>
+    <br/>
+    <p><%= link_to 'Create new event', new_event_path %></p>
+  <% end %>
+</div>
