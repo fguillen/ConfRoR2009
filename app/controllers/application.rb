@@ -4,7 +4,6 @@
 class ApplicationController < ActionController::Base
   # restful_authentication
   include AuthenticatedSystem
-  include ExceptionLoggable
   
   helper :all # include all helpers, all the time
 

@@ -1,12 +1,13 @@
 namespace :init do
 
-  desc "Initialize all the basic stuff, usage: rake db=<mysql|sqlite> [user=user] [password=password]"
+  desc "Initialize all the basic stuff, usage: rake init:all db=<mysql|sqlite> [user=user] [password=password]"
   task :all do
     if !ENV.include?('db') || !['mysql','sqlite'].include?( ENV['db'] )
       raise "usage: rake init:all db=<mysql|sqlite> [user=user] [password=password]"  #  [populate=<test|development|production>]
     end
     
     Rake::Task['init:config_files'].invoke
+    Rake::Task['init:test_certs'].invoke
     Rake::Task['environment'].invoke
     Rake::Task['init:reset_dbs'].invoke
     Rake::Task['test'].invoke
@@ -17,6 +18,12 @@ namespace :init do
     Rake::Task['populate:all'].invoke
   end
   
+  desc "Paypal certs for testing"
+  task :test_certs do
+    Dir.glob("#{RAILS_ROOT}/certs/*_example").each do |f|
+      FileUtils.copy_file f, f.gsub('_example', '')
+    end
+  end
   
   desc "Initilizing config files"
   task :config_files do
