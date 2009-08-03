@@ -1,11 +1,10 @@
-The EuRuKo Conf 2009 Application
+The Spanish Conferencia Rails 2009 Registration Application
 ===
 
-Intenciones
----
+This is the official registration application for the Spanish Conferencia Rails 2009.
 
-Crear una aplicación de registro para la conferencia **EuRuKo2009**.
+### Install
 
-Debe ser **sencilla** tanto de manejo como de funcionalidades, sin grandes pretensiones.
+Look into the doc/INSTALL.md file
 
-Aprendiendo de las carencias de la aplicación de registro de otros eventos en los que hemos participado vamos a intentar poner atención en ayudar en la **configuración de calendario** y en la **gestión de pagos**.
+

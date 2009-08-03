@@ -1,22 +1,23 @@
-Instalar la aplicación
+Instalar la aplicación a mano y poco a poco
 ----------------------
 
 ### Instalarla
 
-    git clone git://github.com/fguillen/euruko_app.git  
+    git clone git://github.com/fguillen/ConfRoR2009.git  
 
 ### External dependencies
     gem install mocha
     gem install faker
-    gem install will-paginate
-    gem install Roman2K-rails-test-serving -s http://gems.github.com # testing accelerator
+    gem install will-paginate -v=2.2.3
+    # gem install Roman2K-rails-test-serving -s http://gems.github.com # testing accelerator
 
 ### Iniciar Configuraciones
 
-    cd euruko_app
+    cd <your dir>
     cp config/database.yml.example config/database.yml 
     cp config/initializers/site_keys.rb.example config/initializers/site_keys.rb
     vim config/config.yml
+    cp certs/paypal_cert.pem_example certs/paypal_cert.pem
 
 ### Iniciar BD
 
@@ -32,6 +33,10 @@ Instalar la aplicación
 
     rake populate:all
 
+
+
+Instalar la aplicación en un paso
+----------------------
 
 ### ó Instalar todo de un sólo golpe
     rake init:all db=<mysql|sqlite> [user=user] [password=password]
