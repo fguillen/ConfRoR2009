@@ -2,20 +2,20 @@
 development:
   adapter: mysql
   encoding: utf8
-  database: euruko_development
+  database: confror2009_development
   username: <user>
   password: <password>
 
 test:
   adapter: mysql
   encoding: utf8
-  database: euruko_test
+  database: confror2009_test
   username: <user>
   password: <password>
 
 production:
   adapter: mysql
   encoding: utf8
-  database: euruko
+  database: srugorg_apprails
   username: <user>
   password: <password>
