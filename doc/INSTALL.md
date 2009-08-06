@@ -38,7 +38,6 @@ Instalar la aplicación a mano y poco a poco
 Instalar la aplicación en un paso
 ----------------------
 
-### ó Instalar todo de un sólo golpe
     rake init:all db=<mysql|sqlite> [user=user] [password=password]
     
 Ejemplo:
