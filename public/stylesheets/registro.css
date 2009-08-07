@@ -1,0 +1,293 @@
+a:link {
+  color: blue;
+}
+
+a:visited {
+  color: blue;
+}
+
+a:hover {
+  color: gray;
+}
+
+a:active {
+  color: blue; 
+}
+
+a img {border: none; }
+
+body { 
+
+  color: #000;
+  font-size: 90%;
+  margin: 0;
+  font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+  line-height: 1.5; /* Unitless for proper inheritance */
+}
+
+
+h1 { 
+  font-weight: bold; 
+  font-size: 120%;
+}
+
+label {
+  font-size: 90%;
+  float: left;
+  text-align: left;
+  margin-right: 0.5em;
+  display: block
+}
+
+input {
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+textarea {
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+table {
+  border: 3px solid #ccc;
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+
+caption {
+  font-size: 90%;
+  font-style: italic;
+  text-align: left;
+  padding-bottom: 1em;
+}
+
+td {
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+}
+
+/*
+th {
+  border: solid 1px #ccc;
+}
+*/
+
+.center {
+  text-align: center;
+}
+
+.signup_link {
+  text-align: center;
+  font-weight: bold;
+}
+
+.reset_link {
+  text-align: center;
+  font-size: 80%;
+}
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+.errorExplanation { 
+  font-size: 100%;
+  background-color: #fff4e4;
+  border: 3px solid red;
+  padding-left: 2em;
+  margin-bottom : 2em;
+}
+
+.notice {
+  float: left; 
+  background-color: #fad163;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.resalta {
+  background-color: yellow;
+}
+
+.perfil { 
+  background-color: #f1f1f1;
+  border: 1px solid #c6dcdd;
+  padding: 0.5em;
+  padding-left: 2em;
+}
+
+.usuario { 
+  background-color: #fff;
+  border: 1px solid #fff;
+  padding: 0.5em;
+  padding-left: 2em;
+}
+
+.pagado { 
+  background-color: #fff;
+  border: 3px solid #6c0;
+  padding: 0.5em;
+  padding-left: 2em;
+}
+
+.nopagado { 
+  background-color: #fff4e4;
+  border: 3px solid red;
+  padding: 0.5em;
+  padding-left: 2em;
+}
+
+.usuario_noactivado { 
+  background-color: #EEEBBE;
+}
+
+.usuario_pagado { 
+  background-color: #cf6;
+}
+
+.usuario_nopagado { 
+  background-color: #FFE8E5;
+}
+
+.usuario_publico { 
+  background-color: #EEEBBE;
+  font-size: 80%;
+}
+
+.loginbox { 
+  background-color: #cf6;
+  border: 3px solid #6c0;
+  padding: 1em;
+}
+
+.adminbox { 
+  background-color: #f1f1f1;
+  border: 3px solid #c6dcdd;
+  padding: 1em;
+}
+
+#patrocinadores { 
+  background-color: #f1f1f1;
+  border: 3px solid #c6dcdd;
+  padding: 1em;
+}
+
+.logo {
+  min-height: 60px;
+}
+
+
+.cuadro {
+  border: solid 1px #ccc;
+  width: 2em;
+}
+
+.caption {
+  background-color: #fff;
+}
+
+.subject {
+  width: 40%;
+}
+
+td.campo {
+  font-style: italic;
+  width: 10em;
+  vertical-align: text-top;
+}
+
+td.img_command {
+  width: 25px;
+}
+
+td.importe {
+  border-left: 1px solid #ccc;
+  padding-right: 0;
+  text-align: right;
+  width: 3em;
+}
+
+table.explanation {
+  border: none;
+  font-size: 90%;
+}
+
+div.hidden {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#container {
+  background: #FFF url(../../images/hd2.png) top left repeat-x;
+}
+
+#top {
+  height: 4em;
+  background: #000 url(../../images/title.png) center no-repeat; height: 54px;
+}
+
+#top h2 { display: none; color: #FFF; padding: 1em 0 1em 0; text-align: center; font-size: 1.5em; font-family: Gill Sans; }
+
+
+#flash {
+  clear: both;
+  height: 1.5em;
+  margin-top: 2em;
+  margin-left: 20%;
+  text-align: center;
+  font-weight: bold;
+}
+
+#left {
+  float: left;
+  width: 60%;
+  margin-left: 5%;
+  padding-top: 1em;
+  padding-bottom: 2em;
+}
+
+#right {
+  float: right;
+  width: 15em;
+  margin-right: 5%;
+  padding-top: 1em;
+  padding-bottom: 2em;
+}
+
+#footer {
+  height: 2em;
+  background-color: #137AD3;
+  color: #fff;
+  clear: both;
+  padding: .5em;
+  text-align: center;
+  font-size: 80%;
+}
+
+#footer a {
+  color: #fff;
+}
+
+
+
+#menu { font-size: 85%; margin: 0 0 0 34px; padding-top: 92px; background: transparent url(../../images/header.png) no-repeat; }
+#menu a { color: #222; text-decoration: none; font-weight: bold; padding: 0.2em 0.45em 0.2em 0.45em; }
+#menu a:hover { text-decoration: underline; }
+
+
+#menu ul { 
+  margin: 1.6em 0 0 0; 
+  padding: 0.7em 0 0.85em 0; 
+}
+
+#menu ul li { 
+  margin: 0 1em 0 0; 
+  float: left; 
+  list-style-type: none; 
+}

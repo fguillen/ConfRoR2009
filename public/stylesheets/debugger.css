@@ -1,0 +1,29 @@
+/*
+	debugger.css
+	Collection of test for the suite, use this only on development
+	http://meyerweb.com/eric/thoughts/2007/09/07/diagnostic-styling
+*/
+
+
+/* Check for empty tags */
+table#imgtest th,
+table#imgtest td { text-align: center; padding: 5px; }
+table#imgtest tbody th { text-align: right; }
+table#imgtest img {width: 25px; height: 25px;}
+div:empty, span:empty, li:empty, p:empty, td:empty, th:empty { padding: 0.5em; background: yellow; }
+*[style], img, a[href], font, center { outline: 5px solid red; }
+table, th { border: 5px solid red; }
+
+/* Empty for empty titles */
+img[alt][title] { outline-width: 0; }
+img[alt] { outline-color: fuchsia; }
+img[alt], img[title] { outline-style: double;}
+img[alt=""][title], img[alt][title=""] { outline-width: 3px;}
+img[alt=""][title=""] { outline-style: dotted;}
+a[title] { outline-width: 0;}
+a[title=""] { outline-width: 3px;}
+a[href="#"] { background: lime;}
+a[href=""] { background: fuchsia; }
+
+/* Check for summary */
+table[summary], th[scope="col"], th[scope="row"] { border: 1px solid #AAA; }

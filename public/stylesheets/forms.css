@@ -1,93 +1,54 @@
-form {
-  margin: 18px 0 0 0;
-  padding: 0; }
-  
-label {
-  font-size: 90%;
-  font-weight: bold;
-	font-family:"Lucida Grande", Tahoma, Arial, sans-serif; }
-	
-label[for="remember_me"] {
-  font-weight: normal; }	
+/* 
+	forms.css
+	Sets up some default styling for forms
+	Gives you classes to enhance your forms
+	For text fields, use class .title or .text
+*/
 
-input[type="text"], input[type="password"] {
-  font-size: 1.25em;
-  padding: 4px;
-  background: #FFFFFF;
-  color: #333;
-  border: 1px solid #AAA;
-  width: 65%; }
+
+fieldset { padding: 0; margin: 0; }
+
+input {
+	border: 1px solid #B7B5AC;
+	font-size: 1em;
+	padding: 0.25em;
+	width: 84%;
+}
+
+input[type="checkbox"] {
+	width: auto;
+}
 
 textarea {
-  width: 65%;
-  height: 100px;
-  padding: 5px;
-  border: 1px solid #AAA;
-  color: #555; }
-  
-textarea.large {
-  width: 75%;
-  height: 450px;
-  padding: 5px;
-  border: 1px solid #AAA;
-  color: #555; }
+	border: 1px solid #B7B5AC;
+	height: 100px;
+	width: 85%;
+}
 
+.comment textarea { width: 99%; }
 
-input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
-  background: #FFFBCA;
-  color: #000;
-  border: 1px solid #AAA; }
+input.text:focus, input.title:focus, textarea:focus, select:focus { border: 1px solid #666; }
 
-.example, .tip {
-  font-size: 75%;
-  color: #666;
-	font-family:"Lucida Grande", Tahoma, Arial, sans-serif; }
+#main input[type="image"] {
+	border: none;
+	width: auto;
+	display: inline-block;
+	vertical-align: middle;
+}
 
-.required {
-  color: #F00; }
-	
-#alert, #error, #notice {
-  padding: 6px 10px 6px 10px;
-  margin-bottom: 24px;
-  width: 96%;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px; }
+#main label { font-weight: bold; font-size: 0.9em; }
 
-#notice {
-  background: #65CD33;
-  color: #FFF; }
+#register label {
+	display: inline-block;
+	width: 6em;
+	padding-right: 0.25em;
+	text-align: right;
+	font-weight: bold;
+}
 
-#alert {
-  background: #EBD151;
-  color: #FFF; }
-
-#error{
-  background: #DB2225;
-  color: #FFF; }
-  
-.errorExplanation {
-  margin-bottom: 30px;
-  color: #000; }
-
-.errorExplanation h2 {
-  color: #DA0202;
-  font-size: 150%; }
-
-.errorExplanation p, li {
-  font-size: 100%;
-  font-family: Helvetica, Arial, Verdana, sans-serif;  }
-
-.fieldWithErrors {
-  margin: 0;
-  padding: 0; }
-
-.fieldWithErrors input, .fieldWithErrors textarea {
-  border: 2px solid #DA0202; }
-  
-.notes {
-  margin-top: 18px;
-  font-size: 12px;
-  font-family: Helvetica, Arial, Verdana, sans-serif;  }
-
-#comments textarea {
-  width: 90%; }
+#register input {
+	border: 1px solid #B7B5AC;
+	font-size: 1em;
+	padding: 0.25em;
+	width: 50%;
+}

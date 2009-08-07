@@ -1,0 +1,21 @@
+/*
+	ie6.css
+	This fixes IE6 bugs, require this file like this:
+	<!--[if IE 6]>
+		<link rel="stylesheet" href="stylesheets/ie6.css" type="text/css" media="screen, projection" title="IE6" charset="utf-8" />
+	<![endif]-->
+*/
+
+
+.canvas {
+/*
+	Could be nice to get this working
+	width: expression(document.body.clientWidth < 980 ? "985px" : documentElement.clientWidth > 1176? "1176px" : "98%" );
+*/
+
+/*
+	Fixed width for IE6
+	fuck 'em all
+*/
+	width: 1050px;
+}

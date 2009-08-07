@@ -1,0 +1,12 @@
+/*
+	ie7.css
+	This fixes IE7 bugs, require this file like this:
+	<!--[if IE 7]>
+		<link rel="stylesheet" href="stylesheets/ie7.css" type="text/css" media="screen, projection" title="IE7" charset="utf-8" />
+	<![endif]-->
+*/
+
+.canvas {
+	min-width: 1050px;
+	max-width: 1200px;
+}

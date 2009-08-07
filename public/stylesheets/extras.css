@@ -1,0 +1,24 @@
+/*
+	classes.css
+	Cool classes that shouldn't be in the core
+*/
+
+
+/* 
+	Mark Boulton's incremental leading for sidenotes
+	It's a bit shaky at this time, because Safari rounded pixels badly
+	http://www.markboulton.co.uk/journal/comments/incremental_leading
+
+*/
+
+.sidenote {
+	font-size: 10px;
+	line-height: 1.44em;  
+	margin-bottom: 1.5em;
+}
+
+/* Nice looking text */
+.classic { 
+	font-family: "Warnock Pro", "Goudy Old Style","Palatino","Book Antiqua", Georgia, serif; 
+	font-weight: normal;
+}
