@@ -22,12 +22,12 @@
     <% if current_user.everything_paid? %>
       <%= menu_to 'Pay!', new_cart_path %>
     <% else %>
-      <%= menu_to 'Pay!', new_cart_path %>
+      <%= menu_to 'Pay!', new_cart_path %> <!-- , :highlight => true -->
     <% end %>
     <%= menu_to 'Logout', logout_path %>
   <% else %>
     <%= menu_to 'Login', new_session_path %>
-    <%= menu_to 'Signup', new_user_path %>
+    <%= menu_to 'Signup', new_user_path %> <!-- , :class => "highlight" -->
   <% end %>
   </ul>
 </div>

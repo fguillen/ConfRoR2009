@@ -35,9 +35,9 @@ development:
   invoices_serial_prefix: euruko-2009-
     
 production:
-  site_domain: eurukostaging.fernandoguillen.info
-  site_name: EuRuKo
-  email_sender: EuRuKo <info@euruko2009.org>
+  site_domain: app.conferenciarails.org:3000
+  site_name: ConfRoR2009
+  email_sender: ConfRoR2009 <info@conferenciarails.org>
   email_notification_recipients: [fguillen.mail@gmail.com]
   paypal_url: https://www.sandbox.paypal.com/cgi-bin/webscr
   paypal_seller: seller_1231200230_biz@gmail.com
@@ -50,4 +50,4 @@ production:
   tax_percent: 16
   seller_invoice_info: "Spanish Ruby Users Group \nTravessera de les Corts 48, Sobreático 2a \n08903 L'Hospitalet de Llobregat \nBarcelona (Spain) \nG65037772"
   invoices_pdf_path:  /public/invoices
-  invoices_serial_prefix: euruko-2009-
+  invoices_serial_prefix: confror-2009-

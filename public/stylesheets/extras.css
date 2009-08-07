@@ -22,3 +22,24 @@
 	font-family: "Warnock Pro", "Goudy Old Style","Palatino","Book Antiqua", Georgia, serif; 
 	font-weight: normal;
 }
+
+.spot img {
+float:left;
+padding:0 12px 10px 0;
+}
+
+.sponsor img {
+border:1px solid #777777;
+float:none;
+padding:0;
+}
+
+.grid-item {
+display:block;
+float:left;
+font-size:80%;
+height:115px;
+margin-right:10px;
+text-align:center;
+width:86px;
+}

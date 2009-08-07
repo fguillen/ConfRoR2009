@@ -25,7 +25,7 @@ p { margin: 0 0 0.75em 0; }
 /* Indentation instead of line shifts for sibling paragraphs, not supported on IE */
 /* p + p { text-indent: 2em; margin-top: -1.5em; } */
 
-p img { float: left; margin: 1.5em 1.5em 1.5em 0; border: 1px solid #CCC; padding: 0; }
+/*p img { float: left; margin: 1.5em 1.5em 1.5em 0; border: 1px solid #CCC; padding: 0; }*/
 
 /* Set a fancy-type for the blockquote */
 blockquote { 

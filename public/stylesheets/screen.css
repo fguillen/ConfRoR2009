@@ -7,9 +7,10 @@
 
 body { background: #EEEDEA url('../images/bg.png') top repeat-x; }
 
-h1, h2, h3, h4, h5, h6 { color: #282A2B; }
+h1, h2, h3, h4, h5, h6 { color: #282A2B; font-weight:bold; }
 
-h2 a { text-decoration: none; }
+h2 a, h3 a, h4 a { text-decoration: none; }
+h2 a:hover, h3 a:hover, h4 a:hover { text-decoration: underline; }
 
 h5 {
 	text-transform: uppercase;
@@ -87,9 +88,9 @@ td { padding: 5px 0 5px 5px; border-bottom: 1px solid #DDD; }
 	border-bottom: 1px solid #2A5454;
 }
 
-.errorExplanation, #flash { padding: .8em; margin-bottom: 1em; }
+.errorExplanation, #flash, #error { padding: .8em; margin-bottom: 1em; }
 .errorExplanation ul  { margin-bottom: 0; padding: 0;}
-.errorExplanation     { background: #E7BEBB; color: #9B2016; margin-bottom: 1.5em; }
+.errorExplanation, #error     { background: #E7BEBB; color: #9B2016; margin-bottom: 1.5em; }
 #flash   { background: #CEDDC4; color: #213026; width: 250px; text-align: center; margin: 0 auto; margin-bottom: 1em;}
 
 .canvas { background: url('../images/logo.png') 0 0 no-repeat; }

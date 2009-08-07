@@ -1,12 +1,12 @@
 <% title 'List of Talks' %>
 
-<% if current_page?('/') %>
+<!-- <% if current_page?('/') %>
   <div id="cover"><%= image_tag 'cover.png' %></div>
 
   <% if !logged_in? %>
     <%= render :partial => "soldout" %>
   <% end %>
-<% end %>
+<% end %> -->
 
 <h3><%= yield(:title) %></h3>
   <% if admin? %>
