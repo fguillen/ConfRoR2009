@@ -38,7 +38,7 @@ production:
   site_domain: app.conferenciarails.org:3000
   site_name: ConfRoR2009
   email_sender: ConfRoR2009 <info@conferenciarails.org>
-  email_notification_recipients: [fguillen.mail@gmail.com]
+  email_notification_recipients: fguillen.mail@gmail.com
   paypal_url: https://www.sandbox.paypal.com/cgi-bin/webscr
   paypal_seller: seller_1231200230_biz@gmail.com
   paypal_cert_id: Z954BH8ATL6XC
