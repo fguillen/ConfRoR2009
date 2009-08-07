@@ -50,6 +50,11 @@ namespace :init do
     
     file_gsub( "#{RAILS_ROOT}/config/initializers/site_keys.rb", /<site_key>/, Utils.site_key_generator )
 
+    puts "initilizing config.yml..."
+    FileUtils.copy_file\
+      "#{RAILS_ROOT}/config/config.yml.example",
+      "#{RAILS_ROOT}/config/config.yml"
+      
     puts "Please revise this file: /config/config.yml"
     puts "# /config/config.yml"
     puts File.read( "#{RAILS_ROOT}/config/config.yml" )
