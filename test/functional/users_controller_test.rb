@@ -195,10 +195,10 @@ class UsersControllerTest < ActionController::TestCase
         
     # puts sent
     
-    assert( sent.subject =~ /\[EuRuKo_test\]/ )
+    assert( sent.subject =~ /\[Site_test\]/ )
   end
   
-  def test_correct_site_name_on_user_create_email
+  def test_correct_site_name_on_user_activate_email
     @user = users(:user_not_actived)
     assert( !@user.active? )
     ActionMailer::Base.deliveries = []
@@ -213,7 +213,7 @@ class UsersControllerTest < ActionController::TestCase
         
     # puts sent
     
-    assert( sent.subject =~ /\[EuRuKo_test\]/ )
+    assert( sent.subject =~ /\[Site_test\]/ )
   end
   
   def test_autologin_after_successful_signup
