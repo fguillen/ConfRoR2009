@@ -2,12 +2,20 @@
 
 <h3><%= yield(:title) %></h3>
 
-<% form_tag session_path do -%>
-<p><%= label_tag 'login' %><br />
-<%= text_field_tag 'login', @login %></p>
+<% form_tag session_path do -%>  
+<div id="login">
+  <p><em>Usar <%= link_to_function "OpenID", "toggleLoginForm()" %></em></p>
+  <p><%= label_tag 'login' %><br />
+  <%= text_field_tag 'login', @login %></p>
+  <p><%= label_tag 'password' %><br/>
+  <%= password_field_tag 'password', nil %></p>
+</div>
 
-<p><%= label_tag 'password' %><br/>
-<%= password_field_tag 'password', nil %></p>
+<div id="openid" style="display:none">
+  <p><em>Usar <%= link_to_function "Login", "toggleLoginForm()" %></em></p>
+  <p><%= label_tag 'openid_identifier', "OpenID" %><br />
+  <%= text_field_tag 'openid_identifier' %></p>
+</div>
 
 <p>
 <%= check_box_tag 'remember_me', '1', @remember_me %>
@@ -21,3 +29,9 @@
   <%= link_to '¿Olvidaste tu contraseña?', forgot_password_path %> | 
   Si no tienes usuario <%= link_to 'regístrate', new_user_path %>
 </p>
+
+<script type="text/javascript" charset="utf-8">
+  function toggleLoginForm() {
+    $('#login, #openid').toggle().filter(':visible').find('input:first').focus().parents('form').reset();
+  }
+</script>
