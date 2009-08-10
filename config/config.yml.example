@@ -15,6 +15,10 @@ test:
   seller_invoice_info: "Name Company \nAddress Company with éxtraños carácteres \nG65037772"
   invoices_pdf_path: /tmp/invoices
   invoices_serial_prefix: site-2009-
+  smtp_server: smtp.site.com
+  smtp_domain: site.com
+  smtp_user: smtpuser
+  smtp_pass: smtppass
   
 development:
   site_domain: 127.0.0.1:3000
@@ -33,6 +37,10 @@ development:
   seller_invoice_info: "Name Company \nAddress Company with éxtraños carácteres \nG65037772"
   invoices_pdf_path: /tmp/invoices
   invoices_serial_prefix: site-2009-
+  smtp_server: smtp.site.com
+  smtp_domain: site.com
+  smtp_user: smtpuser
+  smtp_pass: smtppass
     
 production:
   site_domain: 127.0.0.1:3000
@@ -51,3 +59,7 @@ production:
   seller_invoice_info: "Name Company \nAddress Company with éxtraños carácteres \nG65037772"
   invoices_pdf_path: /tmp/invoices
   invoices_serial_prefix: site-2009-
+  smtp_server: smtp.site.com
+  smtp_domain: site.com
+  smtp_user: smtpuser
+  smtp_pass: smtppass
