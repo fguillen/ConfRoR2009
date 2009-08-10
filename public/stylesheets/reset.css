@@ -1,41 +1,76 @@
-/* -------------------------------------------------------------- 
+/*
+	reset.css
+	This resets all the styles (for compatibility) and adds vertical rhythm
+	This is based on Eric Meyer's reset reloaded
+	http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded
+*/
 
-   reset.css
-   * Resets default browser CSS.
 
-   Based on work by Eric Meyer:
-   * meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/
-
-   Icons are available for purchase at:
-   * http://www.istockphoto.com/file_closeup/arts-and-entertainment/arts-symbols/4575877-satin-icons-set-9.php?id=4575877
-
--------------------------------------------------------------- */
-
-html, body, div, span, object, iframe,
+/* Reset only the elements we want to use, 100.01% corrects several bugs */
+html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, code,
-del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, samp, 
+small, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td {
 	margin: 0;
 	padding: 0;
 	border: 0;
 	font-weight: inherit;
 	font-style: inherit;
-	font-size: 100%;
+	font-size: 100.01%;
 	font-family: inherit;
 	vertical-align: baseline;
 }
 
+/* Uncomment to reset everything or double check */
+/* * { margin: 0; padding: 0; } */ 
 
-body { line-height: 1.5; background: #fff; margin:1.5em 0; }
+/* Remember to define focus styles! */
+:focus { outline: 0; }
 
-/* Tables still need 'cellspacing="0"' in the markup. */
-table { border-collapse: separate; border-spacing: 0; }
-caption, th, td { text-align: left; font-weight:400; }
+/* Set vertical rhythm and basic style */
+body {
+	line-height: 1.5;
+	color: black;
+	background: white;
+}
 
-/* Remove possible quote marks (") from <q>, <blockquote>. */
+/* Tables still need 'cellspacing="0"' in the markup */
+table { 
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+table, td, th { vertical-align: middle; }
+
+caption, th, td { 
+	text-align: left;
+	font-weight: normal; 
+}
+
+/* Remove the style of the lists */
+ol, ul { list-style: none; }
+
+/* Adjust the height of the separators */
+hr {
+	margin: 1.5em 0 1.5em 0;
+	padding: 0;
+	border: 0;
+	color: #000;
+	height: 1px;
+}
+
+/* Handle annoying spaces with form elements */
+input, textarea {
+     margin: 0;
+     padding: 0
+}
+
+/* Remove quoute marks */
 blockquote:before, blockquote:after, q:before, q:after { content: ""; }
 blockquote, q { quotes: "" ""; }
 
+/* Remove border on linked images */
 a img { border: none; }

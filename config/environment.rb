@@ -23,13 +23,16 @@ Rails::Initializer.run do |config|
   # Specify gems that this application depends on. 
   # They can then be installed with "rake gems:install" on new installations.
   # You have to specify the :lib option for libraries, where the Gem name (sqlite3-ruby) differs from the file itself (sqlite3)
-  config.gem "haml"
-  config.gem(
-    'mislav-will_paginate',
-    :version => '~> 2.2.3',
-    :lib => 'will_paginate', 
-    :source => 'http://gems.github.com'
-  )
+  config.gem 'haml'
+  config.gem 'mislav-will_paginate', :version => '~> 2.2.3', :lib => 'will_paginate', :source => 'http://gems.github.com'
+  config.gem 'bluecloth'
+  config.gem 'pdf-writer', :lib => 'pdf/writer'
+  
+  unless RAILS_ENV == 'production'
+    config.gem 'faker', :lib => false
+    config.gem 'mocha', :lib => false
+    config.gem 'thoughtbot-factory_girl', :lib => false, :version => ">= 1.2"
+  end
 
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
@@ -82,6 +85,10 @@ Rails::Initializer.run do |config|
   
   # restful_authentication
   config.active_record.observers = :user_observer
+  
+  # The following would be better belong to requires.rb although, if there, it causes rake gems:install to not to work.
+  # In Rails 2.3 this issue is already solved so we could move this to requires.rb
+  require 'paperclip_validations_extended'
 end
 
 # custom date formats
@@ -89,3 +96,5 @@ ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(
   :cool => "%A %d %B %Y at %H:%M %p",
   :date => "%A %d %B %Y"
 )
+
+ExceptionNotifier.exception_recipients = APP_CONFIG[:email_notification_recipients]

@@ -1,3 +1,25 @@
+_Si encuentras que estas instrucciones son incorrectas o incompletas, por favor, siéntete libre de actualizarlas._
+
+Instalar la aplicación en un paso
+----------------------
+
+    rake init:all db=<mysql|sqlite> [user=user] [password=password]
+    
+Ejemplo:
+    
+    rake init:all db=mysql user=euruko password=euruko
+    rake init:all db=sqlite
+    
+Esto creará los ficheros de configuración database.yml, config.yml, site_keys.rb, borrará las actuales DBs, creará las nuevas, popularizará la DB development con datos ficticios y creará un usuario y un admin.
+
+Si la tarea falla porque faltan dependencias externas, se pueden instalar ejecutando:
+
+    [sudo] rake gems:install
+    
+Y luego volver a intentar el `rake init:all` 
+
+(Nota: [ImageMagick](http://is.gd/27Gir) es también una dependencia)
+
 Instalar la aplicación a mano y poco a poco
 ----------------------
 
@@ -6,10 +28,17 @@ Instalar la aplicación a mano y poco a poco
     git clone git://github.com/fguillen/ConfRoR2009.git  
 
 ### External dependencies
-    gem install mocha
-    gem install faker
-    gem install will-paginate -v=2.2.3
-    # gem install Roman2K-rails-test-serving -s http://gems.github.com # testing accelerator
+
+    [sudo] gem install mocha
+    [sudo] gem install faker
+    [sudo] gem install mislav-will_paginate -v=2.2.3
+    [sudo] gem install haml
+    [sudo] gem install bluecloth
+    [sudo] gem install pdf-writer
+    [sudo] gem install thoughtbot-factory_girl
+    # [sudo] gem install Roman2K-rails-test-serving -s http://gems.github.com # testing accelerator
+    
+* [ImageMagick](http://is.gd/27Gir)
 
 ### Iniciar Configuraciones
 
@@ -32,17 +61,3 @@ Instalar la aplicación a mano y poco a poco
 ### Popularizar la BD con datos de prueba
 
     rake populate:all
-
-
-
-Instalar la aplicación en un paso
-----------------------
-
-    rake init:all db=<mysql|sqlite> [user=user] [password=password]
-    
-Ejemplo:
-    
-    rake init:all db=mysql user=euruko password=euruko
-    rake init:all db=sqlite
-    
-Esto creará los ficheros de configuración database.yml, config.yml, site_keys.rb, borrará las actuales DBs, creará las nuevas, popularizará la DB development con datos ficticios y creará un usuario y un admin.

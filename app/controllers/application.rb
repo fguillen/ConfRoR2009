@@ -4,6 +4,7 @@
 class ApplicationController < ActionController::Base
   # restful_authentication
   include AuthenticatedSystem
+  include ExceptionNotifiable
   
   helper :all # include all helpers, all the time
 
@@ -19,7 +20,7 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
   
-  layout 'application'
+  layout 'layout'
   
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 

@@ -1,0 +1,14 @@
+#menu {
+    background-color: #ffa;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.par {
+    background-color: #ddd;
+}
+
+.impar {
+    background-color: #fff;
+}

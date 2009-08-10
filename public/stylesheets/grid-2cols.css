@@ -1,0 +1,40 @@
+.canvas {
+	margin: 0 auto;
+	width: 100%;
+	min-width: 960px;
+	max-width: 1100px;
+	text-align: left;
+	overflow: hidden;
+}
+
+#header, #content, #footer {
+	float: left;
+	width: 100%;
+	display: block;
+	position: relative;
+}
+
+#menu, #right-sidebar, #left-sidebar, #main {
+	position: relative;
+	float: left;
+	left: 100%;
+	overflow: hidden;
+}
+
+#menu {
+	margin-left: -72%;
+	width: 70%;
+}
+
+#main {
+	margin-left: -98%;
+	width: 69%;
+}
+
+#right-sidebar {
+	margin-left: -26%;
+	padding-left: 0%;
+	width: 24%;
+}
+
+hr { background-color: #E0DFDA; margin: 0 0 1em 0; padding: 0; }

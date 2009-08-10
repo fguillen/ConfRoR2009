@@ -1,10 +1,10 @@
-<div id="main-menu">
+<div id="main-menu" class="menu">
   <ul>
     <%= menu_to 'Home', root_path %>
     <%= menu_to 'Calendar', calendar_path %>
     <%= menu_to 'Talks', papers_path %>
-    <% if admin? %>
       <%= menu_to 'Submit Talk', new_paper_path %>
+    <% if admin? %>
       <%= menu_to 'Events', events_path %>
     <% end %>
     <%= menu_to 'People', users_path(:page => 1) %>
@@ -15,19 +15,19 @@
   </ul>
 </div>
 
-<div id="user-menu">
+<div id="user-menu" class="menu">
   <ul>
   <% if logged_in? %>
     <%= menu_to 'Profile', user_path(current_user) %>
     <% if current_user.everything_paid? %>
       <%= menu_to 'Pay!', new_cart_path %>
     <% else %>
-      <%= menu_to 'Pay!', new_cart_path, :highlight => true %>
+      <%= menu_to 'Pay!', new_cart_path %> <!-- , :highlight => true -->
     <% end %>
     <%= menu_to 'Logout', logout_path %>
   <% else %>
     <%= menu_to 'Login', new_session_path %>
-    <%= menu_to 'Signup', new_user_path, :class => "highlight" %>
+    <%= menu_to 'Signup', new_user_path %> <!-- , :class => "highlight" -->
   <% end %>
   </ul>
 </div>
