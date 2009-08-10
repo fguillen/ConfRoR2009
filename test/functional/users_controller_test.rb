@@ -210,10 +210,10 @@ class UsersControllerTest < ActionController::TestCase
     
     assert !ActionMailer::Base.deliveries.empty?
     sent = ActionMailer::Base.deliveries.last
-        
+            
     # puts sent
     
-    assert( sent.subject =~ /\[Site_test\]/ )
+    assert_match( /\[Site_test\]/, sent.subject )
   end
   
   def test_autologin_after_successful_signup
