@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'faker'
+require 'ostruct'
 
 # # test server from http://github.com/Roman2K/rails-test-serving
 # require 'rails_test_serving'

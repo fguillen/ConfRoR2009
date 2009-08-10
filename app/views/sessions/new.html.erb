@@ -1,25 +1,25 @@
-<% title "Log In" %>
+<% title "Iniciar Sesión" %>
 
 <h3><%= yield(:title) %></h3>
 
 <% form_tag session_path do -%>  
-<div id="login">
+<div id="login" style="<%= "display:none" if params[:openid] %>">
   <p><em>Usar <%= link_to_function "OpenID", "toggleLoginForm()" %></em></p>
-  <p><%= label_tag 'login' %><br />
+  <p><%= label_tag 'login', 'Usuario' %><br />
   <%= text_field_tag 'login', @login %></p>
-  <p><%= label_tag 'password' %><br/>
+  <p><%= label_tag 'password', 'Contraseña' %><br/>
   <%= password_field_tag 'password', nil %></p>
 </div>
 
-<div id="openid" style="display:none">
-  <p><em>Usar <%= link_to_function "Login", "toggleLoginForm()" %></em></p>
+<div id="openid" style="<%= "display:none" unless params[:openid] %>">
+  <p><em>Usar <%= link_to_function "Usuario y Contraseña", "toggleLoginForm()" %></em></p>
   <p><%= label_tag 'openid_identifier', "OpenID" %><br />
   <%= text_field_tag 'openid_identifier' %></p>
 </div>
 
 <p>
 <%= check_box_tag 'remember_me', '1', @remember_me %>
-<%= label_tag 'remember_me', 'Remember me' %>
+<%= label_tag 'remember_me', 'Recuérdame' %>
 </p>
 
 <p><%= submit_tag 'Log in' %></p>

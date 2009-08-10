@@ -1,29 +1,59 @@
-<% title "Sign up as a new user" %>
+<% title "Registrarse como usuario" %>
 
 <h3><%= yield(:title) %></h3>
 
 <% @user.password = @user.password_confirmation = nil %>
 <%= error_messages_for :user %>
 
+<% if @user.identity_url.blank? %>
+  <% form_tag new_user_path, :method => :get, :id => "openid", :style => "display:none" do %>
+  <p><em>Usar <%= link_to_function "Login and Password", "toggleSignupForm()" %></em></p>
+  <p><%= label_tag :openid_identifier, 'OpenID' %> <span>*</span><br/>
+  <%= text_field_tag :openid_identifier %></p>
+  <p><%= submit_tag 'Registrarse' %></p>
+  <% end %>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+  function toggleSignupForm() {
+    $('#new_user, #openid').toggle().filter(':visible').reset().find('input[type=text]:first').focus();
+  }
+</script>
+
 <% form_for @user, :url => users_path do |f| -%>
-  <p><%= f.label :label, 'Login', :required => true %><br/>
+
+  <% if @user.identity_url.blank? %>
+
+  <p><em>Usar <%= link_to_function "OpenID", "toggleSignupForm()" %></em></p>
+  
+  <% end %>
+  
+  <p><%= f.label :login, 'Usuario', :required => true %><br/>
   <%= f.text_field :login %></p>
 
-  <p><%= f.label :name, 'Name', :required => true %><br/>
+  <p><%= f.label :name, 'Nombre completo', :required => true %><br/>
   <%= f.text_field :name %></p>
 
   <p><%= f.label :email, 'Email', :required => true %><br/>
   <%= f.text_field :email %></p>
-
-  <p><%= f.label :password, 'Password', :required => true %><br/>
-  <%= f.password_field :password %></p>
-
-  <p><%= f.label :password_confirmation, 'Confirm Password', :required => true %><br/>
-  <%= f.password_field :password_confirmation %></p>
   
-  <p><%= f.check_box :public_profile %><%= label_tag 'public_profile', 'Public Profile' %> <span class="tip">(email will not be shown)</span></p>
+  <% if @user.identity_url.present? %>
   
-  <p><%= submit_tag 'Sign up' %></p>
+    <%= f.hidden_field :identity_url %>
+  
+  <% else %>
+
+    <p><%= f.label :password, 'Contraseña', :required => true %><br/>
+    <%= f.password_field :password %></p>
+
+    <p><%= f.label :password_confirmation, 'Confirmación de contraseña', :required => true %><br/>
+    <%= f.password_field :password_confirmation %></p>
+  
+  <% end %>
+  
+  <p><%= f.check_box :public_profile %><%= label_tag 'public_profile', 'Perfil público' %> <span class="tip">(el email no será mostrado)</span></p>
+  
+  <p><%= submit_tag 'Registrarse' %></p>
 <% end -%>
 
-<p class="notes">Fields marked with <span class="required">*</span> are required fields</p>
+<p class="notes">Los campos marcados con <span class="required">*</span> son obligatorias</p>

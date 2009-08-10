@@ -391,4 +391,16 @@ class UserTest < ActiveSupport::TestCase
     assert( users.include?( users(:user1 ) ) )
     assert( users.include?( users(:user_everything_paid ) ) )
   end
+  
+  def test_creation_with_identifier_url
+    user = User.create(
+      :name                   => 'User Name',
+      :login                  => 'other_login',
+      :email                  => 'email@email.com',
+      :identity_url           => 'http://wadus.google.com',
+      :public_profile         => true
+    )
+    assert_valid( user )
+    assert_not_nil( user.password )
+  end
 end

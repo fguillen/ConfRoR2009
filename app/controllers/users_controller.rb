@@ -56,8 +56,26 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
-    @user.public_profile = true
+    if using_open_id?
+      authenticate_with_open_id(nil, :optional => [:nickname, :email, :fullname]) do |result, identity_url, registration|
+        if result.successful?
+          if User.exists?(:identity_url => identity_url)
+            flash[:notice] = "Hemos encontrado que ya existe una cuenta asociada a esas credenciales. ¿Has probado a logarte directamente?"
+            redirect_to login_path(:openid => true)
+          else  
+            @user = User.new(:identity_url   => identity_url, 
+                             :login          => registration['nickname'], 
+                             :email          => registration['email'], 
+                             :name           => registration['fullname'], 
+                             :public_profile => true)
+            flash.now[:notice] = "La autenticación ha sido un éxito. Ahora solo te queda completar (o confirmar) los datos de tu cuenta."
+          end              
+        else
+          flash.now[:error] = "Lo sentimos, pero la autenticación con #{identity_url} no ha tenido éxito. Puedes volver a intentarlo o registrate sin OpenID"   
+        end
+      end
+    end
+    @user ||= User.new(:public_profile => true)
   end
  
   def create

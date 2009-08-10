@@ -15,14 +15,14 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    flash[:notice] = "You have been logged out"
+    flash[:notice] = "Tu sesión ha sido cerrada"
     redirect_back_or_default('/')
   end
 
 protected
   # Track failed login attempts
   def note_failed_signin
-    flash[:error] = "Couldn't log you in as '#{params[:login]}'"
+    flash[:error] = "No se pudo iniciar sesión cómo '#{params[:login]}'"
     logger.warn "Failed login for '#{params[:login]}' from #{request.remote_ip} at #{Time.now.utc}"
   end
   
@@ -31,7 +31,7 @@ protected
       if result.successful? and user = User.find_by_identity_url(identity_url)
         succesful_login(user)
       else
-        flash[:error] = "Sorry, couldn't log you in using #{identity_url}"
+        flash[:error] = "Lo siento, no se pudo iniciar sesión como #{identity_url}"
         redirect_to :action => "new", :openid => true
       end
     end
@@ -58,7 +58,7 @@ protected
     new_cookie_flag = (params[:remember_me] == "1")
     handle_remember_cookie! new_cookie_flag
     redirect_back_or_default('/')
-    flash[:notice] = "Logged in successfully"
+    flash[:notice] = "Sesión iniciada correctamente"
   end
   
 end

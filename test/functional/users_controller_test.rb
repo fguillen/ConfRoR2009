@@ -31,6 +31,40 @@ class UsersControllerTest < ActionController::TestCase
     get :new
     assert_response :success
   end
+  
+  def test_should_get_new_with_openid
+    @controller.expects(:authenticate_with_open_id).with(nil, :optional => [:nickname, :email, :fullname])
+    get :new, :openid_identifier => "wadus.myopenid.com"
+  end
+  
+  def test_should_get_new_with_invalid_openid
+    result = OpenIdAuthentication::Result.new(:invalid)
+    @controller.stubs(:authenticate_with_open_id).yields(result, nil, nil)
+    get :new, :openid_identifier => "wadus.myopenid.com"
+    assert_response :success
+    assert_not_nil flash[:error]
+  end
+  
+  def test_should_get_new_with_existing_openid
+    result = OpenIdAuthentication::Result.new(:successful)
+    existing_identity = users(:user_existing_with_openid).identity_url
+    @controller.stubs(:authenticate_with_open_id).yields(result, existing_identity, nil)
+    get :new, :openid_identifier => "wadus.myopenid.com"
+    assert_redirected_to login_path(:openid => true)
+    assert_not_nil flash[:notice]
+  end
+  
+  def test_should_get_new_with_valid_openid
+    result = OpenIdAuthentication::Result.new(:successful)
+    @controller.stubs(:authenticate_with_open_id).yields(result, "wadus.myopenid.com", {'nickname' => "nickname", 'email' => "wadus@myopenid.com", 'fullname' => "Mr. Wadus"})
+    get :new, :openid_identifier => "wadus.myopenid.com"
+    assert_response :success
+    assert_not_nil flash[:notice]
+    assert_select "input[value=nickname][name='user[login]']"
+    assert_select "input[value=wadus@myopenid.com][name='user[email]']"
+    assert_select "input[value=Mr. Wadus][name='user[name]']"
+    assert_select "input[value=wadus.myopenid.com][name='user[identity_url]']"
+  end
 
   def test_should_create_user
     assert_difference('User.count') do

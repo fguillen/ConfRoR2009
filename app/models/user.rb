@@ -36,6 +36,8 @@ class User < ActiveRecord::Base
   validates_presence_of     :password,              :if => :change_password, :on => :update
   validates_presence_of     :password_confirmation, :if => :change_password, :on => :update
   
+  validates_uniqueness_of   :identity_url,          :allow_blank => true
+  
   # validates_inclusion_of    :public_profile, :in => [true, false]
   
   validates_format_of       :company_url,       :with => /^(http|https|ftp):\/\/.*\..*/, :if => lambda { |user| !user.company_url.blank? }
@@ -48,6 +50,7 @@ class User < ActiveRecord::Base
   
   before_create :make_activation_code 
   before_create :update_role
+  before_validation_on_create :generate_password_if_openid
   after_create  :send_password_if_forgotten
   
   named_scope :public_profile, :conditions => { :public_profile => true }
@@ -90,7 +93,8 @@ class User < ActiveRecord::Base
     :twitter_user,
     :location_name,
     :location_country,
-    :invoice_info
+    :invoice_info,
+    :identity_url
   )
 
   attr_accessor :change_password
@@ -232,7 +236,8 @@ class User < ActiveRecord::Base
       :remember_token_expires_at, 
       :created_at, 
       :updated_at,
-      :invoice_info
+      :invoice_info,
+      :identity_url
     ]
     options[:except] = (options[:except] ? options[:except] + default_except : default_except)   
     self.ar_to_xml( options )
@@ -263,6 +268,13 @@ class User < ActiveRecord::Base
     
     def update_role
       self.role = User::ROLE[:USER]
+    end
+    
+    def generate_password_if_openid
+      return unless identity_url.present?
+      new_password = Digest::SHA1.hexdigest( "#{identity_url} -- wadus -- #{Time.now}" )
+      self.password = new_password
+      self.password_confirmation = new_password
     end
 
 end
