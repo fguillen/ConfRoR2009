@@ -17,4 +17,7 @@
 <p><%= submit_tag 'Log in' %></p>
 <% end -%>
 
-<p class="notes"><%= link_to 'Forgot your password?', forgot_password_path %></p>
+<p class="notes">
+  <%= link_to '¿Olvidaste tu contraseña?', forgot_password_path %> | 
+  Si no tienes usuario <%= link_to 'regístrate', new_user_path %>
+</p>
