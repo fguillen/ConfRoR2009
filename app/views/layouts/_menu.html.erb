@@ -3,7 +3,7 @@
     <!-- %= menu_to 'Home', root_path % -->
     <!-- %= menu_to 'Calendar', calendar_path % -->
     <!-- %= menu_to 'Talks', papers_path % -->
-      <%= menu_to 'Submit Talk', new_paper_path %>
+      <%= menu_to 'Enviar Charla', new_paper_path %>
     <% if admin? %>
       <%= menu_to 'Events', events_path %>
     <% end %>
@@ -24,10 +24,10 @@
     <% else %>
       <!-- %= menu_to 'Pay!', new_cart_path % --> <!-- , :highlight => true -->
     <% end %>
-    <%= menu_to 'Logout', logout_path %>
+    <%= menu_to 'Salir', logout_path %>
   <% else %>
     <%= menu_to 'Login', new_session_path %>
-    <%= menu_to 'Signup', new_user_path %> <!-- , :class => "highlight" -->
+    <%= menu_to 'Registrarse', new_user_path %> <!-- , :class => "highlight" -->
   <% end %>
   </ul>
 </div>

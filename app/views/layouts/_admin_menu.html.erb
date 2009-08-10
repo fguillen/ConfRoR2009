@@ -1,4 +1,6 @@
 <ul>
+  <li><%= link_to_unless_current 'Users', users_path(:page => 1) %></li>
+  <li><%= link_to_unless_current 'Talks', papers_path %></li>
   <li><%= link_to_unless_current 'Rooms', rooms_path %></li>
   <li><%= link_to_unless_current 'Events', events_path %></li>
   <li><%= link_to_unless_current 'Pages', static_pages_path %></li>

@@ -1,72 +1,73 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-	<head>
-		<title>Conferencia Rails 2009 - <%= yield(:title) || "La conferencia sobre Rails en castellano" %></title>
-		
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="robots" content="index, follow" />
-		<meta name="mssmarttagspreventparsing" content="true" />
-		<meta name="author" content="El equipo de la Conferencia Rails Hispana" />
-		<meta name="description" content="Reunión anual de los desarrolladores y empresas hispanas que trabajan con Ruby y Rails cada día. El objetivo de la conferencia es difundir el Open Source y poner en contacto a profesionales del sector." />
-		<meta name="dc.title" content="IV Conferencia Rails" />
-		<meta rel="start" href="http://www.conferenciarails.org" title="IV Conferencia Rails" />
-		<meta rel="alternate" href="http://www.conferenciarails.org/rss" title="IV Conferencia Rails Feed" type="application/rss+xml" />
-		
-		<%= stylesheet_link_tag "reset.css", :media => "screen, projection" %>
-		<%= stylesheet_link_tag "typography.css", :media => "screen, projection" %>
-		<%= stylesheet_link_tag "grid-3cols.css", :media => "screen, projection" %>
-		<%= stylesheet_link_tag "forms.css", :media => "screen, projection" %>
-		<%= stylesheet_link_tag "screen", :media => "screen, projection" %>
-		<%= stylesheet_link_tag "extras", :media => "screen, projection" %>
-				
-		<!--[if lte IE 7]>
-			<%= stylesheet_link_tag "ie", :media => "screen, projection" %>
-		<![endif]-->
+  <head>
+    <title>Conferencia Rails 2009 - <%= yield(:title) || "La conferencia sobre Rails en castellano" %></title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index, follow" />
+    <meta name="mssmarttagspreventparsing" content="true" />
+    <meta name="author" content="El equipo de la Conferencia Rails Hispana" />
+    <meta name="description" content="Reunión anual de los desarrolladores y empresas hispanas que trabajan con Ruby y Rails cada día. El objetivo de la conferencia es difundir el Open Source y poner en contacto a profesionales del sector." />
+    <meta name="dc.title" content="IV Conferencia Rails" />
+    <meta rel="start" href="http://www.conferenciarails.org" title="IV Conferencia Rails" />
+    <meta rel="alternate" href="http://www.conferenciarails.org/rss" title="IV Conferencia Rails Feed" type="application/rss+xml" />
+    
+    <%= stylesheet_link_tag "reset.css", :media => "screen, projection" %>
+    <%= stylesheet_link_tag "typography.css", :media => "screen, projection" %>
+    <%= stylesheet_link_tag "grid-3cols.css", :media => "screen, projection" %>
+    <%= stylesheet_link_tag "forms.css", :media => "screen, projection" %>
+    <%= stylesheet_link_tag "screen", :media => "screen, projection" %>
+    <%= stylesheet_link_tag "extras", :media => "screen, projection" %>
+        
+    <!--[if lte IE 7]>
+      <%= stylesheet_link_tag "ie", :media => "screen, projection" %>
+    <![endif]-->
 
-		<!--[if IE 6]>
-			<%= stylesheet_link_tag "ie6", :media => "screen, projection" %>
-		<![endif]-->
+    <!--[if IE 6]>
+      <%= stylesheet_link_tag "ie6", :media => "screen, projection" %>
+    <![endif]-->
 
-		<!--[if IE 7]>
-			<%= stylesheet_link_tag "ie7", :media => "screen, projection" %>
-		<![endif]-->
-		
+    <!--[if IE 7]>
+      <%= stylesheet_link_tag "ie7", :media => "screen, projection" %>
+    <![endif]-->
+    
     <%= javascript_include_tag :defaults %>
-	</head>
-	<body>
-		<div class="canvas">
-			<div id="header">
-				<%= render :partial => 'layouts/menu' %>
-			</div>
+  </head>
+  <body>
+    <div class="canvas">
+      <div id="header">
+        <%= render :partial => 'layouts/menu' %>
+      </div>
 
-			<div id="content">
-				<div id="left-sidebar">
-					<div id="twitter">
-						<h5>Twitter <span>@conferenciaror</span></h5>
-						<ul id="twitter_update_list"></ul>
-					</div>
-				</div>
-				
-				<div id="main">
+      <div id="content">
+        <div id="left-sidebar">
+          <div id="twitter">
+            <h5>Twitter <span>@conferenciaror</span></h5>
+            <ul id="twitter_update_list"></ul>
+          </div>
+        </div>
+        
+        <div id="main">
           <% flash.each do |name, msg| %>
             <%= content_tag :div, msg, :id => name, :class => 'flash' %>
           <% end %>
-		            
-					<%= yield %>
-				</div>
+                
+          <%= yield %>
+        </div>
 
-				<div id="right-sidebar">
-					<%= render :partial => 'layouts/sidebar' %>
-				</div>
-			</div>
+        <div id="right-sidebar">
+          <%= render :partial => 'layouts/sidebar' %>
+        </div>
+      </div>
 
-			<div id="footer">
-				<%= render :partial => 'layouts/footer' %>
-			</div>
-		</div>
-		<!-- TODO-HTML -->
-		<!--%= render :partial => 'partials/twitter' %-->
-		<!--%= render :partial => 'partials/stats' %-->
+      <div id="footer">
+        <%= render :partial => 'layouts/footer' %>
+      </div>
+    </div>
+    <!-- TODO-HTML -->
+    <!--%= render :partial => 'partials/twitter' %-->
+    <!--%= render :partial => 'partials/stats' %-->
+    <%= render :partial => 'layouts/twitter' %>
     </body>
 </html>

@@ -68,8 +68,8 @@ class Paper < ActiveRecord::Base
   }
   
   FAMILY = {
-    :TUTORIAL => 'Tutorial',
-    :SESSION  => 'Session',
+    :TUTORIAL => 'Taller',
+    :SESSION  => 'Charla',
     :KEYNOTE  => 'Keynote',
     :BREAK    => 'Break'
   }

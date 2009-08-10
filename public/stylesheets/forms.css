@@ -25,6 +25,11 @@ textarea {
 	width: 85%;
 }
 
+
+textarea.large{
+  height: 350px;
+}
+
 .comment textarea { width: 99%; }
 
 input.text:focus, input.title:focus, textarea:focus, select:focus { border: 1px solid #666; }
