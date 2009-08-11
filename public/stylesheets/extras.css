@@ -56,3 +56,17 @@ clear:both;
 float:left;
 margin:0 16px 8px 0;
 }
+
+.actions img {
+background:transparent none repeat scroll 0 0;
+border:medium none;
+float:none;
+margin:0 2px -4px 0;
+text-decoration:none;
+}
+
+.actions a {
+font-family:"Lucida Grande",Arial,Helvetica,Verdana,sans-serif;
+font-size:11px;
+padding:0;
+}
