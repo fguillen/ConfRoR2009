@@ -67,7 +67,7 @@ class UsersController < ApplicationController
     
     success = @user && @user.save
     if success && @user.errors.empty?
-      redirect_back_or_default('/')
+      redirect_to root_path
       flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
     else
       render :action => 'new'
