@@ -29,7 +29,7 @@
 #left-sidebar {
 	margin-left: -98%;
 	padding-right: 2%;
-	width: 22%;
+	width: 21%;
 	border-right: 1px solid #E0DFDA;
 }
 
@@ -41,7 +41,7 @@
 #right-sidebar {
 	margin-left: -26%;
 	padding-left: 0%;
-	width: 24%;
+	width: 25%;
 }
 
 hr { background-color: #E0DFDA; margin: 0 0 1em 0; padding: 0; }
