@@ -60,7 +60,7 @@ class UsersController < ApplicationController
       authenticate_with_open_id(nil, :optional => [:nickname, :email, :fullname]) do |result, identity_url, registration|
         if result.successful?
           if User.exists?(:identity_url => identity_url)
-            flash[:notice] = "Hemos encontrado que ya existe una cuenta asociada a esas credenciales. ¿Has probado a logarte directamente?"
+            flash[:error] = "Hemos encontrado que ya existe una cuenta asociada a esas credenciales. ¿Has probado a logarte directamente?"
             redirect_to login_path(:openid => true)
           else  
             @user = User.new(:identity_url   => identity_url, 

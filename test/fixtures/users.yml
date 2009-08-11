@@ -115,3 +115,14 @@ user_existing_with_openid:
   activated_at: <%= '2008-01-01 01:01' %>
   invoice_info: Invoice Info
   identity_url: http://wadus.myopenid.com
+  
+user_existing_with_openid_not_actived:
+  name: User Existing With OpenID
+  permalink: user-existing-with-openid-not-actived
+  login: user-existing-with-openid-not-actived
+  email: user-existing-with-openid-not-activedd@email.com
+  crypted_password: aaa
+  role: <%= User::ROLE[:USER] %>
+  public_profile: true
+  invoice_info: Invoice Info
+  identity_url: http://wadus.myopenid_not_actived.com

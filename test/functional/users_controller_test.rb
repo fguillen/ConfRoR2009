@@ -51,7 +51,7 @@ class UsersControllerTest < ActionController::TestCase
     @controller.stubs(:authenticate_with_open_id).yields(result, existing_identity, nil)
     get :new, :openid_identifier => "wadus.myopenid.com"
     assert_redirected_to login_path(:openid => true)
-    assert_not_nil flash[:notice]
+    assert_not_nil flash[:error]
   end
   
   def test_should_get_new_with_valid_openid

@@ -21,18 +21,20 @@ class SessionsController < ApplicationController
 
 protected
   # Track failed login attempts
-  def note_failed_signin
-    flash[:error] = "No se pudo iniciar sesión cómo '#{params[:login]}'"
-    logger.warn "Failed login for '#{params[:login]}' from #{request.remote_ip} at #{Time.now.utc}"
+  def note_failed_signin( login )
+    flash[:error] = "Lo siento, no se pudo iniciar sesión como #{login}."
+    flash[:error] << " Puede que te hayas registrado pero todavía no hayas activado tu usuario, debes hacerlo siguiendo el link que te debería haber llegado al email."
+
+    logger.warn "Failed login for '#{login}' from #{request.remote_ip} at #{Time.now.utc}"
   end
   
   def open_id_authentication
     authenticate_with_open_id do |result, identity_url|
-      if result.successful? and user = User.find_by_identity_url(identity_url)
+      if result.successful? and user = User.find( :first, :conditions => ['identity_url = ? and activated_at IS NOT NULL', identity_url] )
         succesful_login(user)
       else
-        flash[:error] = "Lo siento, no se pudo iniciar sesión como #{identity_url}"
-        redirect_to :action => "new", :openid => true
+        note_failed_signin( identity_url )
+        redirect_to login_path( :openid => true )
       end
     end
   end
@@ -42,7 +44,7 @@ protected
     if user
       succesful_login(user)
     else
-      note_failed_signin
+      note_failed_signin( params[:login] )
       @login       = params[:login]
       @remember_me = params[:remember_me]
       render :action => 'new'
