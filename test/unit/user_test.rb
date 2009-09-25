@@ -400,7 +400,7 @@ class UserTest < ActiveSupport::TestCase
       :identity_url           => 'http://wadus.google.com',
       :public_profile         => true
     )
-    assert_valid( user )
+    assert( user.valid? )
     assert_not_nil( user.password )
   end
 end

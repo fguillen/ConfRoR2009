@@ -1,32 +1,32 @@
-<% title "Editing User" %>
+<% title t('views.users.edit.title') %>
 
 <h3><%= yield(:title) %>: <%= link_to @user.name, @user %></h3>
 
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
 
-  <p><%= f.label :login, "Login", :required => true %> <span class="example">my-nick</span><br/>
+  <p><%= f.label :login, t('views.users.form.login'), :required => true %> <span class="example">my-nick</span><br/>
   <%= f.text_field :login %></p>
 
-  <p><%= f.label :name, "Name", :required => true %> <span class="example">Jorge Perez</span><br/>
+  <p><%= f.label :name, t('views.users.form.name'), :required => true %> <span class="example">Jorge Perez</span><br/>
   <%= f.text_field :name %></p>
   
-  <p><%= f.label :email, "Email" %> <span class="example">If you wanna change it contact with us</span><br/>
+  <p><%= f.label :email, "Email" %> <span class="example"><%= t('views.users.form.change_email') %></span><br/>
   <%= @user.email %></p>
 
-  <p><%= f.label :text, "Text" %> <span class="example">Tell us something about you</span><br/>
+  <p><%= f.label :text, t('views.users.form.about_you') %> <span class="example"><%= t('views.users.form.about_you_example') %></span><br/>
   <%= f.text_area :text %></p>
   
   <p><%= f.label :avatar, "Avatar" %><br/>
   If you are looking where you can set your avatar, look here:
   <%= link_to 'Gravatar', 'http://gravatar.com', :title => 'Gravatar, globally recognized avatar', :target => '_blank' %></p>
     
-  <p><%= f.label :location_name, "Your City/Town" %> <span class="example">Madrid, Spain</span><br/>
+  <p><%= f.label :location_name, t('views.users.form.city') %> <span class="example">Madrid, Spain</span><br/>
   <%= f.text_field :location_name %></p>
   <span id='location_search_loading' style="display:none"><%= image_tag 'spinner.gif' %></span>
   <div id="location_search_places" style="display:none"></div>
   
-  <p><%= f.label :location_country, "Your Country" %> <span class="example">Spain</span><br/>
+  <p><%= f.label :location_country, t('views.users.form.country') %> <span class="example">Spain</span><br/>
   <%= f.text_field :location_country %></p>
   
   <%= 
@@ -44,39 +44,39 @@
   
     
   
-  <p><%= f.label :personal_web_name, "Homepage Title" %> <span class="example">My Awesome Page</span><br />
+  <p><%= f.label :personal_web_name, t('views.users.form.website_title') %> <span class="example"><%= t('views.users.form.website_title_example') %></span><br />
   <%= f.text_field :personal_web_name %></p>
   
-  <p><%= f.label :personal_web_url, "Homepage URL" %> <span class="example">http://my-awesome-web.com</span><br />
+  <p><%= f.label :personal_web_url, t('views.users.form.website_url') %> <span class="example"><%= t('views.users.form.website_url_example') %></span><br />
   <%= f.text_field :personal_web_url %></p>
   
-  <p><%= f.label :company_name, "Company Name" %> <span class="example">My Company</span><br />
+  <p><%= f.label :company_name, t('views.users.form.company_name') %> <span class="example"><%= t('views.users.form.company_name_example') %></span><br />
   <%= f.text_field :company_name %></p>
   
-  <p><%= f.label :company_url, "Company Url" %> <span class="example">http://my-company.com</span><br />
+  <p><%= f.label :company_url, t('views.users.form.company_url') %> <span class="example"><%= t('views.users.form.company_url_example') %></span><br />
   <%= f.text_field :company_url %></p>
   
-  <p><%= f.label :twitter_user, 'Twitter User' %> <span class="example">my-twitter-user</span><br />
+  <p><%= f.label :twitter_user, t('views.users.form.twitter_user') %> <span class="example"><%= t('views.users.form.twitter_user_example') %></span><br />
   <%= f.text_field :twitter_user %></p>
   
-  <p><%= f.label :github_user, 'Github User' %> <span class="example">my-github-user</span><br />
+  <p><%= f.label :github_user, t('views.users.form.github_user') %> <span class="example"><%= t('views.users.form.github_user_example') %></span><br />
   <%= f.text_field :github_user %></p>
 
-  <p><%= f.check_box :public_profile %>
-  <%= f.label 'public_profile', 'Public Profile' %> <span class="example">Email and Invoice Info will not be shown</span></p>
+  <p><%= f.check_box :public_profile %> <%= label_tag 'public_profile', t('views.users.form.public_profile') %> <span class="example">(<%= t('views.users.form.email_and_invoice_info_not_shown') %>)</span></p>
+  
   
   <p><%= f.check_box :change_password, :onchange => "toggle_change_password_fields()" %>
-  <%= f.label 'change_password', 'Change Password' %></p>
+  <%= f.label 'change_password', t('views.users.form.change_password') %></p>
   
   <div id="change_password_fields" style="display:<%= @user.change_password ? "inline" : "none" %>">
-    <p><%= f.label :password, "New Password" %><br/>
+    <p><%= f.label :password, t('views.users.form.new_password') %><br/>
     <%= f.password_field :password %></p>
 
-    <p><%= f.label :password_confirmation, 'Confirm New Password' %><br/>
+    <p><%= f.label :password_confirmation, t('views.users.form.new_password_confirm') %><br/>
     <%= f.password_field :password_confirmation %></p>
   </div>
   
-  <p><%= f.label :invoice_info, "Invoice Info" %> <span class="example">Bussiness Details (Full Name, Address, VAT number, etc)</span><br/>
+  <p><%= f.label :invoice_info, t('views.users.form.invoice_info') %> <span class="example"><%= t('views.users.form.invoice_info_example') %></span><br/>
   <%= f.text_area :invoice_info %></p>
   
   <% if admin? %>
@@ -87,11 +87,11 @@
   <br/>
   
   <p>
-    <%= f.submit "Update" %>
+    <%= f.submit t('views.users.form.update') %>
   </p>
 <% end %>
 
-<p class="notes">Fields marked with <span class="required">*</span> are required fields</p>
+<p class="notes"><%= t('views.users.form.required_fields') %></p>
 
 <script>
   function toggle_change_password_fields(){

@@ -15,16 +15,14 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    flash[:notice] = "Tu sesión ha sido cerrada"
+    flash[:notice] = t('users.login.logout')
     redirect_back_or_default('/')
   end
 
 protected
   # Track failed login attempts
   def note_failed_signin( login )
-    flash[:error] = "Lo siento, no se pudo iniciar sesión como #{login}."
-    flash[:error] << " Puede que te hayas registrado pero todavía no hayas activado tu usuario, debes hacerlo siguiendo el link que te debería haber llegado al email."
-
+    flash[:error] = t('users.login.error', :login => login)
     logger.warn "Failed login for '#{login}' from #{request.remote_ip} at #{Time.now.utc}"
   end
   
@@ -60,7 +58,7 @@ protected
     new_cookie_flag = (params[:remember_me] == "1")
     handle_remember_cookie! new_cookie_flag
     redirect_back_or_default('/')
-    flash[:notice] = "Sesión iniciada correctamente"
+    flash[:notice] = t('users.login.success')
   end
   
 end

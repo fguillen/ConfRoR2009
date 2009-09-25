@@ -2,6 +2,9 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  
+  before_filter :set_session_locale
+  
   # restful_authentication
   include AuthenticatedSystem
   include ExceptionNotifiable
@@ -71,5 +74,8 @@ class ApplicationController < ActionController::Base
       @current_cart
     end
     
+    def set_session_locale
+      I18n.locale = session[:locale]
+    end
 
 end

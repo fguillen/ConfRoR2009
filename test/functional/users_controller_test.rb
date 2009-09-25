@@ -254,7 +254,8 @@ class UsersControllerTest < ActionController::TestCase
     @user = users(:user_not_actived)
     assert( !@user.active? )
     get :activate, :activation_code => @user.activation_code
-    assert @user.reload.active?
+    @user.reload
+    assert @user.active?
     assert_equal @user, assigns['current_user']
     assert_redirected_to '/'
   end
@@ -297,7 +298,7 @@ class UsersControllerTest < ActionController::TestCase
     @user.forgot_password
     get :reset_password, :id => @user.password_reset_code
     assert_equal @user.id, assigns(:user).id
-    assert_select "form[action=#{reset_password_path}]"
+    assert_select "form[action=#{reset_password_path(@user.password_reset_code)}]"
     assert_select "input[name=password]"
     assert_select "input[name=password_confirmation]"
   end
@@ -337,7 +338,7 @@ class UsersControllerTest < ActionController::TestCase
     @user.forgot_password
     post :reset_password, :id => @user.password_reset_code, :password => 'abc', :password_confirmation => 'abc'
     assert_response :success
-    assert_select "form[action=#{reset_password_path}]"
+    assert_select "form[action=#{reset_password_path(@user.password_reset_code)}]"
     assert_select "input[name=password]"
     assert_select "input[name=password_confirmation]"
   end
@@ -348,7 +349,8 @@ class UsersControllerTest < ActionController::TestCase
     @user.forgot_password
     post :reset_password, :id => @user.password_reset_code, :password => 'new password', :password_confirmation => 'different password'
     assert_response :success
-    assert_select "form[action=#{reset_password_path}]"
+    
+    assert_select "form[action=#{reset_password_path(@user.password_reset_code)}]"
     assert_select "input[name=password]"
     assert_select "input[name=password_confirmation]"
   end

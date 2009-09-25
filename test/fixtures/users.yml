@@ -82,7 +82,7 @@ user_not_actived:
   crypted_password: aaa
   role: <%= User::ROLE[:ADMIN] %>
   public_profile: true
-  activation_code: activation_code
+  activation_code: activation_code_1
 
 user_not_speaker:
   name: User Not Speaker
@@ -92,7 +92,7 @@ user_not_speaker:
   crypted_password: aaa
   role: <%= User::ROLE[:USER] %>
   public_profile: true
-  activation_code: activation_code
+  activation_code: activation_code_2
   
 user_everything_paid:
   name: User Everything Paid
@@ -102,7 +102,7 @@ user_everything_paid:
   crypted_password: aaa
   role: <%= User::ROLE[:USER] %>
   public_profile: true
-  activation_code: activation_code
+  activation_code: activation_code_3
   
 user_existing_with_openid:
   name: User Existing With OpenID

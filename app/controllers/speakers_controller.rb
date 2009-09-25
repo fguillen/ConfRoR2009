@@ -16,14 +16,14 @@ class SpeakersController < ApplicationController
     respond_to do |format|
       if @speaker.save
         format.html do
-          flash[:notice] = 'Speaker was successfully created.'          
+          flash[:notice] = t('speakers.create.success')
           redirect_to( edit_paper_path(@paper) )
         end
         format.xml  { render :xml => @speaker, :status => :created, :location => @speaker }
         format.js   { render :partial => 'papers/speakers_edit', :locals => { :paper => @paper } }
       else
         format.html do
-          flash[:error] = "Error trying to adding an speaker to the paper: #{@speaker.errors.full_messages}."
+          flash[:error] = t('speakers.create.error', :messages => @speaker.errors.full_messages)
           redirect_to( edit_paper_path(@paper) )
         end
         format.xml  { render :xml => @speaker.errors, :status => :unprocessable_entity }
@@ -41,14 +41,14 @@ class SpeakersController < ApplicationController
     respond_to do |format|
       if @speaker.destroy
         format.html do
-          flash[:notice] = 'Speaker was successfully eliminated.'
+          flash[:notice] = t('speakers.destroy.success')
           redirect_to( edit_paper_path(@paper) )
         end
         format.xml  { head :ok }
         format.js   { render :partial => 'papers/speakers_edit', :locals => { :paper => @paper } }
       else
         format.html do
-          flash[:error] = "Error trying to eliminating an speaker to the paper: #{@speaker.errors.full_messages}."
+          flash[:error] = t('speakers.destroy.error', :messages => @speaker.errors.full_messages)
           redirect_to( edit_paper_path(@paper) )
         end
         format.xml  { render :xml => @vote.errors, :status => :unprocessable_entity }

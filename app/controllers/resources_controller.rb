@@ -30,11 +30,11 @@ class ResourcesController < ApplicationController
       
     respond_to do |format|
       if @resource.save
-        flash[:notice] = 'Resource was successfully created.'
+        flash[:notice] = t('resources.create.success')
         format.html { redirect_to( edit_paper_path(@paper) ) }
         format.xml  { render :xml => @resource, :status => :created, :location => @resource }
       else
-        flash[:error] = "Error creating Resource: #{@resource.errors.full_messages}"
+        flash[:error] = t('resources.create.error', :messages => @resource.errors.full_messages)
         format.html { render :template => 'papers/edit' }
         format.xml  { render :xml => @resource.errors, :status => :unprocessable_entity }
       end
@@ -49,7 +49,7 @@ class ResourcesController < ApplicationController
     @resource.destroy
 
     respond_to do |format|
-      flash[:notice] = 'Resource was successfully deleted.'
+      flash[:notice] = t('resources.destroy.success')
       format.html { redirect_to( edit_paper_path(@paper) ) }
       format.xml  { head :ok }
     end

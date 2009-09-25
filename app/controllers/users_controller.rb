@@ -60,7 +60,7 @@ class UsersController < ApplicationController
       authenticate_with_open_id(nil, :optional => [:nickname, :email, :fullname]) do |result, identity_url, registration|
         if result.successful?
           if User.exists?(:identity_url => identity_url)
-            flash[:error] = "Hemos encontrado que ya existe una cuenta asociada a esas credenciales. ¿Has probado a logarte directamente?"
+            flash[:error] = t('users.login.open_id_already_exists')
             redirect_to login_path(:openid => true)
           else  
             @user = User.new(:identity_url   => identity_url, 
@@ -68,10 +68,10 @@ class UsersController < ApplicationController
                              :email          => registration['email'], 
                              :name           => registration['fullname'], 
                              :public_profile => true)
-            flash.now[:notice] = "La autenticación ha sido un éxito. Ahora solo te queda completar (o confirmar) los datos de tu cuenta."
+            flash.now[:notice] = t('users.login.open_id_success')
           end              
         else
-          flash.now[:error] = "Lo sentimos, pero la autenticación con #{identity_url} no ha tenido éxito. Puedes volver a intentarlo o registrate sin OpenID"   
+          flash.now[:error] = t('users.login.open_id_error', :identity_url => identity_url)
         end
       end
     end
@@ -86,7 +86,7 @@ class UsersController < ApplicationController
     success = @user && @user.save
     if success && @user.errors.empty?
       redirect_to root_path
-      flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
+      flash[:notice] = t('users.login.signup_success')
     else
       render :action => 'new'
     end
@@ -98,14 +98,14 @@ class UsersController < ApplicationController
     case
     when (!params[:activation_code].blank?) && user && !user.active?
       user.activate!
-      flash[:notice] = "Signup complete! You have been autologged."
+      flash[:notice] = t('users.login.activation_success')
       self.current_user = user
       redirect_back_or_default('/')
     when params[:activation_code].blank?
-      flash[:error] = "The activation code was missing.  Please follow the URL from your email."
+      flash[:error] = t('users.login.activation_not_code')
       redirect_back_or_default('/')
     else 
-      flash[:error]  = "We couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in."
+      flash[:error]  = t('users.login.activation_code_not_valid')
       redirect_back_or_default('/')
     end
   end
@@ -130,11 +130,11 @@ class UsersController < ApplicationController
     end
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        flash[:notice] = 'User was successfully updated.'
+        flash[:notice] = t('users.update.success')
         format.html { redirect_to(@user) }
         format.xml  { head :ok }
       else
-        flash[:error] = 'Some error trying to update the profile'
+        flash[:error] = t('users.update.error')
         format.html { render :action => "edit" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
@@ -146,9 +146,9 @@ class UsersController < ApplicationController
     if @user = User.activated.find_by_email(params[:email])
       @user.forgot_password
       redirect_to(login_path)
-      flash[:notice] = "You will receive an email to reset your password." 
+      flash[:notice] = t('users.reset_password.info')
     else
-      flash[:error] = "No user activated found with email #{params[:email]}"
+      flash[:error] = t('users.reset_password.email_not_found', :email => params[:email])
     end
   end
 
@@ -163,7 +163,7 @@ class UsersController < ApplicationController
       @user.password_confirmation   = params[:password_confirmation]
       @user.password_reset_code     = nil
       if @user.save
-        flash[:notice] = "You have changed your password successfully, use it to log in."
+        flash[:notice] = t('users.reset_password.success')
         redirect_to login_path
       end
     end

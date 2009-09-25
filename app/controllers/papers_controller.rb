@@ -60,7 +60,7 @@ class PapersController < ApplicationController
       if @paper.save
         @paper.speakers.create!( :user => current_user )  unless admin?
 
-        flash[:notice] = "Paper was successfully created. Now you can complete the Paper information, or do it later if you don't have now all the information needed."
+        flash[:notice] = t('papers.create.success')
         format.html { redirect_to edit_paper_path(@paper) }
         format.xml  { render :xml => @paper, :status => :created, :location => @paper }
       else
@@ -75,11 +75,11 @@ class PapersController < ApplicationController
     
     respond_to do |format|
       if @paper.update_attributes(params[:paper])
-        flash[:notice] = 'Paper was successfully updated.'
+        flash[:notice] = t('papers.update.success')
         format.html { redirect_to( edit_paper_path(@paper) ) }
         format.xml  { head :ok }
       else
-        flash[:error] = "Some error trying to update the Paper."
+        flash[:error] = t('papers.update.error')
         format.html { render :action => 'edit' }
         format.xml  { render :xml => @paper.errors, :status => :unprocessable_entity }
       end
@@ -93,11 +93,11 @@ class PapersController < ApplicationController
     
     respond_to do |format|
       if @paper.save
-        flash[:notice] = 'Paper was successfully updated.'
+        flash[:notice] = t('papers.update.success')
         format.html { redirect_to( edit_paper_path(@paper) ) }
         format.xml  { head :ok }
       else
-        flash[:error] = "Some error trying to update the status of the Paper."
+        flash[:error] = t('papers.update.error_status')
         format.html { redirect_to( edit_paper_path(@paper) ) }
         format.xml  { render :xml => @paper.errors, :status => :unprocessable_entity }
       end
@@ -108,7 +108,7 @@ class PapersController < ApplicationController
     @paper.destroy
 
     respond_to do |format|
-      flash[:notice] = "The Paper has been removed."
+      flash[:notice] = t('papers.destroy.success')
       format.html { redirect_to(papers_path) }
       format.xml  { head :ok }
     end
@@ -117,14 +117,14 @@ class PapersController < ApplicationController
   private
     def public_profile_required
       if !current_user.public_profile
-        flash[:error] = "You can't not access to this action unless you set your profile as public"
+        flash[:error] = t('users.public_profile_required')
         redirect_to edit_user_path( current_user )
       end
     end
     
     def admin_or_not_under_review_required
       if !admin? && @paper.status == Paper::STATUS[:UNDER_REVIEW]
-        flash[:error] = "The paper is under review, now it can not be updated"
+        flash[:error] = t('papers.update.error_review')
         redirect_to paper_path( @paper )
       end
     end

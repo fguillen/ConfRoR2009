@@ -1,0 +1,106 @@
+es:
+  users:
+    login:
+      open_id_already_exists: "Hemos encontrado que ya existe una cuenta asociada a esas credenciales. ¿Has probado a logarte directamente?"
+      open_id_success: "La autenticación ha sido un éxito. Ahora solo te queda completar (o confirmar) los datos de tu cuenta."
+      open_id_error: "Lo sentimos, pero la autenticación con {{identity_url}} no ha tenido éxito. Puedes volver a intentarlo o registrate sin OpenID"
+      signup_success: "Thanks for signing up!  We're sending you an email with your activation code."
+      activation_success: "Signup complete! You have been autologged."
+      activation_not_code: "The activation code was missing. Please follow the URL from your email."
+      activation_code_not_valid: "We couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in."
+      logout: "Tu sesión ha sido cerrada"
+      error: "Lo siento, no se pudo iniciar sesión como {{login}}. Puede que te hayas registrado pero todavía no hayas activado tu usuario, debes hacerlo siguiendo el link que te debería haber llegado al email."
+      success: "Sesión iniciada correctamente"
+    update:
+      success: "User was successfully updated."
+      error: "Some error trying to update the profile"
+    reset_password:
+      info: "You will receive an email to reset your password." 
+      email_not_found: "No user activated found with email {{email}}"
+      success: "You have changed your password successfully, use it to log in."
+    public_profile_required: "You can't not access to this action unless you set your profile as public"
+  papers:
+    create:
+      success: "Paper was successfully created. Now you can complete the Paper information, or do it later if you don't have now all the information needed."
+    update:
+      success: "Paper was successfully updated."
+      error: "Some error trying to update the Paper."
+      error_status: "Some error trying to update the status of the Paper."
+      error_review: "The paper is under review, now it can not be updated"
+    destroy:
+      success: "The Paper has been removed."
+  photos:
+    create:
+      success: "Photo was successfully uploaded."
+      error: "Some error trying to upload the photo of the Paper: {{messages}}."
+  resources:
+    create:
+      success: "Resource was successfully created."
+      error: "Error creating Resource: {{messages}}"
+    destroy:
+      success: "Resource was successfully deleted."
+  speakers:
+    create:
+      success: "Speaker was successfully created"
+      error: "Error trying to adding an speaker to the paper: {{messages}}."
+    destroy:
+      success: "Speaker was successfully eliminated."
+      error: "Error trying to eliminating an speaker to the paper: {{messages}}."
+      
+      
+  views:
+    menu:
+      send_paper: "Enviar Charla"
+      events: "Events"
+      profile: "Profile"
+      logout: "Salir"
+      signup: "Registrarse"
+    users:
+      new:
+        title: "Registrarse como usuario"
+        login_password: "Login y Password"
+        signup: "Registrarse"
+      form:
+        login: "Usuario"
+        name: "Nombre completo"
+        password: "Contraseña"
+        password_confirm: "Confirmación de contraseña"
+        public_profile: "Perfil público"
+        email_not_shown: "el email no será mostrado"
+        required_fields: "Los campos marcados con <span class='required'>*</span> son obligatorios"
+        email_and_invoice_info_not_shown: "Email and Invoice Info will not be shown"
+        change_email: "If you wanna change it contact with us"
+        about_you: "About you"
+        about_you_example: "Tell us something about you"
+        city: "Your City/Town"
+        country: "Your Country"
+        website_title: "Homepage Title"
+        website_title_example: "My Awesome Page"
+        website_url: "Homepage Url"
+        website_url_example: "http://my-awesome-web.com"
+        company_name: "Company Name"
+        company_name_example: "My Company"
+        company_url: "Company Url"
+        company_url_example: "http://my-company.com"
+        twitter_user: "Twitter User"
+        twitter_user_example: "my-twitter-user"
+        github_user: "Github User"
+        github_user_example: "my-github-user"
+        change_password: "Change Password"
+        new_password: "New Password"
+        new_password_confirm: "Confirm New Password"
+        invoice_info: "Invoice Info"
+        invoice_info_example: "Bussiness Details (Full Name, Address, VAT number, etc)"
+        update: "Update"
+        
+      edit:
+        title: "Editing User"
+        
+      reset_password: 
+        title: "Reseting Password"
+        get_new_password: "Get a new password"
+      
+      go_back_to_login: "Go back to log in"
+      
+  main:
+    use: "Usar"

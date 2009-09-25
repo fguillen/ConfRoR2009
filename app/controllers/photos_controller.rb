@@ -13,11 +13,11 @@ class PhotosController < ApplicationController
       if @paper.save
         logger.debug( "photos_controller.create, @paper.photo.url:#{@paper.photo.url}" )
         
-        flash[:notice] = 'Photo was successfully uploaded.'
+        flash[:notice] = t('photos.create.success')
         format.html { redirect_to( edit_paper_path(@paper) ) }
         format.xml  { head :ok }
       else
-        flash[:error] = "Some error trying to upload the photo of the Paper: #{@paper.errors.full_messages}."
+        flash[:error] = t('photos.create.error', :messages => @paper.errors.full_messages)
         format.html { redirect_to( edit_paper_path(@paper) ) }
         format.xml  { render :xml => @paper.errors, :status => :unprocessable_entity }
       end

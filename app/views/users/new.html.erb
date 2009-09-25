@@ -1,4 +1,4 @@
-<% title "Registrarse como usuario" %>
+<% title t('views.users.new.title') %>
 
 <h3><%= yield(:title) %></h3>
 
@@ -7,10 +7,10 @@
 
 <% if @user.identity_url.blank? %>
   <% form_tag new_user_path, :method => :get, :id => "openid", :style => "display:none" do %>
-  <p><em>Usar <%= link_to_function "Login and Password", "toggleSignupForm()" %></em></p>
+  <p><em><%= t('main.use') %> <%= link_to_function t('views.users.new.login_password'), "toggleSignupForm()" %></em></p>
   <p><%= label_tag :openid_identifier, 'OpenID' %> <span>*</span><br/>
   <%= text_field_tag :openid_identifier %></p>
-  <p><%= submit_tag 'Registrarse' %></p>
+  <p><%= submit_tag t('views.users.new.signup') %></p>
   <% end %>
 <% end %>
 
@@ -24,14 +24,14 @@
 
   <% if @user.identity_url.blank? %>
 
-  <p><em>Usar <%= link_to_function "OpenID", "toggleSignupForm()" %></em></p>
+  <p><em><%= t('main.use') %> <%= link_to_function "OpenID", "toggleSignupForm()" %></em></p>
   
   <% end %>
   
-  <p><%= f.label :login, 'Usuario', :required => true %><br/>
+  <p><%= f.label :login, t('views.users.form.login'), :required => true %> <span class="example">my-nick</span><br/>
   <%= f.text_field :login %></p>
 
-  <p><%= f.label :name, 'Nombre completo', :required => true %><br/>
+  <p><%= f.label :name, t('views.users.form.name'), :required => true %> <span class="example">Jorge Perez</span><br/>
   <%= f.text_field :name %></p>
 
   <p><%= f.label :email, 'Email', :required => true %><br/>
@@ -43,17 +43,17 @@
   
   <% else %>
 
-    <p><%= f.label :password, 'Contraseña', :required => true %><br/>
+    <p><%= f.label :password, t('views.users.form.password'), :required => true %><br/>
     <%= f.password_field :password %></p>
 
-    <p><%= f.label :password_confirmation, 'Confirmación de contraseña', :required => true %><br/>
+    <p><%= f.label :password_confirmation, t('views.users.form.password_confirm'), :required => true %><br/>
     <%= f.password_field :password_confirmation %></p>
   
   <% end %>
   
-  <p><%= f.check_box :public_profile %><%= label_tag 'public_profile', 'Perfil público' %> <span class="tip">(el email no será mostrado)</span></p>
+  <p><%= f.check_box :public_profile %><%= label_tag 'public_profile', t('views.users.form.public_profile') %> <span class="tip">(<%= t('views.users.form.email_not_shown') %>)</span></p>
   
-  <p><%= submit_tag 'Registrarse' %></p>
+  <p><%= submit_tag t('views.users.new.signup') %></p>
 <% end -%>
 
-<p class="notes">Los campos marcados con <span class="required">*</span> son obligatorias</p>
+<p class="notes"><%= t('views.users.new.required_fields') %></p>
