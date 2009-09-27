@@ -27,7 +27,7 @@
 
 <p class="notes">
   <%= link_to t('views.sessions.new.forgotten_password'), forgot_password_path %> | 
-  Si no tienes usuario <%= link_to t('views.sessions.new.register'), new_user_path %>
+  <%= t('views.sessions.new.no_user', :register_link => link_to(t('views.sessions.new.register'), new_user_path)) %>
 </p>
 
 <script type="text/javascript" charset="utf-8">
