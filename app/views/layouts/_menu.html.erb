@@ -13,8 +13,13 @@
       <%= menu_to static_page.title, static_page_path( static_page ) %>
     <% end %>
 
-    <%= menu_to 'English', locale_path( :locale => 'en' )  if I18n.locale.to_s != 'en' %>
-    <%= menu_to 'Español', locale_path( :locale => 'es' )  if I18n.locale.to_s != 'es' %>
+    <% if I18n.locale.to_s != 'en' %>
+      <li class="locale"><%= link_to("<span>English</span>", locale_path( :locale => 'en' ) ) %></li>
+    <% end %>
+    
+    <% if I18n.locale.to_s != 'es' %>
+      <li class="locale"><%= link_to("<span>Español</span>", locale_path( :locale => 'es' ) ) %></li>
+    <% end %>
     
   </ul>
 </div>

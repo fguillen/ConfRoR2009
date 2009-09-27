@@ -11,4 +11,10 @@ class LocaleControllerTest < ActionController::TestCase
     
     assert_redirected_to '/'
   end
+  
+  def test_on_set_locale_from_param
+    # I should call to another controller to see if the 
+    # ApplicationController.set_session_locale set the locale on any controller action
+    # Done on PapersControllerTest.test_set_locale_from_param
+  end
 end

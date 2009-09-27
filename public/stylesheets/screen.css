@@ -126,6 +126,10 @@ td { padding: 5px 0 5px 5px; border-bottom: 1px solid #DDD; }
 .menu .current a      { background: url('../images/button.png') top left; color: #111; }
 .menu .current a span { background: url('../images/button.png') top right; }
 
+.menu .locale a               { color: #d9f09a; }
+.menu .locale a:hover         { background: url('../images/button_locale.png') bottom left; color: #FFF; }
+.menu .locale a:hover span    { background: url('../images/button_locale.png') bottom right; }
+
 #twitter li {
 	list-style-type: none;
 	margin-bottom: 1em;

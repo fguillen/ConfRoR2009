@@ -578,4 +578,12 @@ class PapersControllerTest < ActionController::TestCase
     assert( !assigns(:papers).include?( papers(:paper3) ) )
     assert( !assigns(:papers).include?( papers(:paper4) ) )
   end
+  
+  def test_set_locale_from_param
+    assert_not_equal( 'px', @request.session[:locale] )
+    get( :index, :locale => 'px')
+    assert_equal( 'px', @request.session[:locale] )
+    
+    assert_response :success
+  end
 end
