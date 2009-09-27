@@ -70,7 +70,7 @@ module AuthenticatedSystem
     def access_denied
       respond_to do |format|
         format.html do
-          flash[:error] = 'You should be logged in for performance this action'
+          flash[:error] = t('views.authentication.access_denied')
           store_location
           redirect_to new_session_path
         end

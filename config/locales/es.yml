@@ -49,6 +49,8 @@ es:
       
       
   views:
+    authentication:
+      access_denied: "Tienes que hacer login (o registrarte) para acceder a esta función"
     sessions:
       new:
         title: "Iniciar Sesión"

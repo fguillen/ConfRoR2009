@@ -49,6 +49,9 @@ en:
       
       
   views:
+    authentication:
+      access_denied: "You should be logged in for performance this action"
+      
     sessions:
       new:
         title: "Initialize Session"
@@ -72,7 +75,7 @@ en:
         signup: "Sign you up"
       form:
         login: "User"
-        name: "Complet Name
+        name: "Complet Name"
         password: "Password"
         password_confirm: "Password confirm"
         public_profile: "Public profile"
