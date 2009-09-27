@@ -1,4 +1,4 @@
-<% title 'List of Talks' %>
+<% title t('views.papers.index.title') %>
 
 <!-- <% if current_page?('/') %>
   <div id="cover"><%= image_tag 'cover.png' %></div>
@@ -11,7 +11,7 @@
 <h3><%= yield(:title) %></h3>
   <% if admin? %>
     <div class="bar">
-      <%= link_to 'All', papers_path %>
+      <%= link_to t('views.papers.index.all'), papers_path %>
       <% Paper::STATUS.keys.each do |key| %>
         | <%= link_to Paper::STATUS[key], papers_path( :params => { :status => Paper::STATUS[key] } ) %>
         (<%= Paper.count(:conditions => {:status => Paper::STATUS[key]} ) %>)
@@ -21,7 +21,7 @@
 
   <% if @papers.empty? %>
   <div class="entry">
-    <p>Coming soon ...</p>
+    <p><%= t('views.papers.index.coming_soon')</p>
   </div>
   <% end %>
 

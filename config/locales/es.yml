@@ -4,55 +4,65 @@ es:
       open_id_already_exists: "Hemos encontrado que ya existe una cuenta asociada a esas credenciales. ¿Has probado a logarte directamente?"
       open_id_success: "La autenticación ha sido un éxito. Ahora solo te queda completar (o confirmar) los datos de tu cuenta."
       open_id_error: "Lo sentimos, pero la autenticación con {{identity_url}} no ha tenido éxito. Puedes volver a intentarlo o registrate sin OpenID"
-      signup_success: "Thanks for signing up!  We're sending you an email with your activation code."
-      activation_success: "Signup complete! You have been autologged."
-      activation_not_code: "The activation code was missing. Please follow the URL from your email."
-      activation_code_not_valid: "We couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in."
+      signup_success: "¡Gracias por registrarte! Te hemos enviado un email con tu código de activación."
+      activation_success: "¡Registro completado! Te hemos logueado automáticamente."
+      activation_not_code: "Falta el código de activación. Por favor clicka en la URL que te debería haber llegado al email."
+      activation_code_not_valid: "No podemos encontrar un usuario con ese código de activación -- revisa tu email, o quizás ya esté tu usuario activado -- prueba a hacer login."
       logout: "Tu sesión ha sido cerrada"
       error: "Lo siento, no se pudo iniciar sesión como {{login}}. Puede que te hayas registrado pero todavía no hayas activado tu usuario, debes hacerlo siguiendo el link que te debería haber llegado al email."
       success: "Sesión iniciada correctamente"
     update:
-      success: "User was successfully updated."
-      error: "Some error trying to update the profile"
+      success: "El Usuario se ha modificado correctamente."
+      error: "Algún error ha ocurrido al actualizar el usuario"
     reset_password:
-      info: "You will receive an email to reset your password." 
-      email_not_found: "No user activated found with email {{email}}"
-      success: "You have changed your password successfully, use it to log in."
-    public_profile_required: "You can't not access to this action unless you set your profile as public"
+      info: "Recibirás un email para resetear tu password." 
+      email_not_found: "No se ha encontrado ningún usuario activo con el email: '{{email}}'"
+      success: "Has cambiado tu password correctamente, úsala para hacer log in."
+    public_profile_required: "No puedes acceder a esta función hasta que no marques tu perfil como público"
   papers:
     create:
-      success: "Paper was successfully created. Now you can complete the Paper information, or do it later if you don't have now all the information needed."
+      success: "La charla se ha creado correctamente. Ahora puedes completar la información de la charla, o hacerlo más tarde si ahora no tienes toda la información necesaria."
     update:
-      success: "Paper was successfully updated."
-      error: "Some error trying to update the Paper."
-      error_status: "Some error trying to update the status of the Paper."
-      error_review: "The paper is under review, now it can not be updated"
+      success: "La charla se ha actualizado correctamente."
+      error: "Algún error ha ocurrido al intentar actualizar la charla."
+      error_status: "Algún error ha ocurrido al intentar modificar el estado de la charla."
+      error_review: "Esta charla está 'En Revisión', ahora no puede ser actualizada"
     destroy:
-      success: "The Paper has been removed."
+      success: "La charla se ha eliminado."
   photos:
     create:
-      success: "Photo was successfully uploaded."
-      error: "Some error trying to upload the photo of the Paper: {{messages}}."
+      success: "Se ha subido la imagen correctamente."
+      error: "Algún error ha ocurrido al intentar subir la imagen: {{messages}}."
   resources:
     create:
-      success: "Resource was successfully created."
-      error: "Error creating Resource: {{messages}}"
+      success: "El recurso se ha creado correctamente."
+      error: "Algún error ha ocurrido al intentar crear el recurso: {{messages}}"
     destroy:
-      success: "Resource was successfully deleted."
+      success: "El recurso se ha borrado correctamente."
   speakers:
     create:
-      success: "Speaker was successfully created"
-      error: "Error trying to adding an speaker to the paper: {{messages}}."
+      success: "Se ha añadido un conferenciante correctamente"
+      error: "Algún error ha ocurrido al intentar añadir un conferenciante a la charla: {{messages}}."
     destroy:
-      success: "Speaker was successfully eliminated."
-      error: "Error trying to eliminating an speaker to the paper: {{messages}}."
+      success: "El conferenciante se ha desasignado de la charla."
+      error: "Algún error ha ocurrido al intentar desasignar el conferenciante de la charla: {{messages}}."
       
       
   views:
+    sessions:
+      new:
+        title: "Iniciar Sesión"
+        login: "Login"
+        password: "Password"
+        login_and_password: "Usuario y Contraseña"
+        remember_me: "Acuérdate de mí"
+        forgotten_password: "¿Olvidaste tu contraseña?"
+        register: "Regístrate"
+        log_in: "Entrar"
     menu:
       send_paper: "Enviar Charla"
-      events: "Events"
-      profile: "Profile"
+      events: "Eventos"
+      profile: "Perfil"
       logout: "Salir"
       signup: "Registrarse"
     users:
@@ -68,39 +78,86 @@ es:
         public_profile: "Perfil público"
         email_not_shown: "el email no será mostrado"
         required_fields: "Los campos marcados con <span class='required'>*</span> son obligatorios"
-        email_and_invoice_info_not_shown: "Email and Invoice Info will not be shown"
-        change_email: "If you wanna change it contact with us"
-        about_you: "About you"
-        about_you_example: "Tell us something about you"
-        city: "Your City/Town"
-        country: "Your Country"
-        website_title: "Homepage Title"
-        website_title_example: "My Awesome Page"
-        website_url: "Homepage Url"
-        website_url_example: "http://my-awesome-web.com"
-        company_name: "Company Name"
-        company_name_example: "My Company"
-        company_url: "Company Url"
-        company_url_example: "http://my-company.com"
-        twitter_user: "Twitter User"
-        twitter_user_example: "my-twitter-user"
-        github_user: "Github User"
-        github_user_example: "my-github-user"
-        change_password: "Change Password"
-        new_password: "New Password"
-        new_password_confirm: "Confirm New Password"
-        invoice_info: "Invoice Info"
-        invoice_info_example: "Bussiness Details (Full Name, Address, VAT number, etc)"
-        update: "Update"
+        email_and_invoice_info_not_shown: "El email y la información de facturación no se mostrarán"
+        change_email: "Si quieres cambiarlo contacta con nosotros"
+        about_you: "Sobre ti"
+        about_you_example: "Dinos algo sobre ti"
+        city: "Tu Ciudad/Pueblo"
+        country: "Tu País"
+        website_title: "Título de tu Página Web"
+        website_title_example: "Mi Super Página Web"
+        website_url: "Url de tu Página Web"
+        website_url_example: "http://mi-super-web.com"
+        company_name: "Nombre de la Empresa para la que trabajas"
+        company_name_example: "Mi Empresa"
+        company_url: "Url de la Empresa para la que trabajas"
+        company_url_example: "http://mi-empresa.com"
+        twitter_user: "Usuario de Twitter"
+        twitter_user_example: "mi-usuario-twitter"
+        github_user: "Usuario de Github"
+        github_user_example: "mi-usuario-github"
+        change_password: "Cambiar Password"
+        new_password: "Nuevo Password"
+        new_password_confirm: "Confirmar Nuevo Password"
+        invoice_info: "Información de Facturación"
+        invoice_info_example: "Detalles de Facturación (Nombre Completo, Dirección, DNI/NIF, ...)"
+        update: "Actualizar"
         
       edit:
-        title: "Editing User"
+        title: "Actualizar Perfil"
         
       reset_password: 
         title: "Reseting Password"
-        get_new_password: "Get a new password"
+        get_new_password: "Conseguir un nuevo password"
       
-      go_back_to_login: "Go back to log in"
+      go_back_to_login: "Ir al login"
+      
+    resources:
+      form:
+        sure_destroy: "¿Estás seguro?"  
+        name: "Nombre"
+        from_url: "Desde una URL"
+        from_computer: "Desde tu Ordenador"
+        add: "Añadir Recurso"
+      
+    papers:
+      edit:
+        title: "Actualizar Charla: {{paper_title}}"
+      index:
+        title: "Listado de Charlas"
+        all: "Todas"
+        coming_soon: "Proximamente ..."
+      new:
+        title: "Nueva Propuesta de Charla"
+        explanation_1: "Una vez que la charla se ha creado podrás:"
+        explanation_2: "Añadir una foto guapa"
+        explanation_3: "Añadir ficheros o recursos online"
+        explanation_4: "Añadir conferenciantes a la charla (todos los conferenciantes deben estar registrados en la aplicación)"
+        submit: "Enviar tu Charla"
+
+      form:
+        title: "Título"
+        description: "Descripción"
+        minutes: "Minutos"
+        family: "Familia"
+        room: "Sala"
+        date: "Fecha"
+        time: "Hora"
+        upload_photo: "Subir Imagen"
+        update_attributes_above: "Actualizar los atributos de arriba"
+        photo: "Imagen"
+        photo_example: "Puedes añadir una imagen a la Charla, puede ser una foto del conferenciante o no, algo guapo que muestre lo interesante que es tu charla."
+        speakers: "Conferenciantes"
+        speakers_example: "Aqui puedes gestionar los conferenciantes de la charla. Sólo usuarios con perfil público aparecen en esta lista."
+        status: "Estado"
+        status_example: "Es el estado actual en el que está la Charla."
+        resources: "Recursos"
+        resources_example: "Aquí puedes gestionar los recursos asociados a esta Charla, como PDF, presentacíones, vídeos online, etc.<br/>Puedes elegir entre subir un fichero desde tu ordenador o indicar la URL de un recurso que se encuentra online."
+        required_fields: "Los campos marcados con <span class='required'>*</span> son requeridos"
+
+      comments:
+        avatar_from: "avatar de {{name}}"
+        said_on: "dijo en {{date}}"
       
   main:
     use: "Usar"

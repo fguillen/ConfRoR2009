@@ -1,4 +1,4 @@
-<% title 'New Paper Proposal' %>
+<% title t('views.papers.new.title') %>
 
 <h3><%= yield(:title) %></h3>
 
@@ -8,15 +8,15 @@
     
     <%= render :partial => 'basic_form', :locals => { :f => f } %>
     <div class="more">
-    <p>Once the talk is created you will be able to:</p>  
+    <p><%= t('views.papers.new.explanation_1') %></p>  
     <ul>
-      <li>Add a cool picture</li>
-      <li>Attach files or online resources</li>
-      <li>Add other speakers to the talk (all speakers should be registered)</li>
+      <li><%= t('views.papers.new.explanation_2') %></li>
+      <li><%= t('views.papers.new.explanation_3') %></li>
+      <li><%= t('views.papers.new.explanation_4') %></li>
     </ul>
     </div>
-    <p><%= f.submit "Submit your talk" %></p>
+    <p><%= f.submit t('views.papers.new.submit') %></p>
   <% end %>
 </div>
 
-<p class="notes">Fields marked with <span class="required">*</span> are required fields</p>
+<p class="notes"><%= t('views.papers.form.required_fields') %></p>

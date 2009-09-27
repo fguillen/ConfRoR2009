@@ -1,33 +1,33 @@
-<% title "Iniciar Sesión" %>
+<% title t('views.sessions.new.title') %>
 
 <h3><%= yield(:title) %></h3>
 
 <% form_tag session_path do -%>  
 <div id="login" style="<%= "display:none" if params[:openid] %>">
-  <p><em>Usar <%= link_to_function "OpenID", "toggleLoginForm()" %></em></p>
-  <p><%= label_tag 'login', 'Usuario' %><br />
+  <p><em><%= t('main.use') %> <%= link_to_function "OpenID", "toggleLoginForm()" %></em></p>
+  <p><%= label_tag 'login', t('views.sessions.new.login') %><br />
   <%= text_field_tag 'login', @login %></p>
-  <p><%= label_tag 'password', 'Contraseña' %><br/>
+  <p><%= label_tag 'password', t('views.sessions.new.password') %><br/>
   <%= password_field_tag 'password', nil %></p>
 </div>
 
 <div id="openid" style="<%= "display:none" unless params[:openid] %>">
-  <p><em>Usar <%= link_to_function "Usuario y Contraseña", "toggleLoginForm()" %></em></p>
+  <p><em><%= t('main.use') %> <%= link_to_function t('views.sessions.new.login_and_password'), "toggleLoginForm()" %></em></p>
   <p><%= label_tag 'openid_identifier', "OpenID" %><br />
   <%= text_field_tag 'openid_identifier' %></p>
 </div>
 
 <p>
 <%= check_box_tag 'remember_me', '1', @remember_me %>
-<%= label_tag 'remember_me', 'Recuérdame' %>
+<%= label_tag 'remember_me', t('views.sessions.new.remember_me') %>
 </p>
 
-<p><%= submit_tag 'Log in' %></p>
+<p><%= submit_tag t('views.sessions.new.log_in') %></p>
 <% end -%>
 
 <p class="notes">
-  <%= link_to '¿Olvidaste tu contraseña?', forgot_password_path %> | 
-  Si no tienes usuario <%= link_to 'regístrate', new_user_path %>
+  <%= link_to t('views.sessions.new.forgotten_password'), forgot_password_path %> | 
+  Si no tienes usuario <%= link_to t('views.sessions.new.register'), new_user_path %>
 </p>
 
 <script type="text/javascript" charset="utf-8">

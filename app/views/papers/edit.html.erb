@@ -1,4 +1,4 @@
-<% title "Editing Paper: #{@paper.title}" %>
+<% title t('views.papers.edit.title', :paper_title => @paper.title) %>
 
 <h3>Editing Paper</h3>
 
@@ -6,37 +6,31 @@
   <%= f.error_messages %>
   <%= render :partial => 'papers/basic_form', :locals => { :f => f } %>
   <br/>
-  <p><%= f.submit "Update attributes above" %></p>
+  <p><%= f.submit t('views.papers.form.update_attributes_above') %></p>
 <% end %>
 
 <div class="form-block">
-  <h6>Photo</h6>
-  <p class="tip">
-    You can add a photo for the talk, this can be a photo for the speakers or not,
-    something cool that make it look intesesting.
-  </p>
+  <h6><%= t('views.papers.form.photo') %></h6>
+  <p class="tip"><%= t('views.papers.form.photo_example') %></p>
   <%= render :partial => 'papers/photo_edit', :locals => { :paper => @paper } %>
 </div>
 
 <div class="form-block">
-  <h6>Speakers</h6>
-  <p class="tip">Here you can manage the speakers of this talk. Only users with public are listed here.</p>
+  <h6><%= t('views.papers.form.speakers') %></h6>
+  <p class="tip"><%= t('views.papers.form.speakers_example') %></p>
   <div id="speakers">
     <%= render :partial => 'papers/speakers_edit', :locals => { :paper => @paper } %>
   </div>
 </div>
 
 <div class="form-block">
-  <h6>Status</h6>
-  <p class="tip">This is the actual status of the talk.</p>
+  <h6><%= t('views.papers.form.status') %></h6>
+  <p class="tip"><%= t('views.papers.form.status_example') %></p>
   <%= render :partial => 'papers/status_edit', :locals => { :paper => @paper } %>
 </div>
 
 <div class="form-block">
-  <h6>Resources</h6>
-  <p class="tip">
-    Here you can manage the resources associated to this talk, like PDF, presentations, online videos, etc.<br/>
-    You can choose between upload a file from your computer or indicate an URL for the resource.
-  </p>
+  <h6><%= t('views.papers.form.resources') %></h6>
+  <p class="tip"><%= t('views.papers.form.resources_example') %></p>
   <%= render :partial => 'papers/resources_edit', :locals => { :paper => @paper } %>
 </div>

@@ -1,21 +1,21 @@
 <p>
-  <%= f.label :title, "Title", :required => true %><br />
+  <%= f.label :title, t('views.papers.form.title'), :required => true %><br />
   <%= f.text_field :title %>
 </p>
 
 <p>
-  <%= f.label :description, "Description" %><br />
+  <%= f.label :description, t('views.papers.form.description') %><br />
   <%= f.text_area :description, :class => 'large' %>
 </p>
 
 <% if admin? %>
   <p>
-    <%= f.label :minutes, "Minutes" %><br />
+    <%= f.label :minutes, t('views.papers.form.minutes') %><br />
     <%= f.text_field :minutes %>
   </p>
 
   <p>
-    <%= f.label :family, "Family" %><br />
+    <%= f.label :family, t('views.papers.form.family') %><br />
     <%= select( "paper", "family", Paper::FAMILY.values ) %>
   </p>  
 <% end %>
@@ -29,7 +29,7 @@
 
   <div>
     <p>
-      <%= f.label :room_id, "Room" %><br />
+      <%= f.label :room_id, t('views.papers.form.room') %><br />
       <%=
         select(
           'paper', 
@@ -40,14 +40,14 @@
       %>
     </p>
     <p>
-      <%= f.label :date_form, "Date" %><br />
+      <%= f.label :date_form, t('views.papers.form.date') %><br />
       <%= f.text_field :date_form %>
       <script>
         $('#paper_date_form').datepicker({firstDay: 1, dateFormat: 'yy/mm/dd' });
       </script>
     </p>
     <p>
-      <%= f.label :time_form, "Time" %><br />
+      <%= f.label :time_form, t('views.papers.form.time') %><br />
       <%= select( 'paper', 'time_form', times_array( '08', '20' ), { :include_blank => true } ) %>
     </p>
   </div>

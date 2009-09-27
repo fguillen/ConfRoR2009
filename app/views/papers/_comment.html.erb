@@ -5,12 +5,12 @@
       :size => 32, 
       :default => "#{base_url}/images/avatar.png",
       :class => 'avatar',
-      :alt => "avatar de #{comment.user.name}"
+      :alt => t('views.papers.comments.avatar_from', :name => comment.user.name)
     )
   %>
 
   <p>
-    <%= link_to comment.user.name, user_path(comment.user) %> <span class="date">said on <%= comment.created_at %></span><br/>
+    <%= link_to comment.user.name, user_path(comment.user) %> <span class="date"><%= t('views.papers.comments.said_on', :date => comment.created_at) %></span><br/>
     <%= comment.text %>
   </p>
 </div>
