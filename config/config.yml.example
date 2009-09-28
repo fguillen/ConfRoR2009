@@ -19,6 +19,7 @@ test:
   smtp_domain: site.com
   smtp_user: smtpuser
   smtp_pass: smtppass
+  accepted_locales: [es, en]
   
 development:
   site_domain: 127.0.0.1:3000
@@ -41,6 +42,7 @@ development:
   smtp_domain: site.com
   smtp_user: smtpuser
   smtp_pass: smtppass
+  accepted_locales: [es, en]
     
 production:
   site_domain: 127.0.0.1:3000
@@ -63,3 +65,4 @@ production:
   smtp_domain: site.com
   smtp_user: smtpuser
   smtp_pass: smtppass
+  accepted_locales: [es, en]

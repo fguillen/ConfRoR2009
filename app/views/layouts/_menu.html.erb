@@ -14,11 +14,11 @@
     <% end %>
 
     <% if I18n.locale.to_s != 'en' %>
-      <li class="locale"><%= link_to("<span>English</span>", locale_path( :locale => 'en' ) ) %></li>
+      <li class="locale"><%= link_to("<span>English</span>", root_path( :locale => 'en' ) ) %></li>
     <% end %>
     
     <% if I18n.locale.to_s != 'es' %>
-      <li class="locale"><%= link_to("<span>Español</span>", locale_path( :locale => 'es' ) ) %></li>
+      <li class="locale"><%= link_to("<span>Español</span>", root_path( :locale => 'es' ) ) %></li>
     <% end %>
     
   </ul>

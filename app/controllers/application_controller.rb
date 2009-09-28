@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  before_filter :set_session_locale
+  before_filter :set_locale
 
 
   # restful_authentication
@@ -73,10 +73,20 @@ class ApplicationController < ActionController::Base
       
       @current_cart
     end
-    
-    def set_session_locale
-      session[:locale] = params[:locale]  if params[:locale]
-      I18n.locale = session[:locale]
+
+    def set_locale
+      new_locale = params[:locale] || cookies['locale'] || extract_locale_from_accept_language_header || I18n.default_locale
+      
+      if APP_CONFIG[:accepted_locales].include?( new_locale )
+        I18n.locale = new_locale
+        cookies['locale'] = new_locale
+      end
+    end
+
+    def extract_locale_from_accept_language_header
+      return nil  if !request.env['HTTP_ACCEPT_LANGUAGE']
+      
+      request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
     end
 
 end
