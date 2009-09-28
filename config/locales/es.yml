@@ -61,6 +61,7 @@ es:
         forgotten_password: "¿Olvidaste tu contraseña?"
         register: "Regístrate"
         log_in: "Entrar"
+        no_user: "¿No tienes cuenta? {{register_link}}"
     menu:
       send_paper: "Enviar Charla"
       events: "Eventos"
