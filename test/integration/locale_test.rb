@@ -2,12 +2,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class LocaleTest < ActionController::IntegrationTest
   def setup
-    @old_accepted_locales = APP_CONFIG[:accepted_locales]
-    APP_CONFIG[:accepted_locales] = ['px', 'hk', 'en', 'es']
-  end
-  
-  def teardown
-    APP_CONFIG[:accepted_locales] = @old_accepted_locales
+    I18n.stubs(:available_locales).returns([:px, :hk, :en, :es])
   end
   
   def test_on_any_request_if_locale_param_found_set_the_locale
