@@ -46,4 +46,17 @@
     <%= shorten(simple_format(paper.description), paper) %>
     <div class="clear"></div>
   </div>
-<% end %>
+  <% end %>
+  
+  <% if admin? %>
+  <div>
+    <h4>Export list</h4>
+    <p>
+      <ul>
+        <li><%= link_to 'PDF', papers_path( params.merge( :page => nil, :format => :pdf ) ) %></li>
+        <li><%= link_to 'XML', papers_path( params.merge( :page => nil, :format => :xml ) ) %></li>
+        <li><%= link_to 'CSV', papers_path( params.merge( :page => nil, :format => :csv ) ) %></li>
+      </ul>
+    </p>
+  </div>
+  <% end %>

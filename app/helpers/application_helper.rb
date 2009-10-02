@@ -78,4 +78,21 @@ module ApplicationHelper
     
     return out
   end
+  
+  def papers_to_csv( papers )
+    out = "index,id,title,speakers,status,permalink,description\n"
+    
+    papers.each_with_index do |paper,index|
+      out += "#{"%03d" % index}"
+      out += ",#{paper.id}"
+      out += ",\"#{paper.title}\""
+      out += ",\"#{paper.speaking_users.map{ |e| e.name }.to_sentence}\""
+      out += ",#{paper.status}"
+      out += ",#{paper.permalink}"
+      out += ",\"#{paper.description}\""
+      out += "\n"
+    end
+    
+    return out
+  end
 end

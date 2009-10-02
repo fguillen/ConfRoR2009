@@ -579,6 +579,22 @@ class PapersControllerTest < ActionController::TestCase
     assert( !assigns(:papers).include?( papers(:paper4) ) )
   end
   
-
+  def test_on_index_and_format_csv_should_respond_with_csv_file
+    login_as users(:user_admin)
+    
+    Paper.destroy_all
+    
+    5.times do
+      paper = Factory(:paper)
+      rand(4).times{ paper.add_speaker( Factory(:user) ) }
+    end
+    
+    get :index, :format => 'csv'
+    
+    assert_response :success
+    
+    assert_match( Paper.first.title, @response.body )
+    assert_match( Paper.first.description, @response.body )
+  end
   
 end
