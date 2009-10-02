@@ -29,3 +29,9 @@ Factory.define :user do |f|
   f.role User::ROLE[:USER]
   f.public_profile true
 end
+
+Factory.define :paper do |f|
+  f.sequence(:title) { |n| "#{Faker::Lorem.sentence} | Paper Title #{n}" }
+  f.description Faker::Lorem.paragraphs.join("\n")
+  f.association :creator, :factory => :user
+end

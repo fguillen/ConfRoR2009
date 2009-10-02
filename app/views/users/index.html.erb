@@ -71,6 +71,7 @@
 </div>
 
 <% if admin? %>
+<div>
   <h4>Export list</h4>
   <p>
     <ul>
@@ -79,4 +80,5 @@
       <li><%= link_to 'CSV', users_path( params.merge( :page => nil, :format => :csv ) ) %></li>
     </ul>
   </p>
+</div>
 <% end %>
