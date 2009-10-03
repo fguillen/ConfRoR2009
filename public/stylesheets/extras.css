@@ -23,15 +23,24 @@
 	font-weight: normal;
 }
 
+.spot {
+  margin-bottom:1.25em;
+}
+
+.spot h3 {
+  margin-top:0;
+}
+
 .spot img {
 float:left;
 padding:2px 12px 4px 0;
 }
 
 .sponsor img {
-border:1px solid #777777;
+border:1px solid #E0DFDA;
 float:none;
 padding:0;
+margin-bottom:10px;
 }
 
 .grid-item {
