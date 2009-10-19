@@ -68,6 +68,7 @@ es:
       profile: "Perfil"
       logout: "Salir"
       signup: "Registrarse"
+      pay: "Pagar!"
     users:
       new:
         title: "Registrarse como usuario"

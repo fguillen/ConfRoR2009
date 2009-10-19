@@ -69,6 +69,7 @@ en:
       profile: "Profile"
       logout: "Exit"
       signup: "Sign up"
+      pay: "Pay!"
     users:
       new:
         title: "Sign up"

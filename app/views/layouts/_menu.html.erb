@@ -3,7 +3,7 @@
     <!-- %= menu_to 'Home', root_path % -->
     <!-- %= menu_to 'Calendar', calendar_path % -->
     <!-- %= menu_to 'Talks', papers_path % -->
-    <%= menu_to t('views.menu.send_paper'), new_paper_path %>
+    <%# menu_to t('views.menu.send_paper'), new_paper_path %>
     <% if admin? %>
       <%= menu_to t('views.menu.events'), events_path %>
     <% end %>
@@ -29,9 +29,9 @@
   <% if logged_in? %>
     <%= menu_to t('views.menu.profile'), user_path(current_user) %>
     <% if current_user.everything_paid? %>
-      <!-- %= menu_to 'Pay!', new_cart_path % -->
+      <%= menu_to t('views.menu.pay'), new_cart_path %>
     <% else %>
-      <!-- %= menu_to 'Pay!', new_cart_path % --> <!-- , :highlight => true -->
+      <%= menu_to t('views.menu.pay'), new_cart_path %> <!-- , :highlight => true -->
     <% end %>
     <%= menu_to t('views.menu.logout'), logout_path %>
   <% else %>
