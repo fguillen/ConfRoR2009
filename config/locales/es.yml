@@ -69,6 +69,7 @@ es:
       logout: "Salir"
       signup: "Registrarse"
       pay: "Pagar!"
+      home: "Inicio"
     users:
       new:
         title: "Registrarse como usuario"

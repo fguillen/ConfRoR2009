@@ -70,6 +70,7 @@ en:
       logout: "Exit"
       signup: "Sign up"
       pay: "Pay!"
+      home: "Home"
     users:
       new:
         title: "Sign up"

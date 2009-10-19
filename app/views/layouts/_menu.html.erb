@@ -1,6 +1,7 @@
+<div class="buttons">
 <div id="main-menu" class="menu">
   <ul>
-    <!-- %= menu_to 'Home', root_path % -->
+    <%= menu_to t('views.menu.home'), root_path %>
     <!-- %= menu_to 'Calendar', calendar_path % -->
     <!-- %= menu_to 'Talks', papers_path % -->
     <%# menu_to t('views.menu.send_paper'), new_paper_path %>
@@ -13,13 +14,7 @@
       <%= menu_to static_page.title, static_page_path( static_page ) %>
     <% end %>
 
-    <% if I18n.locale.to_s != 'en' %>
-      <li class="locale"><%= link_to("<span>English</span>", root_path( :locale => 'en' ) ) %></li>
-    <% end %>
     
-    <% if I18n.locale.to_s != 'es' %>
-      <li class="locale"><%= link_to("<span>Español</span>", root_path( :locale => 'es' ) ) %></li>
-    <% end %>
     
   </ul>
 </div>
@@ -38,5 +33,14 @@
     <%= menu_to 'Login', new_session_path %>
     <%= menu_to t('views.menu.signup'), new_user_path %> <!-- , :class => "highlight" -->
   <% end %>
+  
+  <% if I18n.locale.to_s != 'en' %>
+    <li class="locale"><%= link_to("<span>English</span>", root_path( :locale => 'en' ) ) %></li>
+  <% end %>
+  
+  <% if I18n.locale.to_s != 'es' %>
+    <li class="locale"><%= link_to("<span>Español</span>", root_path( :locale => 'es' ) ) %></li>
+  <% end %>
   </ul>
+</div>
 </div>
