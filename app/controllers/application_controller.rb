@@ -75,11 +75,11 @@ class ApplicationController < ActionController::Base
     end
 
     def set_locale
-      new_locale = params[:locale] || cookies['locale'] || extract_locale_from_accept_language_header || I18n.default_locale
+      new_locale = params[:locale] || cookies[:locale] || extract_locale_from_accept_language_header || I18n.default_locale
       
       if I18n.available_locales.include?( new_locale.to_sym )
         I18n.locale = new_locale
-        cookies['locale'] = new_locale
+        cookies[:locale] = {:value => new_locale, :expires => 10.years.from_now}
       end
     end
 
