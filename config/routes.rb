@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.root :controller => 'carts', :action => 'new'
+  map.root :controller => 'home'
   # map.root :controller => 'static_pages', :action => 'show', :id => 'call-for-papers'
 
   # fguillen 2009-01-15: exception_notification
