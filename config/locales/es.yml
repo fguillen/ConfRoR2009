@@ -107,7 +107,7 @@ es:
         new_password: "Nuevo Password"
         new_password_confirm: "Confirmar Nuevo Password"
         invoice_info: "Información de Facturación"
-        invoice_info_example: "Detalles de Facturación (Nombre Completo, Dirección, DNI/NIF, ...)"
+        invoice_info_example: "(Nombre Completo, Dirección, NIF/CIF...)"
         update: "Actualizar"
         
       edit:

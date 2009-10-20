@@ -1,38 +1,38 @@
 <% title 'Purchase Events' %>
 
-
-
-<div id="bank-transfer">
+<div id="bank-transfer" style="display:none">
   <h3>Pago por transferencia bancaria</h3>
-  <p>Pagar <a href="#" onclick="$('#bank-transfer,#paypal').toggle();return false;">usando Paypal</a></p>
+  <p class="payment_switch">Pagar <a href="#" onclick="$('#bank-transfer,#paypal').toggle();return false;">usando Paypal</a> (+4.59€)</p>
   
-  <p>
-    - Nº de cuenta
-    - Precio final: 120 €
-    - Especificar nombre y apellidos
-  </p>
-  
+  <p>Puedes pagar por transferencia bancaria teniendo en cuenta que:</p>
+  <ul>
+    <li>La transferencia debe ir a nombre de PARIMPAR GRUPO L'EVENT</li>
+    <li>El importe debe ser de 120 euros</li>
+    <li>El número de cuenta es: 2100 2129 95 0200267722</li>
+    <li>¡IMPORTANTE! En el concepto de la transferencia debes indicar tu <strong>nombre y apellidos completos</strong> o no podremos hacer el seguimiento del pago y completar tu registro.</li>
+    <li>Hasta que no recibamos el pago y completemos tu registro, la plaza no está asegurada. Te enviaremos un email de confirmación</li>
+  </ul>
 </div>
 
-<div id="paypal" style="display:none">
-  <h3>Pago por Paypal</h3>
-  <p>Pagar <a href="#" onclick="$('#bank-transfer,#paypal').toggle();return false;">por transferencia bancaria</a></p>
+<div id="paypal">
+  <h3>Pago con Paypal</h3>
+  <p class="payment_switch">Pagar <a href="#" onclick="$('#bank-transfer,#paypal').toggle();return false;">por transferencia bancaria</a>  (-4.59€)</p>
   <div class="entry">
-  <% form_tag(confirm_cart_path(@cart)) do %>
-    <ul>
+  <% form_tag(confirm_cart_path(@cart), :class => "paypal_form") do %>
+    <div id="event_list">
       <% Event.all.each do |event| %>
         <% if event.is_paid_for_user?( current_user ) %>
-          <li>
-            <%= link_to event.name, event_path(event) %> (<%= event.price_euros %>€)
+          <p>
+            <%= event.name %> (<%= event.price_euros %>€)
             <span class="paid">Paid</span>
-          </li>
+          </p>
         <% elsif event.out_of_capacity? %>
-          <li>
-            <strike><%= link_to event.name, event_path(event) %> (<%= event.price_euros %>€)</strike>
+          <p>
+            <strike><%= event.name %> (<%= event.price_euros %>€)</strike>
             <span class="full">Complete</span>
-          </li>
+          </p>
         <% else %>
-          <li>
+          <p>
             <%= 
               check_box_tag(
                 'event_ids[]',
@@ -49,33 +49,39 @@
                 :id => "price_#{event.id}"
               )
             %>
-        
-            <%= link_to( event.name, event_path(event) ) %> 
-            (<%= event.price_euros %>€) 
-            (remaining capacity: <%= pluralize( event.remaining_capacity, 'place' ) %> available)
-          </li>
+            <label for="event_<%= event.id %>">
+            <%= event.name %> 
+            </label>
+            (<%= event.price_euros %>€)
+          </p>
         <% end %>
       <% end %>
-    </ul>
+    </div>
   
-    <br />
-  
-    <p><strong>TOTAL: <span id="total">0</span>€</strong></p>
-  
-    <br />
+    <div class="total">TOTAL: <span id="total">0</span>€</div>
   
     <p>
-      <%= label_tag :invoice_info, "Invoice Info" %> <span class="example">Bussiness Details (Full Name, Address, VAT number, etc)</span><br/>
+      <%= label_tag :invoice_info, t('views.users.form.invoice_info') %> <span class="example"><%= t('views.users.form.invoice_info_example') %></span><br/>
       <%= text_area_tag :invoice_info, @cart.invoice_info %>
     </p>
   
     <p>
-      <%= submit_tag "Confirm", :disabled => false, :disable_with => "Please wait..." %>
+      <%= submit_tag "Confirmar", :disabled => false, :disable_with => "Por favor, espera..." %>
     </p>
   <% end %>
 
   </div>
 </div><!-- #paypal -->
+
+<p>El precio incluye:</p>
+<ul>
+  <li>2 días de conferencia</li>
+  <li>Un día de talleres</li>
+  <li>Los cafes y comidas de los días de conferencia</li>
+  <li><strong>La cena del día 26</strong></li>
+  <li>La famosa camiseta</li>
+  <li>Las chapitas para el speed-dating</li>
+</ul>
 
 <script>
   function update_total_cart_price(){
