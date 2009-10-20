@@ -72,6 +72,7 @@ en:
       pay: "Pay"
       calendar: "Calendar"
       talks: "Talks"
+      home: "Home"
     users:
       new:
         title: "Sign up"
@@ -133,7 +134,7 @@ en:
       index:
         title: "List of Talks"
         all: "All"
-        coming_soon: "Coming soon ..."
+        coming_soon: "Coming soon..."
       new:
         title: "New Paper Proposal"
         explanation_1: "Once the talk is created you will be able to:"

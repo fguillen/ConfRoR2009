@@ -71,6 +71,7 @@ es:
       pay: "Pagar"
       calendar: "Calendario"
       talks: "Charlas"
+      home: "Inicio"
     users:
       new:
         title: "Registrarse como usuario"
@@ -132,7 +133,7 @@ es:
       index:
         title: "Listado de Charlas"
         all: "Todas"
-        coming_soon: "Proximamente ..."
+        coming_soon: "Proximamente..."
       new:
         title: "Nueva Propuesta de Charla"
         explanation_1: "Una vez que la charla se ha creado podrás:"

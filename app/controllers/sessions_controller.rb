@@ -27,7 +27,7 @@ protected
   end
   
   def open_id_authentication
-    authenticate_with_open_id do |result, identity_url|
+    authenticate_with_open_id(nil, :return_to => url_for(params.slice(:remember_me))) do |result, identity_url|
       if result.successful? and user = User.find( :first, :conditions => ['identity_url = ? and activated_at IS NOT NULL', identity_url] )
         succesful_login(user)
       else
