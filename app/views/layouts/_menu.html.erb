@@ -1,11 +1,13 @@
 <div id="main-menu" class="menu">
   <ul>
     <!-- %= menu_to 'Home', root_path % -->
-    <!-- %= menu_to 'Calendar', calendar_path % -->
-    <!-- %= menu_to 'Talks', papers_path % -->
-    <%= menu_to t('views.menu.send_paper'), new_paper_path %>
     <% if admin? %>
-      <%= menu_to t('views.menu.events'), events_path %>
+      <%= menu_to t('views.menu.calendar')+' (a)', calendar_path %>
+      <%= menu_to t('views.menu.talks')+' (a)', papers_path %>
+    <% end %>
+    <!-- %= menu_to t('views.menu.send_paper'), new_paper_path % -->
+    <% if admin? %>
+      <%= menu_to t('views.menu.events')+' (a)', events_path %>
     <% end %>
     <!-- %= menu_to 'People', users_path(:page => 1) % -->
     <%= menu_to 'Blog', 'http://conferenciarails.org' %>
@@ -28,10 +30,12 @@
   <ul>
   <% if logged_in? %>
     <%= menu_to t('views.menu.profile'), user_path(current_user) %>
-    <% if current_user.everything_paid? %>
-      <!-- %= menu_to 'Pay!', new_cart_path % -->
-    <% else %>
-      <!-- %= menu_to 'Pay!', new_cart_path % --> <!-- , :highlight => true -->
+    <% if admin? %>
+      <% if current_user.everything_paid? %>
+        <%= menu_to t('views.menu.pay')+' (a)', new_cart_path %>
+      <% else %>
+        <%= menu_to t('views.menu.pay')+' (a)', new_cart_path %> <!-- , :highlight => true -->
+      <% end %>
     <% end %>
     <%= menu_to t('views.menu.logout'), logout_path %>
   <% else %>
@@ -40,3 +44,4 @@
   <% end %>
   </ul>
 </div>
+

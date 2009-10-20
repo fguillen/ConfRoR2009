@@ -68,6 +68,9 @@ es:
       profile: "Perfil"
       logout: "Salir"
       signup: "Registrarse"
+      pay: "Pagar"
+      calendar: "Calendario"
+      talks: "Charlas"
     users:
       new:
         title: "Registrarse como usuario"
