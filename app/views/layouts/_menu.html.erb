@@ -23,12 +23,10 @@
     <ul>
     <% if logged_in? %>
       <%= menu_to t('views.menu.profile'), user_path(current_user) %>
-      <% if admin? %>
-        <% if current_user.everything_paid? %>
-          <%= menu_to t('views.menu.pay')+' (a)', new_cart_path %>
-        <% else %>
-          <%= menu_to t('views.menu.pay')+' (a)', new_cart_path %> <!-- , :highlight => true -->
-        <% end %>
+      <% if current_user.everything_paid? %>
+        <%= menu_to t('views.menu.pay')+' (a)', new_cart_path %>
+      <% else %>
+        <%= menu_to t('views.menu.pay')+' (a)', new_cart_path %> <!-- , :highlight => true -->
       <% end %>
       <%= menu_to t('views.menu.logout'), logout_path %>
     <% else %>
