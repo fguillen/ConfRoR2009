@@ -77,6 +77,7 @@ class Cart < ActiveRecord::Base
   def total_payment_price
     case payment_type
     when 'paypal'
+      # 50 is the magic number
       (total_events_price) * (Cart::PAYMENT_TYPES[payment_type]) + 50
     else
       0
