@@ -50,7 +50,7 @@ class Cart < ActiveRecord::Base
     
     self.events.each_with_index do |event, index|
       values.merge!({
-        "amount_#{index+1}"       => Utils.cents_to_euros(event.price_cents + (event.price_cents*(Cart::PAYMENT_TYPES[payment_type]) + 35)),
+        "amount_#{index+1}"       => Utils.cents_to_euros(event.price_cents + (event.price_cents*(Cart::PAYMENT_TYPES[payment_type]) + 45)),
         "item_name_#{index+1}"    => event.name,
         "item_number_#{index+1}"  => event.id,
         "quantity_#{index+1}"     => 1
@@ -77,7 +77,7 @@ class Cart < ActiveRecord::Base
   def total_payment_price
     case payment_type
     when 'paypal'
-      (total_events_price) * (Cart::PAYMENT_TYPES[payment_type]) + 35
+      (total_events_price) * (Cart::PAYMENT_TYPES[payment_type]) + 45
     else
       0
     end
