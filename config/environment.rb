@@ -29,7 +29,7 @@ Rails::Initializer.run do |config|
   config.gem 'pdf-writer', :lib => 'pdf/writer'
   config.gem 'paperclip'
   
-  unless Rails.env.production?
+  unless RAILS_ENV=='production'
     config.gem 'faker', :lib => false
     config.gem 'mocha', :lib => false
     config.gem 'factory_girl', :lib => false, :version => ">= 1.2", :source => "http://gemcutter.org"
