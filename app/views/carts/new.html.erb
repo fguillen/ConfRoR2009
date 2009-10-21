@@ -69,7 +69,7 @@
         <%= label_tag :cart_payment_type_transfer, "Pago por transferencía bancaría" %>
         <br />
         <%= f.radio_button :payment_type, 'paypal', :checked => 'checked', :onchange => "$('#bank-transfer').hide();return false;" %>
-        <%= label_tag :cart_payment_type_paypal, "Pago por PayPal (tiene un coste adicional del 3,4% + 0.35 euros por operación)" %>
+        <%= label_tag :cart_payment_type_paypal, "Pago por PayPal (tiene un coste adicional del 3,5% euros por operación)" %>
       </div>
 
       <div id="bank-transfer" style="display:none">
