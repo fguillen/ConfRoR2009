@@ -28,7 +28,7 @@ class Cart < ActiveRecord::Base
   # Payment type with surcharge in % / 100
   PAYMENT_TYPES = {
     'transfer' => 0,
-    'paypal' => 4.59,
+    'paypal' => 459,
   }
   
   named_scope :purchased, :conditions => { :status => Cart::STATUS[:COMPLETED] }
