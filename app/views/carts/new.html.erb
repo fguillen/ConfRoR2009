@@ -46,13 +46,6 @@
                 %>
                 <%= event.name %></label>
                 (<%= event.price_euros %>€) 
-                <a href="#description_event_<%= event.id %>" class="more_info">+ info</a>
-                <br />
-                remaining capacity: <%= pluralize( event.remaining_capacity, 'place' ) %> available
-                
-                <div id="description_event_<%= event.id %>" class="description_event" style="display:none">
-                  <%= simple_format(event.description)%>
-                </div>
               </li>
             <% end %>
           <% end %>
@@ -152,10 +145,5 @@
   $(document).ready(function(){
     update_total_cart_price();
     $('.payment input').change( update_total_cart_price );
-    $('a.more_info').click(function(){
-      $('.description_event').hide();
-      $($(this).attr('href')).show();
-      return false;
-    });
   });
 </script>
