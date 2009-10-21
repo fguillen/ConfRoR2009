@@ -50,7 +50,7 @@ class Cart < ActiveRecord::Base
     
     self.events.each_with_index do |event, index|
       values.merge!({
-        "amount_#{index+1}"       => event.price_euros,
+        "amount_#{index+1}"       => Utils.cents_to_euros(event.price_cents + (event.price_cents*(Cart::PAYMENT_TYPES[payment_type]))),
         "item_name_#{index+1}"    => event.name,
         "item_number_#{index+1}"  => event.id,
         "quantity_#{index+1}"     => 1
@@ -75,7 +75,7 @@ class Cart < ActiveRecord::Base
   
   # Paypal includes and additional sur-charge of 35 cents specified here
   def total_payment_price
-    ((total_events_price) * (Cart::PAYMENT_TYPES[payment_type])).to_i
+    ((total_events_price) * (Cart::PAYMENT_TYPES[payment_type])).round
     #  (payment_type == 'paypal' ? 35 : 0)
   end
 
