@@ -28,7 +28,7 @@ class Cart < ActiveRecord::Base
   # Payment type with surcharge in % / 100
   PAYMENT_TYPES = {
     'transfer' => 0,
-    'paypal' => 459,
+    'paypal' => 0.034,
   }
   
   named_scope :purchased, :conditions => { :status => Cart::STATUS[:COMPLETED] }
@@ -73,8 +73,14 @@ class Cart < ActiveRecord::Base
     self.events.sum(:price_cents)
   end
   
+  # ojo con paypal
   def total_payment_price
-    Cart::PAYMENT_TYPES[payment_type]
+    case payment_type
+    when 'paypal'
+      (total_events_price) * (Cart::PAYMENT_TYPES[payment_type]) + 35
+    else
+      0
+    end
   end
 
   def total_price
