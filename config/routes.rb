@@ -36,7 +36,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :calendar
   
   map.resources :carts, 
-                :as => 'paymen', 
+                :as => 'payment', 
                 :member => { 
                   :confirm    => :post, 
                   :complete   => [:get, :post], 
