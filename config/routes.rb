@@ -36,11 +36,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :calendar
   
   map.resources :carts, 
-                :as => 'pay', 
+                :as => 'paymen', 
                 :member => { 
                   :confirm    => :post, 
-                  :complete   => :get, 
-                  :notificate => :post
+                  :complete   => [:get, :post], 
+                  :notify     => :post
                 }
                 
   map.resource :session

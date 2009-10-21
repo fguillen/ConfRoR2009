@@ -3,7 +3,6 @@
 <h3><%= yield(:title) %></h3>
 
 <div class="entry">
-<% form_tag( APP_CONFIG[:paypal_url] ) do %>
   <ul>
   <% @cart.events.each do |event| %>
     <li>        
@@ -14,29 +13,54 @@
   
   <p><strong>TOTAL: <span id="total"><%= @cart.total_price_on_euros %>€</span></strong></p>
   
-  <% if !@cart.invoice_info.blank? %>
-  <h6>Invoice info</h6>
-  <%= simple_format @cart.invoice_info %>
+  <h6>Billing Details</h6>
+  <table>
+    <tr>
+      <th><%= "Nombre" %></th>
+      <td><%=h @cart.client_name %></td>
+    </tr>
+    <tr>
+      <th><%= "CIF" %></th>
+      <td><%= @cart.client_tax_code %></td>
+    </tr>
+    <tr>
+      <th><%= "Dirección" %></th>
+      <td><%= simple_format(h(@cart.client_address)) %></td>
+    </tr>
+    <tr>
+      <th><%= "Teléfono" %></th>
+      <td><%= @cart.client_phone %></td>
+    </tr>
+  </table>
+
+
+  <% if @cart.payment_type == 'paypal' %>
+    <% form_tag( APP_CONFIG[:paypal_url] ) do %>
+      <!-- PAYPAL parameters:INI -->
+      <%= hidden_field_tag :cmd, "_s-xclick" %>
+      <%=
+        hidden_field_tag( 
+          :encrypted,
+          @cart.paypal_encrypted(
+            complete_cart_url( @cart ),
+            notify_cart_url( @cart, :secret => APP_CONFIG[:paypal_secret] )
+          )
+        )
+      %>
+      <!-- PAYPAL parameters:END -->
+      <p>
+        <%= submit_tag "Pay with Paypal", :disabled => false, :disable_with => "Going to paypal..." %>
+      </p>
+    <% end %>
+  <% else %>
+    <h6><%= "Pago por transferencia bancaria" %></h6>
+    <% form_tag complete_cart_url(@cart) do %>
+      <p>
+        <%= submit_tag "Todo me parece correcto, confirmar", :disabled => false, :disabled_with => "Please wait..." %>
+      </p>
+    <% end %>
   <% end %>
-  
-  <!-- PAYPAL parameters:INI -->
-  <%= hidden_field_tag :cmd, "_s-xclick" %>
-  <%=
-    hidden_field_tag( 
-      :encrypted,
-      @cart.paypal_encrypted(
-        complete_cart_url( @cart ),
-        notificate_cart_url( @cart, :secret => APP_CONFIG[:paypal_secret] )
-      )
-    )
-  %>
-  <!-- PAYPAL parameters:END -->
-  
   <p>
-    <%= link_to 'Modificar carrito', new_cart_path %>
+    <%= link_to 'Modify cart', new_cart_path %> &nbsp;
   </p>
-  <p>
-    <%= submit_tag "Pagar con Paypal", :disabled => false, :disable_with => "Please wait..." %>
-  </p>
-<% end %>
 </div>

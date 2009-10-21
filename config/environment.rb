@@ -27,11 +27,12 @@ Rails::Initializer.run do |config|
   config.gem 'mislav-will_paginate', :version => '~> 2.2.3', :lib => 'will_paginate', :source => 'http://gems.github.com'
   config.gem 'bluecloth'
   config.gem 'pdf-writer', :lib => 'pdf/writer'
+  config.gem 'paperclip'
   
-  unless RAILS_ENV == 'production'
+  unless Rails.env.production?
     config.gem 'faker', :lib => false
     config.gem 'mocha', :lib => false
-    config.gem 'thoughtbot-factory_girl', :lib => false, :version => ">= 1.2"
+    config.gem 'factory_girl', :lib => false, :version => ">= 1.2", :source => "http://gemcutter.org"
   end
 
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"

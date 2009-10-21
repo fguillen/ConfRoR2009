@@ -1,91 +1,127 @@
 <% title 'Purchase Events' %>
 
-<div id="bank-transfer" style="display:none">
-  <h3>Pago por transferencia bancaria</h3>
-  <p class="payment_switch">Pagar <a href="#" onclick="$('#bank-transfer,#paypal').toggle();return false;">usando Paypal</a> (+4.59€)</p>
-  
-  <p>Puedes pagar por transferencia bancaria teniendo en cuenta que:</p>
-  <ul>
-    <li>La transferencia debe ir a nombre de PARIMPAR GRUPO L'EVENT</li>
-    <li>El importe debe ser de 120 euros</li>
-    <li>El número de cuenta es: 2100 2129 95 0200267722</li>
-    <li>¡IMPORTANTE! En el concepto de la transferencia debes indicar tu <strong>nombre y apellidos completos</strong> o no podremos hacer el seguimiento del pago y completar tu registro.</li>
-    <li>Hasta que no recibamos el pago y completemos tu registro, la plaza no está asegurada. Te enviaremos un email de confirmación</li>
-  </ul>
-</div>
+<div class="cart new">
+  <h3>Pago para tu plaza</h3>
+  <p>Por favor, introduce tus datos de facturación.</p>
 
-<div id="paypal">
-  <h3>Pago con Paypal</h3>
-  <p class="payment_switch">Pagar <a href="#" onclick="$('#bank-transfer,#paypal').toggle();return false;">por transferencia bancaria</a>  (-4.59€)</p>
-  <div class="entry">
-  <% form_tag(confirm_cart_path(@cart), :class => "paypal_form") do %>
-    <div id="event_list">
-      <% Event.all.each do |event| %>
-        <% if event.is_paid_for_user?( current_user ) %>
-          <p>
-            <%= event.name %> (<%= event.price_euros %>€)
-            <span class="paid">Paid</span>
-          </p>
-        <% elsif event.out_of_capacity? %>
-          <p>
-            <strike><%= event.name %> (<%= event.price_euros %>€)</strike>
-            <span class="full">Complete</span>
-          </p>
-        <% else %>
-          <p>
-            <%= 
-              check_box_tag(
-                'event_ids[]',
-                event.id,
-                @cart.events.include?( event ),
-                { :onchange => 'update_total_cart_price()', :id => "event_#{event.id}" }
-              )
-            %>
-        
-            <%=
-              hidden_field_tag(
-                'price[]', 
-                event.price_cents, 
-                :id => "price_#{event.id}"
-              )
-            %>
-            <label for="event_<%= event.id %>">
-            <%= event.name %> 
-            </label>
-            (<%= event.price_euros %>€)
-          </p>
-        <% end %>
-      <% end %>
+  <% form_for @cart, :url => confirm_cart_path(@cart), :html => {:method => :post} do |f| %>
+    <div class="payment">
+      <div class="entry">
+        <ul>
+          <% Event.all.each do |event| %>
+            <% if event.is_paid_for_user?( current_user ) %>
+              <li>
+                <%= link_to event.name, event_path(event) %> (<%= event.price_euros %>€)
+                <span class="paid">Paid</span>
+              </li>
+            <% elsif event.out_of_capacity? %>
+              <li>
+                <strike><%= link_to event.name, event_path(event) %> (<%= event.price_euros %>€)</strike>
+                <span class="full">Complete</span>
+              </li>
+            <% else %>
+              <li>
+                <%= 
+                  check_box_tag(
+                    'event_ids[]',
+                    event.id,
+                    @cart.events.include?( event )
+                  )
+                %>
+                <%=
+                  hidden_field_tag(
+                    'price[]', 
+                    event.price_cents, 
+                    :id => "price_#{event.id}"
+                  )
+                %>
+                <%= link_to( event.name, event_path(event) ) %> 
+                (<%= event.price_euros %>€) 
+                (remaining capacity: <%= pluralize( event.remaining_capacity, 'place' ) %> available)
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+      
+      <p>El precio incluye:</p>
+      <ul>
+        <li>2 días de conferencia</li>
+        <li>Un día de talleres</li>
+        <li>Los cafes y comidas de los días de conferencia</li>
+        <li><strong>La cena del día 26</strong></li>
+        <li>La famosa camiseta</li>
+        <li>Las chapitas para el speed-dating</li>
+      </ul>
+      
+      <h4>Método de pago</h4>
+
+      <div class="paymentType">
+        <%= f.radio_button :payment_type, 'transfer', :onchange => "$('#bank-transfer').show();return false;" %>
+        <%= label_tag :cart_payment_type_transfer, "Pago por transferencía bancaría" %>
+        <br />
+        <%= f.radio_button :payment_type, 'paypal', :checked => 'checked', :onchange => "$('#bank-transfer').hide();return false;" %>
+        <%= label_tag :cart_payment_type_paypal, "Pago por PayPal (tiene un coste adicional del 3,5%)" %>
+      </div>
+
+      <div id="bank-transfer" style="display:none">
+        <br />
+        <p>Puedes pagar por transferencia bancaria teniendo en cuenta que:</p>
+        <ul>
+          <li>La transferencia debe ir a nombre de PARIMPAR GRUPO L'EVENT</li>
+          <li>El número de cuenta es: 2100 2129 95 0200267722</li>
+          <li>¡IMPORTANTE! En el concepto de la transferencia debes indicar tu <strong>nombre y apellidos completos</strong> o no podremos hacer el seguimiento del pago y completar tu registro.</li>
+          <li>Hasta que no recibamos el pago y completemos tu registro, la plaza no está asegurada. Te enviaremos un email de confirmación</li>
+        </ul>
+      </div>
+
+
+      <br />
+    
+      <p><strong>TOTAL: <span id="total">0</span>€</strong></p>
+      
+    </div><!-- payment -->
+  
+    <br />
+   
+    <div class="clientDetails">
+      <h4><%= "Tus datos de facturación" %></h4>
+      <p>
+        <%= f.label :client_name, "Tu nombre o empresa" %>
+        <br />
+        <%= f.text_field :client_name %>
+      </p>
+      <p>
+        <%= f.label :client_tax_code, "Identificación Fiscal (DNI, CIF, etc.)" %>
+        <br />
+        <%= f.text_field :client_tax_code %>
+      </p>
+      <p>
+        <%= f.label :client_address, "Dirección" %>
+        <br />
+        <%= f.text_area :client_address %>
+      </p>
+      <p>
+        <%= f.label :client_phone, "Número de contacto <small>(por si a caso)</small>" %>
+        <br />
+        <%= f.text_field :client_phone %>
+      </p>
     </div>
-  
-    <div class="total">TOTAL: <span id="total">0</span>€</div>
-  
+
+    <br />
+
     <p>
-      <%= label_tag :invoice_info, t('views.users.form.invoice_info') %> <span class="example"><%= t('views.users.form.invoice_info_example') %></span><br/>
-      <%= text_area_tag :invoice_info, @cart.invoice_info %>
+      <%= submit_tag "Paso Siguiente: Confirmar", :disabled => false, :disabled_with => "Please wait..." %>
     </p>
-  
-    <p>
-      <%= submit_tag "Confirmar", :disabled => false, :disable_with => "Por favor, espera..." %>
-    </p>
+
   <% end %>
 
-  </div>
 </div><!-- #paypal -->
-
-<p>El precio incluye:</p>
-<ul>
-  <li>2 días de conferencia</li>
-  <li>Un día de talleres</li>
-  <li>Los cafes y comidas de los días de conferencia</li>
-  <li><strong>La cena del día 26</strong></li>
-  <li>La famosa camiseta</li>
-  <li>Las chapitas para el speed-dating</li>
-</ul>
 
 <script>
   function update_total_cart_price(){
-    total = 0;
+    var paymentTypes = <%= Cart::PAYMENT_TYPES.to_json %>;
+    var total = 0;
     $(":checkbox").each(
       function() {
         if( this.checked ){
@@ -93,10 +129,14 @@
         }
       }
     );
+    total += (total * paymentTypes[$("input[name='cart[payment_type]']:checked").val()]);
     total = total / 100;
     total = total.toFixed(2);
     $('#total').html( total );
   }
   
-  $(document).ready( function(){ update_total_cart_price(); } );
+  $(document).ready(function(){
+    update_total_cart_price();
+    $('.payment input').change( update_total_cart_price );
+  });
 </script>

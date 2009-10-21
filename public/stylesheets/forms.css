@@ -57,3 +57,7 @@ input.text:focus, input.title:focus, textarea:focus, select:focus { border: 1px 
 	padding: 0.25em;
 	width: 50%;
 }
+
+.paymentType input {
+  width: auto;
+}

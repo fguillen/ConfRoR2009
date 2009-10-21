@@ -15,3 +15,4 @@ public/paper_photos/
 public/invoices/
 tmp/invoices/
 certs/*pem
+*.swp

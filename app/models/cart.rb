@@ -21,7 +21,14 @@ class Cart < ActiveRecord::Base
     :ON_SESSION       => 'On Session',
     :COMPLETED        => 'Completed',
     :NOT_NOTIFIED     => 'Not Notified by PayPal',
-    :PAYPAL_ERROR     => 'PayPal Error'
+    :PAYPAL_ERROR     => 'PayPal Error',
+    :WAIT_TRANSFER    => 'Pending confirmation of transfer'
+  }
+  
+  # Payment type with surcharge in % / 100
+  PAYMENT_TYPES = {
+    'transfer' => 0,
+    'paypal' => 0.035,
   }
   
   named_scope :purchased, :conditions => { :status => Cart::STATUS[:COMPLETED] }
@@ -60,12 +67,21 @@ class Cart < ActiveRecord::Base
     OpenSSL::PKCS7::encrypt([OpenSSL::X509::Certificate.new(PAYPAL_CERT_PEM)], signed.to_der, OpenSSL::Cipher::Cipher::new("DES3"), OpenSSL::PKCS7::BINARY).to_s.gsub("\n", "")
   end
   
-  def total_price
+  def total_events_price
     self.events.sum(:price_cents)
   end
   
+  # ojo con paypal
+  def total_payment_price
+    (total_events_price * (Cart::PAYMENT_TYPES[payment_type])).to_i
+  end
+
+  def total_price
+    total_events_price + total_payment_price
+  end
+  
   def total_price_on_euros
-    Utils.cents_to_euros( self.events.sum(:price_cents) )
+    Utils.cents_to_euros( total_price )
   end
   
   def self.retrieve_on_sesion_or_new( user_id )
@@ -78,6 +94,11 @@ class Cart < ActiveRecord::Base
   def is_purchased?
     # Cart.purchased.exists?( self.id )
     return (self.status == Cart::STATUS[:COMPLETED])
+  end
+  
+  def payment_type
+    t = read_attribute(:payment_type)
+    (t.blank? || !Cart::PAYMENT_TYPES.keys.include?(t)) ? 'transfer' : t
   end
   
   def paypal_notificate( params )

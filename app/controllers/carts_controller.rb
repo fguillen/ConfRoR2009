@@ -1,8 +1,8 @@
 class CartsController < ApplicationController
-  before_filter :login_required, :except => [:notificate]
+  before_filter :login_required, :except => [:notify]
   before_filter :admin_required, :only => [:index]
   
-  protect_from_forgery :except => [:notificate]
+  protect_from_forgery :except => [:notify]
 
   def index
     @conditions = {}
@@ -34,7 +34,7 @@ class CartsController < ApplicationController
     flash[:notice] = "You have everything paid."  if current_user.everything_paid?
   end
   
-  # this is colled for the user
+  # this is called for the user
   # update the current_cart
   # only add the Event pass through params[:event_ids]
   def confirm
@@ -48,9 +48,10 @@ class CartsController < ApplicationController
       redirect_to :action => 'new'
       return
     end
-  
+
+    current_cart.attributes = params[:cart]  
     current_cart.events = Event.find( params[:event_ids] )
-    current_cart.invoice_info = params[:invoice_info]
+    # current_cart.invoice_info = params[:invoice_info]
     
     current_cart.save!
         
@@ -70,8 +71,8 @@ class CartsController < ApplicationController
   end
   
   # this is the IPN paypal action call
-  def notificate
-    logger.info( "XXX: on notificate" )
+  def notify
+    logger.info( "XXX: on notify" )
     logger.info( "params: #{params.inspect}" )
   
     @cart = Cart.find( params[:invoice] )
@@ -87,22 +88,31 @@ class CartsController < ApplicationController
   def complete
     logger.info( "params: #{params.inspect}" )
     
-    @cart = current_user.carts.find( params[:invoice] )
+    @cart = current_user.carts.find( params[:invoice] || params[:id] )
     record_not_found and return  if @cart.nil?
     
-    # if cart still ON_SESSION that is because there was not 
-    # a paypal notification
+    # if cart still ON_SESSION for paypal that is because there was no
+    # a paypal notification or this is a transfer    
     if @cart.status == Cart::STATUS[:ON_SESSION]
-      @cart.update_attribute( :status, Cart::STATUS[:NOT_NOTIFIED] )
+      # @cart.update_attribute( :status, Cart::STATUS[:NOT_NOTIFIED] )
+      if @cart.payment_type == 'transfer'
+        @cart.update_attribute(:status, Cart::STATUS[:WAIT_TRANSFER])
+      else
+        @cart.update_attribute( :status, Cart::STATUS[:NOT_NOTIFIED] )
+      end
     end
     
-    @cart.update_attribute( :paypal_complete_params, params )
+    # @cart.update_attribute( :paypal_complete_params, params )
+    @cart.update_attribute( :paypal_complete_params, params ) if @cart.payment_type == 'paypal'
     
-    if @cart.status == Cart::STATUS[:COMPLETED]
-      flash[:notice] = 'Payment was successful!'
+    if @cart.status == Cart::STATUS[:WAIT_TRANSFER]
+      flash.now[:notice] = "Your place is confirmed, please transfer the funds as soon as possible!"
+    elsif @cart.status == Cart::STATUS[:COMPLETED]
+       flash.now[:notice] = 'Payment was successful!'
     else
-      flash[:error] = 'Some error on payment!'
-    end
+      # still here? something has gone wrong
+       flash.now[:error] = 'Something went wrong during the payment process, please contact us!'
+     end
   end
   
   def show
