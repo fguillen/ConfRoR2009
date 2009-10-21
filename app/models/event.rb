@@ -27,6 +27,10 @@ class Event < ActiveRecord::Base
   def is_paid_for_user?( user_id )
     self.carts.purchased.exists?( :user_id => user_id )
   end
+
+  def is_waiting_confirmation_of_transfer?( user_id )
+    self.carts.pending_confirmation_of_transfer.exists?( :user_id => user_id )
+  end
   
   def price_euros
     Utils.cents_to_euros( self.price_cents )

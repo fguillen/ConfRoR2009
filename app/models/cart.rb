@@ -32,6 +32,8 @@ class Cart < ActiveRecord::Base
   }
   
   named_scope :purchased, :conditions => { :status => Cart::STATUS[:COMPLETED] }
+  named_scope :pending_confirmation_of_transfer, :conditions => { :status => Cart::STATUS[:WAIT_TRANSFER] }
+
   
   def paypal_encrypted( return_url, notify_url )
     values = {

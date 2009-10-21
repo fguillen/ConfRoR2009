@@ -296,3 +296,21 @@ td { padding: 5px 0 5px 5px; border-bottom: 1px solid #DDD; }
   padding-top: 3em;
   text-align: center;
 }
+
+div.description_event {
+  background: #fcc;
+  margin: 4px 2px;
+  padding: 6px 4px;
+}
+
+div.payment div.entry ul li {
+  margin-top: 10px;
+}
+
+span.paid {
+  font-weight: bold;
+}
+span.pending_confirmation{
+  font-weight: bold;
+  color: #f33;
+}
