@@ -74,7 +74,7 @@ class Cart < ActiveRecord::Base
   end
   
   def total_payment_price
-    Cart::PAYMENT_TYPES[payment_type].to_i
+    Cart::PAYMENT_TYPES[payment_type]
   end
 
   def total_price
