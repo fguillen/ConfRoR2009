@@ -136,7 +136,7 @@
         }
       }
     );
-    total += (total * paymentTypes[$("input[name='cart[payment_type]']:checked").val()]);
+    total += paymentTypes[$("input[name='cart[payment_type]']:checked").val()];
     total = total / 100;
     total = total.toFixed(2);
     $('#total').html( total );
