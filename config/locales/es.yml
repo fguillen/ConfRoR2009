@@ -46,7 +46,12 @@ es:
     destroy:
       success: "El conferenciante se ha desasignado de la charla."
       error: "Algún error ha ocurrido al intentar desasignar el conferenciante de la charla: {{messages}}."
-      
+  carts:
+    update:
+      success: "Pago actualizado correctamente"
+      error: "Ha habido un error actualizando el pago: {{error_message}}"
+      errors:
+        "No se indicó un nuevo estado"
       
   views:
     authentication:
@@ -75,6 +80,9 @@ es:
     events:
       show:
         pay: "Pagar este evento"
+    carts:
+      index:
+        confirm_payment: "Confirmar pago"
     users:
       new:
         title: "Registrarse como usuario"

@@ -46,7 +46,12 @@ en:
     destroy:
       success: "Speaker was successfully eliminated."
       error: "Error trying to eliminating an speaker to the paper: {{messages}}."
-      
+  carts:
+    update:
+      success: "Payment updated successfully"
+      error: "There was a problem updating the payment: {{error_message}}"
+      errors:
+        "New status value missing"
       
   views:
     authentication:
@@ -76,6 +81,9 @@ en:
     events:
       show:
         pay: "Pay this event"
+    carts:
+      index:
+        confirm_payment: "Confirmar pago"
     users:
       new:
         title: "Sign up"

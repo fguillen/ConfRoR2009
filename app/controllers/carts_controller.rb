@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
+  
   before_filter :login_required, :except => [:notify]
-  before_filter :admin_required, :only => [:index]
+  before_filter :admin_required, :only => [:index, :update]
   
   protect_from_forgery :except => [:notify]
 
@@ -11,10 +12,8 @@ class CartsController < ApplicationController
       @conditions = { :status => params[:status] }
     end
     
-    @carts = Cart.find(:all, :conditions => @conditions, :order => 'updated_at desc')
-    
-    # paginate?
-    @carts = @carts.paginate( :page => params[:page] )  if params[:page]
+    @carts = Cart.paginate :page => params[:page], :per_page => 10, 
+                           :conditions => @conditions, :order => 'updated_at desc'
     
     respond_to do |format|
       format.html # index.html.erb
@@ -118,6 +117,31 @@ class CartsController < ApplicationController
   def show
     @cart = Cart.find( params[:id] )                if admin?
     @cart = current_user.carts.find( params[:id] )  if !admin?
+  end
+  
+  def update
+    @cart = Cart.find(params[:id])
+    # Only status is allowed to be updated
+    unless params[:status].blank?
+      @cart.status = params[:status]
+      @cart.save!
+    else
+      raise t('carts.update.errors.no_status')
+    end
+    flash.now[:notice] = t('carts.update.success')
+    respond_to do |format|
+      format.html { redirect_to :action => 'index' }
+      format.js do
+        render :update do |page|
+          page.replace "cart_#{@cart.id}", :inline => "<p><%= flash[:notice] %></p>"
+        end
+      end
+    end
+  rescue
+    flash.now[:error] = t('carts.update.error', :error_message => $!)
+    respond_to do |format|
+      format.html { redirect_to :action => 'index' }
+    end
   end
   
 end

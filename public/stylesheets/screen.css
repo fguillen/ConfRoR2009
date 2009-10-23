@@ -314,3 +314,19 @@ span.pending_confirmation{
   font-weight: bold;
   color: #f33;
 }
+
+div#carts p.actions {
+  margin-left: 18px;
+}
+
+div#carts p.actions a {
+  background-color: #faa;
+  padding: 2px;
+}
+
+div#carts div.box {
+  border-bottom: 2px solid #ccc;
+  margin-left: 18px;
+  margin-bottom: 15px;
+  padding: 4px;
+}

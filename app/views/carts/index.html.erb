@@ -13,13 +13,11 @@
 <div id="carts">
   <% @carts.each do |cart| %>
     <p>
-      (<%= cart.id %>)
-      <strong><%= cart.user.name %></strong>
-      at <%= cart.updated_at %>
-      (<%= cart.status %>)
-      <%= link_to 'toggle', '#', :onclick => "toggle_cart_div( 'cart_#{cart.id}'); return false;" %>
+      <strong>#<%= cart.id %></strong> <%= link_to(cart.user.name, user_path(cart.user)) %> (<em><%= cart.status %></em>) <%= cart.updated_at.to_s(:short) %> <%= link_to '+ info', '#', :onclick => "toggle_cart_div( 'cart_#{cart.id}'); return false;" %>
     </p>
-
+    
+    <%= render :partial => 'carts/payment_confirmation', :locals => { :cart => cart } %>
+        
     <div id="cart_<%= cart.id %>" class="box" style="display:none;">
       <p><%= link_to 'Show', cart %></p>
       <p><strong>id:</strong> <%= cart.id %></p>

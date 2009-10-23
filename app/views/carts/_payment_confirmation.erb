@@ -1,0 +1,3 @@
+<% if cart.pending_paypayment_confirmation? %>
+<p class="actions" id="cart_<%= cart.id %>"><%= link_to_remote(t('views.carts.index.confirm_payment'), {:url => {:action => 'update', :id => cart.id, :status => Cart::STATUS[:COMPLETED]}, :method => :put}, {})%></p>
+<% end -%>

@@ -73,6 +73,10 @@ class Cart < ActiveRecord::Base
     self.events.sum(:price_cents)
   end
   
+  def pending_paypayment_confirmation?
+    status == STATUS[:WAIT_TRANSFER]
+  end
+  
   # Paypal includes and additional sur-charge of 35 cents specified here
   def total_payment_price
     ((total_events_price) * (Cart::PAYMENT_TYPES[payment_type])).round

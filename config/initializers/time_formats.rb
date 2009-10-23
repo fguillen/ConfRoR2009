@@ -1,0 +1,1 @@
+Time::DATE_FORMATS[:short] = lambda { |time| time.strftime("%H:%M %d/%m/%Y") }
