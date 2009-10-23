@@ -1,14 +1,13 @@
-<% title "Event: #{@event.name}" %>
+<% title @event.name %>
+
 <div class="entry">
-  <h3><%= yield(:title) %> (<%= @event.price_euros %>€)</h3>
-  <p>
-    <% if @event.out_of_capacity? %>
-      Sorry, this event is <span class="full">Complete</span>
-    <% else %>
-      Remaining capacity <strong><%= pluralize( @event.remaining_capacity, 'place' ) %></strong>
-    <% end %>
-  </p>
-  <p><%= simple_format(@event.description) %></p>
+
+  <h3><%= yield(:title) %></h3> 
+  <p><%= @event.price_euros %> €</p>
+  
+  <%= simple_format(@event.description) %>
+  
+  <p><%= link_to t('views.events.show.pay'), new_cart_path %></p>
 
   <% if admin? %>
     <p>
@@ -16,4 +15,5 @@
       | <%= link_to 'Edit', edit_event_path(@event) %>
     </p>
   <% end %>  
+  
 </div>

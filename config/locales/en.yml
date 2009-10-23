@@ -73,6 +73,9 @@ en:
       calendar: "Calendar"
       talks: "Talks"
       home: "Home"
+    events:
+      show:
+        pay: "Pay this event"
     users:
       new:
         title: "Sign up"

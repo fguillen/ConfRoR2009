@@ -72,6 +72,9 @@ es:
       calendar: "Calendario"
       talks: "Charlas"
       home: "Inicio"
+    events:
+      show:
+        pay: "Pagar este evento"
     users:
       new:
         title: "Registrarse como usuario"
@@ -114,7 +117,7 @@ es:
         title: "Actualizar Perfil"
         
       reset_password: 
-        title: "Reseting Password"
+        title: "Resetear contraseña"
         get_new_password: "Conseguir un nuevo password"
       
       go_back_to_login: "Ir al login"
