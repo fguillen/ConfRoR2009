@@ -9,7 +9,7 @@ es:
       activation_not_code: "Falta el código de activación. Por favor clicka en la URL que te debería haber llegado al email."
       activation_code_not_valid: "No podemos encontrar un usuario con ese código de activación -- revisa tu email, o quizás ya esté tu usuario activado -- prueba a hacer login."
       logout: "Tu sesión ha sido cerrada"
-      error: "Lo siento, no se pudo iniciar sesión como {{login}}. Puede que te hayas registrado pero todavía no hayas activado tu usuario, debes hacerlo siguiendo el link que te debería haber llegado al email."
+      error: "Lo siento, credenciales incorrectas (o cuenta no activada)"
       success: "Sesión iniciada correctamente"
     update:
       success: "El Usuario se ha modificado correctamente."

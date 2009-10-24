@@ -3,46 +3,46 @@ en:
     login:
       open_id_already_exists: "We've found an existing account with those credentials. Maybe you've already registered, try signing in."
       open_id_success: "Successful authentication! You can now complete your registration."
-      open_id_error: "We are sorry, the authenticantion with {{identity_url}} was not success. You can try again or register without OpenID"
-      signup_success: "Thanks for signing up!  We're sending you an email with your activation code."
-      activation_success: "Signup complete! You have been autologged."
+      open_id_error: "We are sorry, the authentication with {{identity_url}} didn't succeed. Please, try again or register without OpenID"
+      signup_success: "Thanks for signing up! We're sending you an email with your activation code."
+      activation_success: "Signup complete! You've been autologged."
       activation_not_code: "The activation code was missing. Please follow the URL from your email."
-      activation_code_not_valid: "We couldn't find a user with that activation code -- check your email. Or maybe you've already activated -- try signing in."
-      logout: "Your session has been closed"
-      error: "We are sorry, the session could not be initialized as {{login}}. It could be that your user has been created but you have not activated it, you should do it following the link should be arrived on your email."
-      success: "Session intialized successfully"
+      activation_code_not_valid: "We couldn't find a user with that activation code -- check your email. Maybe you've already activated it -- try signing in."
+      logout: "Your are logged out"
+      error: "Sorry, incorrect credentials (or account not yet activated)"
+      success: "Session initialized successfully"
     update:
       success: "User was successfully updated."
       error: "Some error trying to update the profile"
     reset_password:
-      info: "You will receive an email to reset your password." 
-      email_not_found: "No user activated found with email {{email}}"
-      success: "You have changed your password successfully, use it to log in."
-    public_profile_required: "You can't not access to this action unless you set your profile as public"
+      info: "You'll receive an email to reset your password." 
+      email_not_found: "No active user found with email {{email}}"
+      success: "Password changed successfully, try to log in!"
+    public_profile_required: "You can't do this action unless you set your profile as public"
   papers:
     create:
-      success: "Paper was successfully created. Now you can complete the Paper information, or do it later if you don't have now all the information needed."
+      success: "Paper successfully created. Now you can complete your proposal information or do it later if you don't have the information needed."
     update:
       success: "Paper was successfully updated."
-      error: "Some error trying to update the Paper."
-      error_status: "Some error trying to update the status of the Paper."
-      error_review: "The paper is under review, now it can not be updated"
+      error: "Some error trying to update the paper."
+      error_status: "Some error trying to update the status of the paper."
+      error_review: "The paper is under review, it can't be updated now"
     destroy:
-      success: "The Paper has been removed."
+      success: "The paper has been removed."
   photos:
     create:
       success: "Photo was successfully uploaded."
-      error: "Some error trying to upload the photo of the Paper: {{messages}}."
+      error: "Some error trying to upload the photo of the paper: {{messages}}."
   resources:
     create:
       success: "Resource was successfully created."
-      error: "Error creating Resource: {{messages}}"
+      error: "Error creating resource: {{messages}}"
     destroy:
       success: "Resource was successfully deleted."
   speakers:
     create:
-      success: "Speaker was successfully created"
-      error: "Error trying to adding an speaker to the paper: {{messages}}."
+      success: "Speaker was successfully added"
+      error: "Error trying to add a speaker to the paper: {{messages}}."
     destroy:
       success: "Speaker was successfully eliminated."
       error: "Error trying to eliminating an speaker to the paper: {{messages}}."
@@ -52,7 +52,6 @@ en:
       error: "There was a problem updating the payment: {{error_message}}"
       errors:
         "New status value missing"
-      
   views:
     authentication:
       access_denied: "You should be logged in to perform this action"
@@ -96,7 +95,7 @@ en:
         password_confirm: "Password confirmation"
         public_profile: "Public profile"
         email_not_shown: "email won't be shown"
-        required_fields: "The fields with <span class='required'>*</span> are mandatory"
+        required_fields: "Fields with <span class='required'>*</span> are mandatory"
         email_and_invoice_info_not_shown: "Email and Invoice Info will not be shown"
         change_email: "If you wanna change it contact with us"
         about_you: "About you"
@@ -148,11 +147,11 @@ en:
         coming_soon: "Coming soon..."
       new:
         title: "New Paper Proposal"
-        explanation_1: "Once the talk is created you will be able to:"
+        explanation_1: "Once your proposal is created you will be able to:"
         explanation_2: "Add a cool picture"
         explanation_3: "Attach files or online resources"
-        explanation_4: "Add other speakers to the talk (all speakers should be registered)"
-        submit: "Submit your talk"
+        explanation_4: "Add more speakers (all speakers should be registered)"
+        submit: "Submit your proposal"
 
       form:
         title: "Title"
@@ -165,14 +164,14 @@ en:
         upload_photo: "Upload Photo"
         update_attributes_above: "Update attributes above"
         photo: "Photo"
-        photo_example: "You can add a photo for the talk, this can be a photo for the speakers or not, something cool that make it look interesting."
+        photo_example: "You can add a photo or image to this talk, something cool that make it look interesting."
         speakers: "Speakers"
-        speakers_example: "Here you can manage the speakers of this talk. Only users with public are listed here."
+        speakers_example: "Here you can manage the speakers of this talk. Only users with public profile are listed here."
         status: "Status"
-        status_example: "This is the actual status of the talk."
+        status_example: "This is the current status of the talk."
         resources: "Resources"
-        resources_example: "Here you can manage the resources associated to this talk, like PDF, presentations, online videos, etc.<br/>You can choose between upload a file from your computer or indicate an URL for the resource."
-        required_fields: "Fields marked with <span class='required'>*</span> are required fields"
+        resources_example: "Here you can manage the resources associated to this talk, like PDF, presentations, online videos, etc.<br/>You can choose between uploading a file from your computer or entering a URL for the resource."
+        required_fields: "Fields marked with <span class='required'>*</span> are required"
 
       comments:
         avatar_from: "{{name}}'s avatar"
