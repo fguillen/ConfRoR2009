@@ -1,4 +1,47 @@
 es:
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%e/%m/%Y"
+      short: "%d de %b"
+      long: "%d de %B de %Y"
+      short_month: "%d %b %Y"
+      short_month_slashes: "%d/%b/%Y"
+      short_month_day: "%A, %d %B"
+
+    day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
+    abbr_day_names: [Dom, Lun, Mar, Mie, Jue, Vie, Sab]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Setiembre, Octubre, Noviembre, Diciembre]
+    abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Set, Oct, Nov, Dic]
+    # Used in date_select and datime_select.
+    order: [ :day, :month, :year ]
+  time:
+    formats:
+      default: "%A, %d de %B de %Y %H:%M:%S %z"
+      short: "%d de %b %H:%M"
+      short_month_long: "%d de %B"
+      long: "%d de %B de %Y %H:%M" 
+      short_month: "%d %b %Y"
+      short_month_slashes: "%d/%b/%Y"
+        
+    am: "am" 
+    pm: "pm" 
+    
+    day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
+    abbr_day_names: [Dom, Lun, Mar, Mie, Jue, Vie, Sab]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Setiembre, Octubre, Noviembre, Diciembre]
+    abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Set, Oct, Nov, Dic]
+    # Used in date_select and datime_select.
+    order: [ :day, :month, :year ]
+    alas: "a la"
+    alas_plural: "a las"
+  
   users:
     login:
       open_id_already_exists: "Hemos encontrado que ya existe una cuenta asociada a esas credenciales. ¿Has probado a logarte directamente?"
@@ -54,6 +97,10 @@ es:
         "No se indicó un nuevo estado"
       
   views:
+    calendar:
+      show:
+        title: "Calendario"
+        coming_soon: "Pronto..."
     pagination:
       previous: "Anterior"
       next: "Siguiente"
@@ -160,7 +207,8 @@ es:
       
     papers:
       edit:
-        title: "Actualizar Charla: {{paper_title}}"
+        title: "Actualizar charla: {{paper_title}}"
+        edit: "Editar charla"
       index:
         title: "Listado de Charlas"
         all: "Todas"

@@ -1,4 +1,23 @@
 en:
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%e/%m/%Y"
+      short: "%d de %b"
+      long: "%d de %B de %Y"
+      short_month: "%d %b %Y"
+      short_month_slashes: "%d/%b/%Y"
+      short_month_day: "%A, %d %B"
+  time:
+    formats:
+      default: "%A, %d de %B de %Y %H:%M:%S %z"
+      short: "%d de %b %H:%M"
+      short_month_long: "%d de %B"
+      long: "%d de %B de %Y %H:%M" 
+      short_month: "%d %b %Y"
+      short_month_slashes: "%d/%b/%Y"
   users:
     login:
       open_id_already_exists: "We've found an existing account with those credentials. Maybe you've already registered, try signing in."
@@ -53,6 +72,10 @@ en:
       errors:
         "New status value missing"
   views:
+    calendar:
+      show:
+        title: "Calendar"
+        coming_soon: "Coming soon..."
     pagination:
       previous: "Previous"
       next: "Next"
@@ -160,7 +183,8 @@ en:
       
     papers:
       edit:
-        title: "Editing Paper: {{paper_title}}"
+        title: "Editing paper: {{paper_title}}"
+        edit: "Edit paper"
       index:
         title: "List of Talks"
         all: "All"

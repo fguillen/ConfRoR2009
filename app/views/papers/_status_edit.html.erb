@@ -23,10 +23,3 @@
     <% end %>
   <% end %>
 </p>
-
-<p>
-  <% if logged_in? && current_user.is_speaker_on?( paper ) && paper.status == Paper::STATUS[:ACEPTED] %>
-    go to 
-    <%= link_to( Paper::STATUS[:CONFIRMED], update_status_paper_path( paper, :status => Paper::STATUS[:CONFIRMED] ), :method => 'put' ) %>
-  <% end %>
-</p>

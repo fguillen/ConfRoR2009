@@ -1,15 +1,15 @@
-<% title 'Calendar' %>
+<% title t('views.calendar.show.title') %>
 
-<h3><%= yield(:title) %></h3>
+<h1><%= yield(:title) %></h1>
 
 <div class="entry">
   <% if @dates.empty? %>
-    <p>Coming soon ...</p>
+    <h3><%= t('views.calendar.show.comming_soon')%></h3>
   <% end %>
 
   <% @dates.each do |date| %>
     
-    <h5><%= date.strftime("%A %d %B %Y")%></h5>
+    <h4><%=l date.to_date, :format => :short_month_day %></h4>
 
     <% @rooms.each do |room| %>
       <% papers_on_room = @papers.select{ |p| p.on_date_and_room_id?( date, room.id ) } %>
