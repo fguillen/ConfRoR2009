@@ -165,6 +165,8 @@ en:
         title: "List of Talks"
         all: "All"
         coming_soon: "Coming soon..."
+        by: "By"
+        view_more: "view more"
       new:
         title: "New Paper Proposal"
         explanation_1: "Once your proposal is created you will be able to:"
@@ -199,3 +201,4 @@ en:
       
   main:
     use: "Use"
+    and: "and"

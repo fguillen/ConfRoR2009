@@ -1,9 +1,9 @@
 <% if !paper.speakers.empty? -%>
   <p>
-    By
+    <%= t('views.papers.index.by') %>
     <% counter = paper.speakers.size %>
     <% paper.speakers.collect{ |s| s.user }.each do |user| %>
-      <%= counter > 1 && counter < paper.speakers.size ? "," : "and" unless counter >= paper.speakers.size %>
+      <%= counter > 1 && counter < paper.speakers.size ? "," : t('main.and') unless counter >= paper.speakers.size %>
       <%= link_to user.name, user %>
       <% counter -= 1 %>
     <% end %>

@@ -153,9 +153,9 @@ td { padding: 5px 0 5px 5px; border-bottom: 1px solid #DDD; }
 .item { margin-bottom: 2em; }
 .item a img { float: left; width: auto; margin: 6px 6px 0 0; }
 
-/*.avatar { float: right; margin: 0 0 0.5em 0.5em; }*/
 .avatar {
-  border: 1px solid #333333; }
+  border: 1px solid #333333; 
+}
 
 .author-avatar { float: left; margin: 0 1em 0.25em 0; }
 
@@ -175,6 +175,23 @@ td { padding: 5px 0 5px 5px; border-bottom: 1px solid #DDD; }
 
 .pager .previous { float: left; }
 .pager .next     { float: right; }
+
+.left {
+  float: left;
+  padding: 0px 4px 0px 0px;
+  margin: 0px 2px 0px 0px;
+}
+
+.right {
+  margin: 0px 2px 10px 20px;
+  padding-left: 5px;
+  overflow: hidden;
+  min-height: 100px;
+}
+
+.right h4 {
+  line-height: 20px;
+}
 
 #comments h3 {
   padding-bottom: 0.5em;
@@ -333,16 +350,6 @@ div#carts div.box {
 
 /*************** profile ********************/
 
-div.profile div.left {
-  float: left;
-}
-
-div.profile div.right {
-  overflow: hidden;
-  min-height: 100px;
-  margin-bottom: 10px;
-}
-
 div.profile dl {
   line-height: 20px;
 }
@@ -429,4 +436,12 @@ div.users {
   color: #DDD;
   margin: 2px;
   padding: 2px 3px;
+}
+
+/******************* papers  ****************/
+
+
+div.paper {
+  margin: 5px 0px 30px 0px;
+  padding: 0;
 }

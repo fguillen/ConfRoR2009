@@ -165,6 +165,8 @@ es:
         title: "Listado de Charlas"
         all: "Todas"
         coming_soon: "Proximamente..."
+        by: "Por"
+        view_more: "ver más"
       new:
         title: "Nueva Propuesta de Charla"
         explanation_1: "Una vez que la charla se ha creado podrás:"
@@ -199,3 +201,4 @@ es:
       
   main:
     use: "Usar"
+    and: "y"
