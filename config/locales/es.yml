@@ -70,7 +70,7 @@ es:
     menu:
       send_paper: "Enviar Charla"
       events: "Eventos"
-      profile: "Perfil"
+      profile: "Mi perfil"
       logout: "Salir"
       signup: "Registrarse"
       pay: "Pagar"
@@ -88,6 +88,15 @@ es:
         title: "Registrarse como usuario"
         login_password: "Login y Password"
         signup: "Registrarse"
+      show:
+        from: "De {{location_name}}"
+        company: "Empresa"
+        web_site: "Web personal"
+        twitter: "Mi Twitter"
+        github: "Mi Github"
+        talking_on: "Mis charlas"
+        your_purchases: "Tus pagos"
+        organizer: "Organizador"
       form:
         login: "Usuario"
         name: "Nombre completo"

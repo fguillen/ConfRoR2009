@@ -162,17 +162,12 @@ class User < ActiveRecord::Base
   def admin?
     self.role == User::ROLE[:ADMIN]
   end
-
-  # def self.retrieve_users( user_who_ask_for )
-  #   return User.activated.public_profile   if !user_who_ask_for.admin?
-  #   return User.all                        if user_who_ask_for.admin?
-  # end
-  # 
-  # def self.retrieve_speakers( user_who_ask_for )
-  #   return Paper.visible.collect(&:speakers).flatten.collect(&:user).uniq  if !user_who_ask_for.admin?
-  #   return Paper.all.collect(&:speakers).flatten.collect(&:user).uniq      if user_who_ask_for.admin?
-  # end
   
+  def location
+    return '' if location_name.blank?
+    location_name.split(',')[0] + ', ' + location_name.split(',').last
+  end
+
   def speaker?
     !self.speaker_on.empty?
   end

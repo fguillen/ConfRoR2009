@@ -70,7 +70,7 @@ en:
     menu:
       send_paper: "Send a Talk"
       events: "Events"
-      profile: "Profile"
+      profile: "My profile"
       logout: "Exit"
       signup: "Sign up"
       pay: "Pay"
@@ -88,6 +88,15 @@ en:
         title: "Sign up"
         login_password: "Login and Password"
         signup: "Sign up"
+      show:
+        from: "From {{location_name}}"
+        company: "Company"
+        web_site: "Personal web site"
+        twitter: "Twitter account"
+        github: "Github account"
+        talking_on: "Talking on"
+        your_purchases: "Your purchases"
+        organizer: "Organizer"
       form:
         login: "User"
         name: "Full Name"

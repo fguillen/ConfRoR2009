@@ -330,3 +330,38 @@ div#carts div.box {
   margin-bottom: 15px;
   padding: 4px;
 }
+
+/*************** profile ********************/
+
+div.profile div.left {
+  float: left;
+}
+
+div.profile div.right {
+  overflow: hidden;
+  height: 1%;
+  margin-bottom: 10px;
+}
+
+div.profile dl {
+  line-height: 20px;
+}
+
+div.profile dt {
+  float: left;
+}
+
+div.profile dd {
+  overflow: hidden;
+  height: 1%;
+  padding-left: 5px;
+}
+
+div.profile ul {
+  list-style-type: none; 
+}
+
+div.profile span.organizer {
+  font-weight: bold;
+  color: #aaa;
+}

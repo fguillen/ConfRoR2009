@@ -7,52 +7,68 @@
   <% end %>
 </h3>
 
-<div class="entry">
-  <% if !@user.location_name.blank?  %>
-    <p>From <%= @user.location_name %></p>
-  <% end %>
+<div class="entry profile">  
   
+  <div class="left">
   <%=
     gravatar(
       @user.email, 
-      :size => 50, 
+      :size => 65, 
       :default => "#{base_url}/images/avatar.png",
       :class => 'avatar',
       :alt => "avatar de #{@user.name}"
     )
   %>
   
-  <%= simple_format(@user.text) %>
+  <% if @user.admin? %>
+    <p><span class="organizer"><%= t('views.users.show.organizer') %></span></p>
+  <% end -%>
   
-  <br style="clear:both"/>
+  </div>
+  
+  <div class="right">
+    
+    <% if !@user.location.blank?  %>
+      <p><%= t('views.users.show.from', :location_name => @user.location) %></p>
+    <% end %>
+    
+    <%= simple_format(auto_link(@user.text)) %>  
+      
+    <dl>
+    <% if !@user.company_name.blank? || !@user.company_url.blank?  %>
+      <dt><%= t('views.users.show.company') %>: </dt>
+      <dd><%= web_render( @user.company_name, @user.company_url ) %></dd>
+    <% end %>
+  
+    <% if !@user.personal_web_name.blank? || !@user.personal_web_url.blank?  %>
+      <dt><%= t('views.users.show.web_site')%>: </dt>
+      <dd><%= web_render( @user.personal_web_name, @user.personal_web_url ) %></dd>
+    <% end %>
+
+    <% if !@user.twitter_user.blank? %>
+      <dt><%= t('views.users.show.twitter')%>: </dt>
+      <dd><%= link_to "http://twitter.com/#{@user.twitter_user}", "http://twitter.com/#{@user.twitter_user}" %></dd>
+    <% end %>
+    
+    <% if !@user.github_user.blank? %>
+      <dt><%= t('views.users.show.github')%>: </dt>
+      <dd><%= link_to "http://github.com/#{@user.github_user}", "http://github.com/#{@user.github_user}" %></dd>
+    <% end %>
+    </dl>
+  
+  </div><!-- .right -->
   
   <% if !@user.speaker_on_visibles_for_user( current_user ).empty? %>
-    <h6>Talking on</h6>
-    
-      <% @user.speaker_on_visibles_for_user( current_user ).each do |paper| %>
-        <p><%= paper.status %> <%= link_to paper.title, paper %><p>
-      <% end %>
+    <h4><%= t('views.users.show.talking_on') %></h4>
+    <ul>
+    <% @user.speaker_on_visibles_for_user( current_user ).each do |paper| %>
+      <li><%= link_to paper.title, paper %></li>
+    <% end %>
+    </ul>
   <% end %>
   
-  <% if !@user.company_name.blank? || !@user.company_url.blank?  %>
-    <p><%= web_render( @user.company_name, @user.company_url ) %> <span class="tip">(company)</span></p>
-  <% end %>
-  
-  <% if !@user.personal_web_name.blank? || !@user.personal_web_url.blank?  %>
-    <p><%= web_render( @user.personal_web_name, @user.personal_web_url ) %> <span class="tip">(personal website)</span></p>
-  <% end %>
-
-  <% if !@user.twitter_user.blank? %>
-    <p><%= link_to "http://twitter.com/#{@user.twitter_user}", "http://twitter.com/#{@user.twitter_user}" %> <span class="tip">(twitter account)</span></p>
-  <% end %>
-    
-  <% if !@user.github_user.blank? %>
-    <p><%= link_to "http://github.com/#{@user.github_user}", "http://github.com/#{@user.github_user}" %> <span class="tip">(github account)</span></p>
-  <% end %>
-  
-
   <% if admin_or_current_user?( @user ) && !@user.carts.purchased.empty? %>
-    <h6>Your purchases</h6>
+    <h4><%= t('views.users.show.your_purchases')%></h4>
     <ul>
       <% @user.carts.purchased.each do |cart| %>
         <li>
