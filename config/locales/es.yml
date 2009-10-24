@@ -71,6 +71,7 @@ es:
         log_in: "Entrar"
         no_user: "¿No tienes cuenta? {{register_link}}"
     menu:
+      attendees: "Asistentes"
       send_paper: "Enviar Charla"
       events: "Eventos"
       profile: "Mi perfil"

@@ -20,7 +20,6 @@
   <ul>
     <li><%= link_to_unless_current t('views.users.index.all'), users_path( :page => '1' ) %> 
     (<%= admin? ? User.count : User.public_profile.count %>)</li>
-  
     
     <li><%= 
       link_to_unless_current(
@@ -74,7 +73,7 @@
 <% if @users.respond_to?( 'total_pages' ) %><%= paginate(@users) %><% end %>
 
 <% if admin? %>
-<div>
+<div style="clear:both;">
   <h4>Export list</h4>
   <p>
     <ul>

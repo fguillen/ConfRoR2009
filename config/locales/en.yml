@@ -71,6 +71,7 @@ en:
         log_in: "Log in"
         no_user: "No user account? {{register_link}}"
     menu:
+      attendees: "Atteendees"
       send_paper: "Send a Talk"
       events: "Events"
       profile: "My profile"
