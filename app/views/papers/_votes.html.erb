@@ -1,11 +1,12 @@
 <% @vote = vote_find_actual( @paper.id ) %>
-<% labels = ['(Very bad)', '(Poor)', '(Average)', '(Good)', '(Excelent)'] %>
 
+<ul id="votes">
 <% (1..5).each do |points| %>
+  <li>
   <% if @vote.nil? || (@vote.points != points) %>
     <%= 
       link_to_remote(
-        "#{points} #{labels[points-1]}", 
+        "#{valoration_labels[points-1]}", 
         :url => paper_votes_path( @paper, :points => points ), 
         :method => 'post',
         :update => { :success => "valorations", :failure => "error" },
@@ -14,13 +15,12 @@
       )
     %>
   <% else %>
-    <%= "<strong>#{points} #{labels[points-1]}</strong>" %>
+    <%= "<strong>#{valoration_labels[points-1]}</strong>" %>
   <% end %>
-  <br/>
+  </li>
 <% end %>
+</ul>
 
 <span id='valoration_loading' style="display:none">
   <%= image_tag 'spinner.gif' %>
 </span>
-
-<br/>

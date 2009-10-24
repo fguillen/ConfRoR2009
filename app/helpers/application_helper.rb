@@ -85,4 +85,9 @@ module ApplicationHelper
     
     will_paginate(collection, will_paginate_options)
   end
+  
+  def valoration_labels
+    [t('views.papers.show.valorations.very_bad'), t('views.papers.show.valorations.poor'), t('views.papers.show.valorations.average'), t('views.papers.show.valorations.good'), t('views.papers.show.valorations.excelent')]
+  end
+  
 end

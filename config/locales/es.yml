@@ -174,7 +174,28 @@ es:
         explanation_3: "Añadir ficheros o recursos online"
         explanation_4: "Añadir conferenciantes a la charla (todos los conferenciantes deben estar registrados en la aplicación)"
         submit: "Enviar tu Charla"
-
+      show:
+        resources: "Recursos"
+        comments: "Comentarios"
+        rate: "Valora esta charla"
+        attendees: "Asistentes"
+        view: "Ver"
+        attend_question: "¿Vas a asistir?"
+        attend_question_no: "No, no voy"
+        attend_question_yes: "Sí que voy"
+        no_valorations: "Sin valoraciones aún"
+        people_valoration: "La gente ha valorado esta charla como <strong>{{valoration}}</strong>"
+        comments:
+          title: "Comentarios"
+          new: "Nuevo comentario"
+          submit: "Enviar"
+          submitting: "Enviando..."
+        valorations:
+          very_bad: "Muy mala"
+          poor: "Pobre"
+          average: "Regular"
+          good: "Buena"
+          excelent: "Excelente"
       form:
         title: "Título"
         description: "Descripción"

@@ -1,11 +1,11 @@
-<h6>Rate of this talk</h6>
+<h3><%= t('views.papers.show.rate') %></h3>
 
 <% if logged_in? %>
   <p><%= render :partial => 'papers/votes', :locals => { :paper => @paper } %></p>
 <% end %>
 
 <% if @paper.votes.count > 0 %>
-  <p><%= image_tag "#{@paper.rate}_star.png" %> (<%=h @paper.votes.size %> votes so far)</p>
+  <p><%= t('views.papers.show.people_valoration', :valoration => valoration_labels[@paper.rate-1]) %></p>
 <% else %>
-  <p>Not any valoration yet.</p>
+  <p><%= t('views.papers.show.no_valorations')%></p>
 <% end %>

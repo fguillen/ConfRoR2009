@@ -8,64 +8,62 @@
 </h2>
 
 <div class="entry">
-  <%= image_tag @paper.photo.url(:medium), :class => 'avatar' %>
-
-  <h6>
-    On <%= @paper.date.nil? ? '(not date designed yet)' : @paper.date.strftime("%b #{@paper.date.day.ordinalize}, %H:%M %p") %> 
-    at <%= @paper.room.nil? ? '(not room designed yet)' : @paper.room.name %>
-  </h6>
-
-  <%= render :partial => 'papers/by', :locals => { :paper => @paper } %>
-
-  <%= simple_format @paper.description %>
-
-  <div class="clear"></div>
-
-  <% if !@paper.resources.empty?  %>
-  <div id="resources">
-    <h6>Resources</h6>
-    <ul>
-      <% @paper.resources.each do |resource| %>
-        <li><%= link_to resource.url_link, resource.url_link %></li>
-      <% end %>
-    </ul>
+  <div class="left">
+    <%= link_to(image_tag(@paper.photo.url(:small), :class => 'avatar'), user_path(@paper.creator)) %>
   </div>
-  <% end %>
-  
-  <div id="valorations">
-    <%= render :partial => 'papers/valorations', :locals => { :paper => @paper } %>
-  </div>
-  
-  <div id="attendees">
-    <%= render :partial => 'papers/attendees', :locals => { :paper => @paper } %>
-  </div>
-  
-  <div id="comments">
-    <h6>Comments (<%=h @paper.comments.count %>)</h6>
-    <div id="comments_list">
-      <%= render :partial => 'papers/comment', :collection => @paper.comments %>
+
+  <div class="right">
+    <%= render :partial => 'papers/by', :locals => { :paper => @paper } %>
+
+    <%= simple_format(auto_link(@paper.description)) %>
+
+    <% if !@paper.resources.empty?  %>
+    <div id="resources">
+      <h3><%= t('views.papers.show.resources')%></h3>
+      <ul>
+        <% @paper.resources.each do |resource| %>
+          <li><%= link_to resource.url_link, resource.url_link, :rel => 'nofollow' %></li>
+        <% end %>
+      </ul>
     </div>
-    
-    <% if logged_in? %>
-      <div class="comment_error"></div>
-
-        <%
-          form_remote_for(
-            [@paper, Comment.new],
-            :update => { :success => "comments_list", :failure => ".comment_error" },
-            :position => :bottom,
-            :loading => "$('#comment_loading').show()",
-            :complete => "$('#comment_loading').hide();",
-            :success => "$('#comment_textarea').val('')"
-          ) do |f| 
-        -%>
-          <%= f.error_messages %>
-    
-          <%= f.label :new_comment, 'New Comment', :required => true %><br/>
-          <%= f.text_area :text, :id => 'comment_textarea' %><br/>
-          <div id='comment_loading' style="display:none"><%= image_tag 'spinner.gif' %></div>
-          <%= f.submit "Submit", :disable_with => 'Submiting...' %>
-        <% end -%>
     <% end %>
+  
+    <div id="valorations">
+      <%= render :partial => 'papers/valorations', :locals => { :paper => @paper } %>
+    </div>
+  
+    <div id="attendees">
+      <%= render :partial => 'papers/attendees', :locals => { :paper => @paper } %>
+    </div>
+  
+    <div id="comments">
+      <h3><%= t('views.papers.show.comments.title')%></h3>
+      
+      <div id="comments_list">
+        <%= render :partial => 'papers/comment', :collection => @paper.comments %>
+      </div>
+    
+      <% if logged_in? %>
+        <div class="comment_error"></div>
+
+          <%
+            form_remote_for(
+              [@paper, Comment.new],
+              :update => { :success => "comments_list", :failure => ".comment_error" },
+              :position => :bottom,
+              :loading => "$('#comment_loading').show()",
+              :complete => "$('#comment_loading').hide();",
+              :success => "$('#comment_textarea').val('')"
+            ) do |f| 
+          -%>
+            <%= f.error_messages %>
+    
+            <%= f.label :new_comment, t('views.papers.show.comments.new'), :required => true %><br/>
+            <%= f.text_area :text, :id => 'comment_textarea' %><br/>
+            <div id='comment_loading' style="display:none"><%= image_tag 'spinner.gif' %></div>
+            <%= f.submit t('views.papers.show.comments.submit'), :disable_with => t('views.papers.show.comments.submitting') %>
+          <% end -%>
+      <% end %>
+    </div>
   </div>
 </div>

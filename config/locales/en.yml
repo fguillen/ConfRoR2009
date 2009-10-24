@@ -71,7 +71,7 @@ en:
         log_in: "Log in"
         no_user: "No user account? {{register_link}}"
     menu:
-      attendees: "Atteendees"
+      attendees: "Attendees"
       send_paper: "Send a Talk"
       events: "Events"
       profile: "My profile"
@@ -94,8 +94,8 @@ en:
         signup: "Sign up"
       index:
         speakers: "Speakers"
-        attendees_from_city: "Atteendees from {{city}}"
-        attendees: "Atteendees"
+        attendees_from_city: "Attendees from {{city}}"
+        attendees: "Attendees"
         all_registered_users: "All Registered Users"
         all: "View all"
       show:
@@ -174,7 +174,28 @@ en:
         explanation_3: "Attach files or online resources"
         explanation_4: "Add more speakers (all speakers should be registered)"
         submit: "Submit your proposal"
-
+      show:
+        resources: "Resources"
+        comments: "Comments"
+        rate: "Rate of this talk"
+        attendees: "Attendees"
+        view: "View"
+        attend_question: "Will you attend?"
+        attend_question_no: "No, I'm not going"
+        attend_question_yes: "Yes, I'm going"
+        no_valorations: "Not valorations yet"
+        people_valoration: "People valoration of this talk is <strong>{{valoration}}</strong>"
+        comments:
+          title: "Comments"
+          new: "New comment"
+          submit: "Submit"
+          submitting: "Submitting..."
+        valorations:
+          very_bad: "Very bad"
+          poor: "Poor"
+          average: "Average"
+          good: "Good"
+          excelent: "Excelent"
       form:
         title: "Title"
         description: "Description"

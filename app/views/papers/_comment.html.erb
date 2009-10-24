@@ -1,4 +1,5 @@
-<div class="comment">
+<div class="comment" id="comment_<%= comment.id %>">
+  <div class="left">
   <%=
     gravatar(
       comment.user.email, 
@@ -8,9 +9,10 @@
       :alt => t('views.papers.comments.avatar_from', :name => comment.user.name)
     )
   %>
+  </div>
 
-  <p>
-    <%= link_to comment.user.name, user_path(comment.user) %> <span class="date"><%= t('views.papers.comments.said_on', :date => comment.created_at) %></span><br/>
-    <%= comment.text %>
-  </p>
+  <div class="right">
+    <p><%= link_to comment.user.name, user_path(comment.user) %> <span class="date"><a href="#comment_<%= comment.id %>"><%= comment.created_at.to_s(:short) %></a></span></p>
+    <%= simple_format(auto_link(comment.text)) %>
+  </div>
 </div>
