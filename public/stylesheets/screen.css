@@ -339,7 +339,7 @@ div.profile div.left {
 
 div.profile div.right {
   overflow: hidden;
-  height: 1%;
+  min-height: 100px;
   margin-bottom: 10px;
 }
 
