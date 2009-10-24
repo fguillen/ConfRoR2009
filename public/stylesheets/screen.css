@@ -372,6 +372,10 @@ div.profile span.organizer {
   color: #aaa;
 }
 
+div.profile div.right {
+  min-height: 100px;
+}
+
 
 /*************** users ********************/
 div.bar {
