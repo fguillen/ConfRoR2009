@@ -365,3 +365,67 @@ div.profile span.organizer {
   font-weight: bold;
   color: #aaa;
 }
+
+
+/*************** users ********************/
+div.bar {
+  margin: 0px;
+  margin-left: -7px;
+  padding: 0px;
+}
+
+div.bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+div.bar ul li {
+  display: inline;
+  font-weight: bold;
+  font-size: 1em;
+  margin: 0px 5px;
+  padding: 4px;
+}
+
+div.users {
+  padding-top: 20px;
+  padding-bottom: 0px;
+  margin-bottom: 2px;
+}
+
+/************** pagination ****************/
+
+.pagination {
+  border-top: 1px solid #F5F5F5;
+  margin: 1.5em auto 0em auto;
+  padding: 1em;
+  text-align: center;
+}
+
+.pagination a {
+  color: #333;
+  margin: 2px;
+  padding: 3px 4px;
+  text-decoration: none;
+}
+
+.pagination a:hover,
+.pagination a:active {
+  background: #000;
+  color: #FFF;
+}
+
+.pagination span.current {
+  background-color: #B60000;
+  color: #FFF;
+  font-weight: bold;
+  margin: 2px;
+  padding: 2px 3px;
+}
+
+.pagination span.disabled {
+  color: #DDD;
+  margin: 2px;
+  padding: 2px 3px;
+}

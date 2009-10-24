@@ -6,25 +6,27 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    if( !params[:search].blank? && params[:search] == 'speakers' )
-      @users = User.ordered.speaker          if admin?
-      @users = User.ordered.public_speaker   if !admin?
-      
-    elsif( 
-      !params[:search].blank? && 
-      params[:search] == 'event_attendees' &&
-      !params[:event_id].blank?
-    )
-      @users = User.ordered.has_paid( params[:event_id] )                 if admin?
-      @users = User.ordered.public_profile.has_paid( params[:event_id] )  if !admin?
-      
+    if !params[:search].blank?
+      if params[:search] == 'speakers'
+        @users = User.ordered.speaker          if admin?
+        @users = User.ordered.public_speaker   if !admin?
+      elsif params[:search] == 'event_attendees' && !params[:event_id].blank?
+        @users = User.ordered.has_paid( params[:event_id] )                 if admin?
+        @users = User.ordered.public_profile.has_paid( params[:event_id] )  if !admin?
+      end
+    elsif !params[:city].blank?
+      @city = params[:city].gsub(/[^A-Za-z\ ]+/,'')
+      @users = User.find(:all, :conditions => "location_name LIKE '%#{@city}%'")
     else
-      @users = User.ordered                            if admin?
-      @users = User.ordered.activated.public_profile   if !admin?
-      
+      @users = if admin?
+        User.ordered
+      else
+        User.ordered.activated.public_profile
+      end
     end
 
-    @users = @users.paginate( :page => params[:page] )  if params[:page]
+    params[:page] ||= 1
+    @users = @users.paginate( :page => params[:page], :per_page => 25 )
 
     respond_to do |format|
       format.html

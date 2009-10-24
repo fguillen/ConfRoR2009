@@ -29,7 +29,7 @@
   <div class="right">
     
     <% if !@user.location.blank?  %>
-      <p><%= t('views.users.show.from', :location_name => @user.location) %></p>
+      <p><%= t('views.users.show.from') %> <%= link_to(@user.location, users_path(:city => @user.location.split(',').first), :title => t('views.users.show.other_users_from_city', :location_name => @user.location.split(',').first)) %></p>
     <% end %>
     
     <%= simple_format(auto_link(@user.text)) %>  

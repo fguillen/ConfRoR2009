@@ -1,28 +1,30 @@
 <% 
   if( !params[:search].blank? && params[:search] == 'speakers' )
-    title( 'Speakers' )
+    title(t('views.users.index.speakers'))
     
   elsif( 
     !params[:search].blank? && 
     params[:search] == 'event_attendees' &&
     !params[:event_id].blank?
   )
-    title( 'Attendees' )
-  
+    title(t('views.users.index.attendees'))
+  elsif @city
+    title(t('views.users.index.attendees_from_city', :city => @city))
   else
-    title( 'All Registered Users' )
+    title(t('views.users.index.all_registered_users'))
   
   end
 %>
 
 <div class="bar">
-  <p>
-    <%= link_to 'Show All', users_path( :page => '1' ) %> 
-    (<%= admin? ? User.count : User.public_profile.count %>) | 
+  <ul>
+    <li><%= link_to_unless_current t('views.users.index.all'), users_path( :page => '1' ) %> 
+    (<%= admin? ? User.count : User.public_profile.count %>)</li>
+  
     
-    <%= 
-      link_to(
-        'Show Attendees', 
+    <li><%= 
+      link_to_unless_current(
+        t('views.users.index.attendees'), 
         users_path( 
           :params => { 
             :search => 'event_attendees', 
@@ -32,16 +34,18 @@
         )
       )
     %> 
-    (<%= admin? ? User.has_paid(1).count : User.public_profile.has_paid(1).count %>) | 
+    (<%= admin? ? User.has_paid(1).count : User.public_profile.has_paid(1).count %>)</li>
     
-    <%= link_to 'Show Speakers', users_path( :params => { :search => 'speakers', :page => '1' } ) %>
-    (<%= admin? ? User.speaker.count : User.public_speaker.count %>)
+    <li><%= link_to_unless_current t('views.users.index.speakers'), users_path( :params => { :search => 'speakers', :page => '1' } ) %>
+    (<%= admin? ? User.speaker.count : User.public_speaker.count %>)</li>
   </p>
 </div>
 
 <h3><%= yield(:title) %></h3>
 
+<div class="users">
 <% for user in @users %>
+
   <div class="grid-item">
       <%=
         gravatar(
@@ -65,10 +69,9 @@
     <% end %>
   </div>
 <% end %>
-
-<div class="pagination">
-  <p><% if @users.respond_to?( 'total_pages' ) %><%= will_paginate @users %><% end %></p>
 </div>
+
+<% if @users.respond_to?( 'total_pages' ) %><%= paginate(@users) %><% end %>
 
 <% if admin? %>
 <div>

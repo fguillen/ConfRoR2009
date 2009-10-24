@@ -54,6 +54,9 @@ es:
         "No se indicó un nuevo estado"
       
   views:
+    pagination:
+      previous: "Anterior"
+      next: "Siguiente"
     authentication:
       access_denied: "Tienes que hacer login (o registrarte) para acceder a esta función"
     sessions:
@@ -88,8 +91,15 @@ es:
         title: "Registrarse como usuario"
         login_password: "Login y Password"
         signup: "Registrarse"
+      index:
+        speakers: "Ponentes"
+        attendees_from_city: "Asistentes de {{city}}"
+        attendees: "Asistentes"
+        all_registered_users: "Todos los usuarios registrados"
+        all: "Ver todos"
       show:
-        from: "De {{location_name}}"
+        from: "De"
+        other_users_from_city: "Ver a otros asistentes de {{location_name}}"
         company: "Empresa"
         web_site: "Web personal"
         twitter: "Mi Twitter"

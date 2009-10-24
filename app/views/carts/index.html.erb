@@ -67,9 +67,7 @@
   <% end %>
 </div>
 
-<div class="pagination">
-  <p><% if @carts.respond_to?( 'total_pages' ) %><%= will_paginate @carts %><% end %></p>
-</div>
+<% if @carts.respond_to?( 'total_pages' ) %><%= paginate @carts %><% end %>
 
 <script>
   function toggle_cart_div( id ){

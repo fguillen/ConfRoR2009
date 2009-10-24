@@ -53,6 +53,9 @@ en:
       errors:
         "New status value missing"
   views:
+    pagination:
+      previous: "Previous"
+      next: "Next"
     authentication:
       access_denied: "You should be logged in to perform this action"
       
@@ -88,8 +91,15 @@ en:
         title: "Sign up"
         login_password: "Login and Password"
         signup: "Sign up"
+      index:
+        speakers: "Speakers"
+        attendees_from_city: "Atteendees from {{city}}"
+        attendees: "Atteendees"
+        all_registered_users: "All Registered Users"
+        all: "View all"
       show:
-        from: "From {{location_name}}"
+        from: "From"
+        other_users_from_city: "View other users from {{location_name}}"
         company: "Company"
         web_site: "Personal web site"
         twitter: "Twitter account"

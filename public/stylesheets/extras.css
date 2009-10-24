@@ -53,20 +53,10 @@ text-align:center;
 width:86px;
 }
 
-.pagination {
-color:#999999;
-float:right;
-font-size:11px;
-margin-right:10px;
-clear:both;
-}
-
 .entry img {
 float:left;
 margin:4px 15px 15px 0;
 }
-
-
 
 .actions img {
 background:transparent none repeat scroll 0 0;

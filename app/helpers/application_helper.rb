@@ -95,4 +95,11 @@ module ApplicationHelper
     
     return out
   end
+  
+  def paginate(collection, will_paginate_options = {})
+    will_default = {:inner_window => 1, :previous_label => '&laquo; ' + t('views.pagination.previous'), :next_label => t('views.pagination.next') + ' &raquo;'}
+    will_paginate_options = will_default.merge(will_paginate_options)
+    
+    will_paginate(collection, will_paginate_options)
+  end
 end
