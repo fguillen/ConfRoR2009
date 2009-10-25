@@ -48,8 +48,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :location_searchs, :only => :create
   map.resource  :avaliable_places_counter, :only => :show
   map.resources :static_pages
-  
-  map.locale '/locale/:locale', :controller => 'locale', :action => 'set_locale'
 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
