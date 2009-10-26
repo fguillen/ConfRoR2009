@@ -110,4 +110,5 @@ class EventTest < ActiveSupport::TestCase
     
     assert_equal( 9, @event.remaining_capacity )
   end
+
 end

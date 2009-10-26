@@ -13,8 +13,13 @@ class Event < ActiveRecord::Base
   validates_numericality_of :price_cents
   validates_presence_of :capacity
   validates_numericality_of :capacity
+  
+  serialize :i18n_name
+  def i18n_name
+    super || {}
+  end
 
-  simple_text_fields
+  simple_text_fields :except => :i18n_name
   
   before_destroy :check_for_payments
   

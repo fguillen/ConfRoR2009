@@ -1,8 +1,18 @@
 <%= f.error_messages %>
 
 <p>
-  <%= f.label :name, "Name", :required => true %><br />
+  <%= f.label :name, "Default name", :required => true %><br />
   <%= f.text_field :name %>
+</p>
+
+<p>
+  <%= label_tag "event_i18n_name_en", "English name (optional)" %><br />
+  <%= text_field_tag "event[i18n_name][en]", f.object.i18n_name[:en] %>
+</p>
+
+<p>
+  <%= label_tag "event_i18n_name_es", "Spanish name (optional)" %><br />
+  <%= text_field_tag "event[i18n_name][es]", f.object.i18n_name[:es] %>
 </p>
 
 <p>

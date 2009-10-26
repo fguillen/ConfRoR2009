@@ -108,8 +108,25 @@ en:
       show:
         pay: "Pay this event"
     carts:
+      new:
+        title: "Pay for your place"
+        invoice_data_request: "Please, enter your invoicing details below"
+        status:
+          paid: "Pagado"
+          pending_confirmation: "Waiting for bank transfer confirmation"
+          full: "Sold out!"
+        price_includes_6th: "Badges for speed-dating"
+        price_includes_5th: "Our famous t-shirt"
+        price_includes_4th: "Thursday 26th dinner party"
+        price_includes_3rd: "Coffee breaks and lunch during the conference"
+        price_includes_2nd: "1 day of workshops"
+        price_includes_1st: "2 days of conference"
+        price_includes: "Price includes:"
+        payment_method: "Payment method"
+        paypal: "PayPal (3,5% additional cost)"
+        bank_transfer: "Bank transfer"
       index:
-        confirm_payment: "Confirmar pago"
+        confirm_payment: "Confirm payment"
     users:
       new:
         title: "Sign up"

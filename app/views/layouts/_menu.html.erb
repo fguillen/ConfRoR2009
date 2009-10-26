@@ -5,8 +5,8 @@
       <%# menu_to t('views.menu.send_paper'), new_paper_path %>
       <% if admin? %>
         <%= menu_to t('views.menu.calendar')+' (a)', calendar_path %>
-        <%= menu_to t('views.menu.talks')+' (a)', papers_path %>
       <% end %>
+      <%= menu_to t('views.menu.talks'), papers_path %>
       <!-- %= menu_to t('views.menu.send_paper'), new_paper_path % -->
       <% if admin? %>
         <%= menu_to t('views.menu.events')+' (a)', events_path %>
