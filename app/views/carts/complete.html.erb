@@ -3,49 +3,11 @@
 <h3><%= yield(:title) %></h3>
 
 <div class="entry">
-  <ul>
-  <% @cart.events.each do |event| %>
-    <li>        
-      <%= link_to event.name, event_path(event) %> (<%= event.price_euros %>€)
-    </li>
-  <% end %>
-  </ul>
+  <%= render :partial => 'event_list' %>
 
-  <br/>
-
-  <p><strong>TOTAL: <span id="total"><%= @cart.total_price_on_euros %>€</span></strong></p>
-
-  <br/>
-
-  <h6>Invoice info</h6>
-  <table>
-    <tr>
-      <th><%= "Nombre" %></th>
-      <td><%=h @cart.client_name %></td>
-    </tr>
-    <tr>
-      <th><%= "CIF" %></th>
-      <td><%= @cart.client_tax_code %></td>
-    </tr>
-    <tr>
-      <th><%= "Dirección" %></th>
-      <td><%= simple_format(h(@cart.client_address)) %></td>
-    </tr>
-    <tr>
-      <th><%= "Teléfono" %></th>
-      <td><%= @cart.client_phone %></td>
-    </tr>
-  </table>
-    <p>
-      <%= "Hay que efectuar el pago a la siguiente cuenta bancaria:" %>
-    </p>
-    <p>
-      <i>IBAN ES80</i> 2100 2129 95 0200267722 - <b>SWIFT/BIC:</b> CAIXESBBXXX
-    </p>
-    <p>
-      <%= "En el concepto, hay que incluir tus apellidos y nombre." %>
-    <p>
-
+  <%= render :partial => 'billing_details', :locals => { :cart => @cart } %>
+  
+  <%= render(:partial => 'bank_transfer_info') if @cart.payment_type == 'transfer' %>
   <br/>
   
   <p><%= link_to "&laquo; Go back home", root_path %></p>

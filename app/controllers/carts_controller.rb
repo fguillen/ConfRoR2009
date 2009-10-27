@@ -43,7 +43,7 @@ class CartsController < ApplicationController
     current_user.update_attribute( :invoice_info, params[:invoice_info] )
     
     if( params[:event_ids].nil? )
-      flash[:error] = 'You should select at less one Event'
+      flash[:error] = 'You should select at least one event'
       redirect_to :action => 'new'
       return
     end
@@ -105,7 +105,7 @@ class CartsController < ApplicationController
     @cart.update_attribute( :paypal_complete_params, params ) if @cart.payment_type == 'paypal'
     
     if @cart.status == Cart::STATUS[:WAIT_TRANSFER]
-      flash.now[:notice] = "Your place is confirmed, please transfer the funds as soon as possible!"
+      flash.now[:notice] = "Done! Please transfer the funds as soon as possible!"
     elsif @cart.status == Cart::STATUS[:COMPLETED]
        flash.now[:notice] = 'Payment was successful!'
     else

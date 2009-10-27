@@ -1,38 +1,11 @@
-<% title 'Confirm Your Purchase' %>
+<% title t('views.carts.confirm.title') %>
 
 <h3><%= yield(:title) %></h3>
 
 <div class="entry">
-  <ul>
-  <% @cart.events.each do |event| %>
-    <li>        
-      <%= link_to event.name, event_path(event) %> (<%= event.price_euros %>€)
-    </li>
-  <% end %>
-  </ul>
-  
-  <p><strong>TOTAL: <span id="total"><%= @cart.total_price_on_euros %>€</span></strong></p>
-  
-  <h6>Billing Details</h6>
-  <table>
-    <tr>
-      <th><%= "Nombre" %></th>
-      <td><%=h @cart.client_name %></td>
-    </tr>
-    <tr>
-      <th><%= "CIF" %></th>
-      <td><%= @cart.client_tax_code %></td>
-    </tr>
-    <tr>
-      <th><%= "Dirección" %></th>
-      <td><%= simple_format(h(@cart.client_address)) %></td>
-    </tr>
-    <tr>
-      <th><%= "Teléfono" %></th>
-      <td><%= @cart.client_phone %></td>
-    </tr>
-  </table>
+  <%= render :partial => 'event_list' %>
 
+  <%= render :partial => 'billing_details', :locals => { :cart => @cart } %>
 
   <% if @cart.payment_type == 'paypal' %>
     <% form_tag( APP_CONFIG[:paypal_url] ) do %>
@@ -49,18 +22,18 @@
       %>
       <!-- PAYPAL parameters:END -->
       <p>
-        <%= submit_tag "Pay with Paypal", :disabled => false, :disable_with => "Going to paypal..." %>
+        <%= submit_tag t("views.carts.confirm.pay_pal_button"), :disabled => false, :disable_with => "Going to paypal..." %>
       </p>
     <% end %>
   <% else %>
-    <h6><%= "Pago por transferencia bancaria" %></h6>
+    <h6><%= t("views.carts.confirm.bank_transfer_payment") %></h6>
     <% form_tag complete_cart_url(@cart) do %>
       <p>
-        <%= submit_tag "Todo me parece correcto, confirmar", :disabled => false, :disabled_with => "Please wait..." %>
+        <%= submit_tag t("views.carts.confirm.bank_transfer_button"), :disabled => false, :disabled_with => "Please wait..." %>
       </p>
     <% end %>
   <% end %>
   <p>
-    <%= link_to 'Modify cart', new_cart_path %> &nbsp;
+    <%= link_to t("views.carts.confirm.modify_cart"), new_cart_path %> &nbsp;
   </p>
 </div>

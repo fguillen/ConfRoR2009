@@ -1,0 +1,8 @@
+<ul>
+  <% @cart.events.each do |event| %>
+    <li>        
+      <%= link_to event.i18n_name[I18n.locale] || event.name, event_path(event) %> (<%= event.price_euros %>€)
+    </li>
+  <% end %>
+  </ul>
+  <p><strong><%= t('views.carts.confirm.total') %>: <span id="total"><%= @cart.total_price_on_euros %>€</span></strong></p>
