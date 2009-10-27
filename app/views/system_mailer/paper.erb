@@ -6,3 +6,5 @@ For the user: <%= @paper.creator.name %> (<%= @paper.creator.id %>)
 
 Description:
 <%= @paper.description %>
+
+<%= render :partial => 'system_mailer/signature'%>

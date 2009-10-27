@@ -43,9 +43,12 @@ class SystemMailer < ActionMailer::Base
     @body[:cart]  = cart
   end
   
-  
-  
-  
+  def cart_updated_to_paid( cart )
+    setup
+    @recipients   = cart.user.email
+    @subject      += I18n.t('system_mailer.cart_updated_to_paid.subject')
+    @body[:cart]  = cart
+  end
   
   protected
   

@@ -271,3 +271,10 @@ es:
   main:
     use: "Usar"
     and: "y"
+  system_mailer:
+    signature:
+      staff: "Organizadores Conferencia Rails 2009"
+    cart_updated_to_paid:
+      subject: "Tu transferencia bancaria ha sido aceptada"
+      hi: "Hola {{name}}"
+      body: "Tu pago por transferencia bancaria ha sido aceptado. !Bienvenido!\n\nNos vemos pronto :)"

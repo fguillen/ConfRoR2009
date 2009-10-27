@@ -247,3 +247,10 @@ en:
   main:
     use: "Use"
     and: "and"
+  system_mailer:
+    signature:
+      staff: "Conferencia Rails 2009 staff"
+    cart_updated_to_paid:
+      subject: "Your bank transfer has been confirmated"
+      hi: "Hi {{name}}"
+      body: "Your bank transfer payment has been confirmed. Welcome to the Conference!\n\nSee you soon :)"

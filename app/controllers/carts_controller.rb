@@ -125,6 +125,12 @@ class CartsController < ApplicationController
     unless params[:status].blank?
       @cart.status = params[:status]
       @cart.save!
+      old_locale = I18n.locale
+      I18n.locale = 'es'
+      if @cart.status == Cart::STATUS[:COMPLETED]
+        SystemMailer.deliver_cart_updated_to_paid(@cart)
+      end
+      I18n.locale = old_locale
     else
       raise t('carts.update.errors.no_status')
     end
