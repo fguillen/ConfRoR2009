@@ -1,0 +1,19 @@
+<h6><%= t('views.carts.confirm.billing_details') %></h6>
+  <table>
+    <tr>
+      <th><%= t('views.carts.confirm.client_name') %></th>
+      <td><%=h cart.client_name %></td>
+    </tr>
+    <tr>
+      <th><%= t('views.carts.confirm.client_tax_code') %></th>
+      <td><%= cart.client_tax_code %></td>
+    </tr>
+    <tr>
+      <th><%= t('views.carts.confirm.client_address') %></th>
+      <td><%= simple_format(h(cart.client_address)) %></td>
+    </tr>
+    <tr>
+      <th><%= t('views.carts.confirm.client_phone') %></th>
+      <td><%= cart.client_phone %></td>
+    </tr>
+  </table>

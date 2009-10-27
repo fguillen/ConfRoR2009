@@ -12,7 +12,7 @@ class SessionsControllerTest < ActionController::TestCase
     )
     
     assert_nil( @controller.send(:current_user) )
-    assert_match("no se pudo iniciar sesión como #{users(:user_existing_with_openid_not_actived).identity_url}", flash[:error])
+    assert_match("Lo siento, credenciales incorrectas (o cuenta no activada)", flash[:error])
     assert_nil( flash[:notice] )
     assert_redirected_to login_path(:openid => true)
   end

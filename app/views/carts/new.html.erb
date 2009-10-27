@@ -1,8 +1,8 @@
-<% title 'Purchase Events' %>
+<% title t('views.carts.new.title') %>
 
 <div class="cart new">
-  <h3>Pago para tu plaza</h3>
-  <p>Por favor, introduce tus datos de facturación.</p>
+  <h3><%= yield :title %></h3>
+  <p><%= t('views.carts.new.invoice_data_request') %></p>
 
   <% form_for @cart, :url => confirm_cart_path(@cart), :html => {:method => :post} do |f| %>
     <div class="payment">
@@ -13,18 +13,18 @@
               <li>
                 <%= link_to event.name, event_path(event) %> (<%= event.price_euros %>€)
                 <br />
-                <span class="paid">Pagado</span>
+                <span class="paid"><%= t('views.carts.new.status.paid') %></span>
               </li>
             <% elsif event.is_waiting_confirmation_of_transfer?( current_user ) %>
               <li>
                 <%= link_to event.name, event_path(event) %> (<%= event.price_euros %>€)
                 <br />
-                <span class="pending_confirmation">Esperando confirmación de transferencia bancaria</span>
+                <span class="pending_confirmation"><%= t('views.carts.new.status.pending_confirmation') %></span>
               </li>
             <% elsif event.out_of_capacity? %>
               <li>
                 <strike><%= link_to event.name, event_path(event) %> (<%= event.price_euros %>€)</strike>
-                <span class="full">Completo: no hay más plazas</span>
+                <span class="full"><%= t('views.carts.new.status.full') %></span>
               </li>
             <% else %>
               <li class="nobullet">
@@ -44,7 +44,7 @@
                     :id => "price_#{event.id}"
                   )
                 %>
-                <%= event.name %></label>
+                <%= event.i18n_name[I18n.locale] || event.name %></label>
                 (<%= event.price_euros %>€) 
               </li>
             <% end %>
@@ -52,64 +52,58 @@
         </ul>
       </div>
       
-      <p>El precio incluye:</p>
+      <p><%= t('views.carts.new.price_includes') %></p>
       <ul>
-        <li>2 días de conferencia</li>
-        <li>Un día de talleres</li>
-        <li>Los cafes y comidas de los días de conferencia</li>
-        <li><strong>La cena del día 26</strong></li>
-        <li>La famosa camiseta</li>
-        <li>Las chapitas para el speed-dating</li>
+        <li><%= t('views.carts.new.price_includes_1st') %></li>
+        <li><%= t('views.carts.new.price_includes_2nd') %></li>
+        <li><%= t('views.carts.new.price_includes_3rd') %></li>
+        <li><strong><%= t('views.carts.new.price_includes_4th') %></strong></li>
+        <li><%= t('views.carts.new.price_includes_5th') %></li>
+        <li><%= t('views.carts.new.price_includes_6th') %></li>
       </ul>
       
-      <h4>Método de pago</h4>
+      <h4><%= t('views.carts.new.payment_method') %></h4>
 
       <div class="paymentType">
         <%= f.radio_button :payment_type, 'transfer', :onchange => "$('#bank-transfer').show();return false;" %>
-        <%= label_tag :cart_payment_type_transfer, "Pago por transferencía bancaría" %>
+        <%= label_tag :cart_payment_type_transfer, t("views.carts.new.bank_transfer") %>
         <br />
         <%= f.radio_button :payment_type, 'paypal', :checked => 'checked', :onchange => "$('#bank-transfer').hide();return false;" %>
-        <%= label_tag :cart_payment_type_paypal, "Pago por PayPal (tiene un coste adicional del 3,5% euros por operación)" %>
+        <%= label_tag :cart_payment_type_paypal, t("views.carts.new.paypal") %>
       </div>
 
       <div id="bank-transfer" style="display:none">
-        <br />
-        <p>Puedes pagar por transferencia bancaria teniendo en cuenta que:</p>
-        <ul>
-          <li>La transferencia debe ir a nombre de PARIMPAR GRUPO L'EVENT</li>
-          <li>El número de cuenta es: 2100 2129 95 0200267722</li>
-          <li>¡IMPORTANTE! En el concepto de la transferencia debes indicar tu <strong>nombre y apellidos completos</strong> o no podremos hacer el seguimiento del pago y completar tu registro.</li>
-          <li>Hasta que no recibamos el pago y completemos tu registro, la plaza no está asegurada. Te enviaremos un email de confirmación</li>
-        </ul>
+        <%= render :partial => 'bank_transfer_info' %>
+
       </div>
 
       <br />
     
-      <p><strong>TOTAL: <span id="total">0</span>€</strong></p>
+      <p><strong><%= t("views.carts.new.total") %>: <span id="total">0</span>€</strong></p>
       
     </div><!-- payment -->
   
     <br />
    
     <div class="clientDetails">
-      <h4><%= "Tus datos de facturación" %></h4>
+      <h4><%= t("views.carts.new.invoicing_data_title") %></h4>
       <p>
-        <%= f.label :client_name, "Tu nombre o empresa" %>
+        <%= f.label :client_name, t("views.carts.new.client_name") %>
         <br />
         <%= f.text_field :client_name %>
       </p>
       <p>
-        <%= f.label :client_tax_code, "Identificación Fiscal (DNI, CIF, etc.)" %>
+        <%= f.label :client_tax_code, t("views.carts.new.client_tax_code") %>
         <br />
         <%= f.text_field :client_tax_code %>
       </p>
       <p>
-        <%= f.label :client_address, "Dirección" %>
+        <%= f.label :client_address, t("views.carts.new.client_address") %>
         <br />
         <%= f.text_area :client_address %>
       </p>
       <p>
-        <%= f.label :client_phone, "Número de contacto <small>(por si acaso)</small>" %>
+        <%= f.label :client_phone, t("views.carts.new.client_phone") %>
         <br />
         <%= f.text_field :client_phone %>
       </p>
@@ -118,7 +112,7 @@
     <br />
 
     <p>
-      <%= submit_tag "Paso Siguiente: Confirmar", :disabled => false, :disabled_with => "Please wait..." %>
+      <%= submit_tag t("views.carts.new.next_step_button"), :disabled => false, :disabled_with => "Please wait..." %>
     </p>
 
   <% end %>

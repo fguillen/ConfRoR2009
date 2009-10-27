@@ -108,8 +108,49 @@ en:
       show:
         pay: "Pay this event"
     carts:
+      new:
+        title: "Pay for your place"
+        invoice_data_request: "Please, enter your billing details below"
+        status:
+          paid: "Pagado"
+          pending_confirmation: "Bank transfer confirmation pending"
+          full: "Sold out!"
+        price_includes_6th: "Your badges for speed-dating"
+        price_includes_5th: "Our famous conference t-shirt"
+        price_includes_4th: "Dinner party on the 26th"
+        price_includes_3rd: "Coffee-breaks and lunches on the 2 main days"
+        price_includes_2nd: "1 day with 4 workshops"
+        price_includes_1st: "2 conference days"
+        price_includes: "Price includes:"
+        payment_method: "Payment method"
+        paypal: "PayPal (3,5% additional cost)"
+        bank_transfer: "Bank transfer"
+        bank_transfer_bullets_1: "Make sure the beneficiary is PARIMPAR GRUPO L'EVENT"
+        bank_transfer_bullets_2: "Our bank account number is: <br/><b>IBAN</b>: ES80 2100 2129 95 0200267722 <br/> <b>SWIFT/BIC</b>: CAIXESBBXXX <br/> (from Spain just 2100 2129 95 0200267722)"
+        bank_transfer_bullets_3: "¡IMPORTANT! Put your <strong>full name</strong> as the Payee, otherwise we won't be able to track the payment and confirm your place"
+        bank_transfer_bullets_4: "Your place is not assured until we receive and review your payment. We'll send you a confirmation email then."
+        bank_transfer_intro: "When sending the bank transfer, please ensure the following:"
+        client_phone: "Contact phone number <small>(just in case)</small>"
+        client_tax_code: "VAT Number"
+        client_address: "Address"
+        client_name: "Your full name or Company name"
+        invoicing_data_title: "Billing details"
+        total: TOTAL
+        next_step_button: "Next Step: Confirm payment"
+      confirm:
+        title: "Confirm your purchase"
+        total: "TOTAL"
+        modify_cart: 'Edit cart'
+        bank_transfer_button: "Everything is correct, confirm"
+        bank_transfer_payment: "Bank transfer payment"
+        pay_pal_button: "Pay with Paypal"
+        client_phone: "Phone"
+        client_address: "Address"
+        client_tax_code: "VAT number"
+        client_name: "Name"
+        billing_details: "Your billing details"
       index:
-        confirm_payment: "Confirmar pago"
+        confirm_payment: "Confirm payment"
     users:
       new:
         title: "Sign up"

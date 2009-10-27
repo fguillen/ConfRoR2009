@@ -132,6 +132,47 @@ es:
       show:
         pay: "Pagar este evento"
     carts:
+      new:
+        title: "Pagar por tu plaza"
+        invoice_data_request: "Por favor, introduce tus datos de facturación."
+        status:
+          paid: "Pagado"
+          pending_confirmation: "Esperando confirmación de transferencia bancaria"
+          full: "Completo: no hay más plazas"
+        price_includes_6th: "Las chapitas para el speed-dating"
+        price_includes_5th: "La famosa camiseta"
+        price_includes_4th: "La cena del día 26"
+        price_includes_3rd: "Los cafes y comidas de los días de conferencia"
+        price_includes_2nd: "Un día de talleres"
+        price_includes_1st: "2 días de conferencia"
+        price_includes: "El precio incluye:"
+        payment_method: "Método de pago"
+        paypal: "Pago por PayPal (tiene un coste adicional del 3,5% euros por operación)"
+        bank_transfer: "Pago por transferencia bancaria"
+        bank_transfer_bullets_1: "La transferencia debe ir a nombre de PARIMPAR GRUPO L'EVENT"
+        bank_transfer_bullets_2: "El número de cuenta es: 2100 2129 95 0200267722"
+        bank_transfer_bullets_3: "¡IMPORTANTE! En el concepto de la transferencia debes indicar tu <strong>nombre y apellidos completos</strong> o no podremos hacer el seguimiento del pago y completar tu registro."
+        bank_transfer_bullets_4: "Hasta que no recibamos el pago y completemos tu registro, la plaza no está asegurada. Te enviaremos un email de confirmación"
+        bank_transfer_intro: "Puedes pagar por transferencia bancaria teniendo en cuenta que:"
+        client_phone: "Número de contacto <small>(por si acaso)</small>"
+        client_tax_code: "Identificación Fiscal (DNI, CIF, etc.)"
+        client_address: "Dirección"
+        client_name: "Tu nombre o empresa"
+        invoicing_data_title: "Tus datos de facturación"
+        total: TOTAL
+        next_step_button: "Paso Siguiente: Confirmar"
+      confirm:
+        title: "Confirmar compra"
+        total: "TOTAL"
+        modify_cart: 'Modificar compra'
+        bank_transfer_button: "Todo es correcto, confirmar"
+        bank_transfer_payment: "Pago por transferencia bancaria"
+        pay_pal_button: "Pagar con Paypal"
+        client_phone: "Teléfono"
+        client_address: "Dirección"
+        client_tax_code: "Identificación Fiscal"
+        client_name: "Nombre"
+        billing_details: "Tus datos de facturación"
       index:
         confirm_payment: "Confirmar pago"
     users:
