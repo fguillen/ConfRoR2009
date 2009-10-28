@@ -1,18 +1,16 @@
-We have received your payment for the events:
+Hi, <% @cart.user.name %>:
+
+We've received your payment for the events:
 <% @cart.events.each do |event| -%>
   * <%= event.name %>
 <% end -%>
 
-<% if !@cart.invoice_info.blank? -%>
-With this invoice info:
+Your purchase ID is: <%= @cart.id %>. Keep it for possible issues.
 
-<%= @cart.invoice_info %>
-<% end -%>
+Now that your place is assured you may want to join the movement:
 
-Your purchase ID is: <%= @cart.id %>
+http://tinyurl.com/holaconferenciaror
 
-Keep it for possible issues.
-
-Regards
+Regards,
 
 <%= render :partial => 'system_mailer/signature'%>

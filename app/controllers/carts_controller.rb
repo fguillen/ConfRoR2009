@@ -128,7 +128,7 @@ class CartsController < ApplicationController
       old_locale = I18n.locale
       I18n.locale = 'es'
       if @cart.status == Cart::STATUS[:COMPLETED]
-        SystemMailer.deliver_cart_updated_to_paid(@cart)
+        @cart.send_email_notifications
       end
       I18n.locale = old_locale
     else
