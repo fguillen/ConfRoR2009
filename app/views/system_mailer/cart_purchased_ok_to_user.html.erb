@@ -1,8 +1,8 @@
-Hi, <% @cart.user.name %>:
+Hi, <%= @cart.user.name %>:
 
-We've received your payment for the events:
+We've received your payment for <%= pluralize(@cart.events.size, "event") %>:
 <% @cart.events.each do |event| -%>
-  * <%= event.name %>
+* <%= event.name %>
 <% end -%>
 
 Your purchase ID is: <%= @cart.id %>. Keep it for possible issues.

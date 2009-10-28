@@ -125,12 +125,9 @@ class CartsController < ApplicationController
     unless params[:status].blank?
       @cart.status = params[:status]
       @cart.save!
-      old_locale = I18n.locale
-      I18n.locale = 'es'
       if @cart.status == Cart::STATUS[:COMPLETED]
         @cart.send_email_notifications
       end
-      I18n.locale = old_locale
     else
       raise t('carts.update.errors.no_status')
     end
@@ -143,11 +140,16 @@ class CartsController < ApplicationController
         end
       end
     end
-  rescue
-    flash.now[:error] = t('carts.update.error', :error_message => $!)
-    respond_to do |format|
-      format.html { redirect_to :action => 'index' }
-    end
+  # rescue
+  #     flash.now[:error] = t('carts.update.error', :error_message => $!)
+  #     respond_to do |format|
+  #       format.html { redirect_to :action => 'index' }
+  #       format.js do
+  #         render :update do |page|
+  #           page.replace "cart_#{@cart.id}", :inline => "<p><%= flash[:error] %></p>"
+  #         end
+  #       end
+  #     end
   end
   
 end

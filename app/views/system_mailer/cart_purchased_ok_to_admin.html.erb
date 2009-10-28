@@ -16,7 +16,7 @@ New purchase.
 <%= @cart.invoice_info %>
 <% end %>
 
-<% if !@cart.paypal_notify_params[:memo].blank? %>
+<% if @cart.paypal_notify_params && @cart.paypal_notify_params[:memo].present? %>
 * memo:
 
 <%= @cart.paypal_notify_params[:memo] %>
