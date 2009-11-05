@@ -4,9 +4,7 @@
       <%# menu_to t('views.menu.home'), root_path %>
       <%# menu_to t('views.menu.send_paper'), new_paper_path %>
       <%= menu_to 'Blog', 'http://conferenciarails.org' %>
-      <% if admin? %>
-        <%= menu_to t('views.menu.calendar')+' (a)', calendar_path %>
-      <% end %>
+      <%= menu_to t('views.menu.calendar'), '/horarios' %>
       <%= menu_to t('views.menu.talks'), papers_path %>
       <!-- %= menu_to t('views.menu.send_paper'), new_paper_path % -->
       <% if admin? %>
