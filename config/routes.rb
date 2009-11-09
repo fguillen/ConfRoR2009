@@ -34,6 +34,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :rooms
   map.resources :events
   map.resource :calendar
+  map.resource :horarios, :controller => :calendars
+  
   
   map.resources :carts, 
                 :as => 'payment', 
