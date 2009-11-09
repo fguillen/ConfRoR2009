@@ -1,7 +1,7 @@
 #left-sidebar, #right-sidebar { display:none;}
 
 #main {
-  width:auto;
+  width:100%;
   margin-left:0;
   left:0;
 }
@@ -42,6 +42,7 @@ th.day {
 table {
   table-layout:fixed;
   border-spacing:4px;
+  
 }
 
 .times { width:7%; }
