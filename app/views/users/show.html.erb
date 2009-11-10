@@ -72,7 +72,9 @@
     <ul>
       <% @user.carts.purchased.each do |cart| %>
         <li>
+          <% unless cart.purchased_at.blank? %>
           <%= cart.purchased_at.to_s(:date) %> :
+          <% end -%>
           <% cart.events.each do |event| %>
             <%= link_to event.name, event %>, 
           <% end %>
