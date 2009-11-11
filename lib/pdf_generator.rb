@@ -22,14 +22,19 @@ class PDFGenerator
     
     pdf.move_pointer( 50 )
     pdf.text( "Invoice Number: <b>#{APP_CONFIG[:invoices_serial_prefix]}#{invoice.serial}</b>" )
-    pdf.text( "Date: <b>#{invoice.date.strftime( '%d of %b of %Y' )}</b>" )
+    pdf.text( "Date: <b>#{invoice.date.strftime( '%b %d, %Y' )}</b>" )
     pdf.text( "To:", :top => 1000 )
     
-    if invoice.cart.user.invoice_info
-      invoice.cart.user.invoice_info.each_line do |line|
-        pdf.text( "#{line}" )
-      end
+    #invoice.cart.user.invoice_info.each_line do |line|
+    #  pdf.text( "#{line}" )
+    #end
+    cart = invoice.cart
+    pdf.text "<b>#{cart.client_name}</b>"
+    pdf.text "CIF: #{cart.client_tax_code}"
+    cart.client_address.each_line do |line|
+      pdf.text line
     end
+    pdf.text "Tel: #{cart.client_phone}" unless cart.client_phone.blank?
 
     #
     # TABLE
