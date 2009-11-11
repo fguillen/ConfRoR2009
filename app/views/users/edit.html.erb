@@ -75,10 +75,12 @@
     <p><%= f.label :password_confirmation, t('views.users.form.new_password_confirm') %><br/>
     <%= f.password_field :password_confirmation %></p>
   </div>
-  
+
+  <!--
   <p><%= f.label :invoice_info, t('views.users.form.invoice_info') %> <span class="example"><%= t('views.users.form.invoice_info_example') %></span><br/>
   <%= f.text_area :invoice_info %></p>
-  
+  -->
+
   <% if admin? %>
     <p><%= f.label :role, "Role" %><br />
     <%= select( "user", "role", User::ROLE.values ) %></p>
