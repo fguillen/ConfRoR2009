@@ -151,6 +151,9 @@ en:
         billing_details: "Your billing details"
       index:
         confirm_payment: "Confirm payment"
+      show:
+        download_invoice: "Download invoice"
+        create_invoice: "Create invoice"
     users:
       new:
         title: "Sign up"

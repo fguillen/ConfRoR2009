@@ -175,6 +175,9 @@ es:
         billing_details: "Tus datos de facturación"
       index:
         confirm_payment: "Confirmar pago"
+      show:
+        download_invoice: "Descargar factura"
+        create_invoice: "Crear factura"
     users:
       new:
         title: "Registrarse como usuario"
