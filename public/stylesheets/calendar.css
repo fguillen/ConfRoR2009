@@ -116,9 +116,6 @@ a.title {
   margin-bottom:auto;
 }
 
-.keynote .title {
-  line-height:35px;
-}
 
 .special .title {
   font-size:12px;
@@ -131,7 +128,16 @@ a.title:hover {
 
 .keynote .title{
   font-size:14px;
+  line-height:21px;
+  
 }
+
+.keynote .title, .special .title {
+  margin-left:18px;
+  margin-right:1px;
+}
+
+
 
 .speakers {
   display:block;
@@ -140,6 +146,10 @@ a.title:hover {
   margin-top:2px;
 }
 
+.keynote .speakers {
+  font-size:11px;
+  margin-top:0;
+}
 
 img.avatar {
   position:absolute;
