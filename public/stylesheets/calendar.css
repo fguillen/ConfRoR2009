@@ -119,7 +119,7 @@ a.title {
 
 .special .title {
   font-size:12px;
-  line-height:19px;
+  line-height:17px;
 }
 
 a.title:hover {
@@ -135,8 +135,8 @@ a.title:hover {
   margin-right:1px;
 }
 
-.keynote .inner {
-  width:250px;
+.inner {
+  width:245px;
   margin-left:auto;
   margin-right:auto;
 }
@@ -155,7 +155,7 @@ a.title:hover {
 
 img.avatar {
   position:absolute;
-  left:10px;
+  left:7px;
   border:0;
   top:50%;
   margin-top:-17.5px;

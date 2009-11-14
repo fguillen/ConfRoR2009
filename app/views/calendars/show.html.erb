@@ -1,7 +1,7 @@
 <% title t('views.calendar.show.title') %>
 
 <% content_for :header do %>
-<%= stylesheet_link_tag "calendar", :media => "screen, projection" %>
+∫<%= stylesheet_link_tag "calendar", :media => "screen, projection" %>
 <% end %>
 
 <table>
@@ -191,9 +191,12 @@
     <td rowspan="3" colspan="2" class="main special">
       <div>
         <img alt="Avatar de Ron Evans" src="/images/avatar_evans.jpg" class="avatar"/>
-        <a href="/talks/48-la-ascencion-de-la-real-world-web" class="title">La Ascensión de la “Real-World Web”</a>
-        <span class="lang">ES</span>
+        <div class="inner">
+        <a href="/talks/48" class="title">Flying Robot: Vehículos Aéreos Autónomos hechos con Ruby y Arduino
+          <span class="lang">ES</span>
+          </a>
         <span class="speakers">Ron Evans</span>
+        </div>
       </div>
     </td>
     <td rowspan="3" class="main">
