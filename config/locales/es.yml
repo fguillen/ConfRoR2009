@@ -186,6 +186,7 @@ es:
       index:
         speakers: "Ponentes"
         attendees_from_city: "Asistentes de {{city}}"
+        attendees_from_company: "Asistentes de {{company_name}}"
         attendees: "Asistentes"
         all_registered_users: "Todos los usuarios registrados"
         all: "Ver todos"

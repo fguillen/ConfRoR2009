@@ -17,6 +17,9 @@ class UsersController < ApplicationController
     elsif !params[:city].blank?
       @city = params[:city].gsub(/[^A-Za-z\ ]+/,'')
       @users = User.find(:all, :conditions => "location_name LIKE '%#{@city}%'")
+    elsif !params[:company_name].blank?
+      @company_name = params[:company_name].gsub(/[^A-Za-z\ ]+/,'')
+      @users = User.find(:all, :conditions => "company_name LIKE '%#{@company_name}%'")
     else
       @users = if admin?
         User.ordered

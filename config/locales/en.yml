@@ -162,6 +162,7 @@ en:
       index:
         speakers: "Speakers"
         attendees_from_city: "Attendees from {{city}}"
+        attendees_from_company: "Attendees from {{company_name}}"
         attendees: "Attendees"
         all_registered_users: "All Registered Users"
         all: "View all"

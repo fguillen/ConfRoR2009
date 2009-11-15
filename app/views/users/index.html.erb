@@ -10,6 +10,8 @@
     title(t('views.users.index.attendees'))
   elsif @city
     title(t('views.users.index.attendees_from_city', :city => @city))
+  elsif @company_name
+    title(t('views.users.index.attendees_from_company', :company_name => @company_name))
   else
     title(t('views.users.index.all_registered_users'))
   
