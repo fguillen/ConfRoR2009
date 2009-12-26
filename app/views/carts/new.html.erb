@@ -8,7 +8,7 @@
     <div class="payment">
       <div class="entry">
         <ul>
-          <% Event.all.each do |event| %>
+          <% Event.all.each_with_index do |event, index| %>
             <% if event.is_paid_for_user?( current_user ) %>
               <li>
                 <%= link_to event.name, event_path(event) %> (<%= event.price_euros %>€)
@@ -33,7 +33,7 @@
                   check_box_tag(
                     'event_ids[]',
                     event.id,
-                    @cart.events.include?( event ),
+                    @cart.events.include?( event ) || @cart.events.empty? && index == 0,
                     :id => "event_#{event.id}"
                   )
                 %>
@@ -65,9 +65,9 @@
       <h4><%= t('views.carts.new.payment_method') %></h4>
 
       <div class="paymentType">
-        <%= f.radio_button :payment_type, 'transfer', :onchange => "$('#bank-transfer').show();return false;" %>
-        <%= label_tag :cart_payment_type_transfer, t("views.carts.new.bank_transfer") %>
-        <br />
+        <%# f.radio_button :payment_type, 'transfer', :onchange => "$('#bank-transfer').show();return false;" %>
+        <%# label_tag :cart_payment_type_transfer, t("views.carts.new.bank_transfer") %>
+        <!-- <br /> -->
         <%= f.radio_button :payment_type, 'paypal', :checked => 'checked', :onchange => "$('#bank-transfer').hide();return false;" %>
         <%= label_tag :cart_payment_type_paypal, t("views.carts.new.paypal") %>
       </div>
